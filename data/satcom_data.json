@@ -1,0 +1,94 @@
+{
+  "last_updated": "$(date +%Y-%m-%d)",
+  "constellations": {
+    "domestic": [
+      {"name": "国网星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网", "物联网"]},
+      {"name": "千帆星座", "operator": "垣信卫星", "planned": 15000, "launched": 54, "stage": "部署中", "use_cases": ["宽带", "物联网", "导航增强"]},
+      {"name": "GW星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网"]},
+      {"name": "鸿雁星座", "operator": "航天科技", "planned": 324, "launched": 2, "stage": "试验阶段", "use_cases": ["物联网", "导航"]},
+      {"name": "虹云星座", "operator": "航天科工", "planned": 156, "launched": 2, "stage": "试验阶段", "use_cases": ["宽带互联网"]}
+    ],
+    "international": [
+      {"name": "Starlink", "operator": "SpaceX", "planned": 42000, "launched": 7000, "stage": "运营中", "use_cases": ["宽带互联网", "手机直连"]},
+      {"name": "OneWeb", "operator": "Eutelsat", "planned": 648, "launched": 634, "stage": "运营中", "use_cases": ["企业宽带", "物联网"]},
+      {"name": "Kuiper", "operator": "Amazon", "planned": 3236, "launched": 2, "stage": "部署中", "use_cases": ["宽带互联网"]},
+      {"name": "Iridium NEXT", "operator": "Iridium", "planned": 75, "launched": 75, "stage": "运营中", "use_cases": ["卫星电话", "物联网"]}
+    ]
+  },
+  "companies": {
+    "domestic": [
+      {"name": "磐钴智能", "city": "成都", "focus": "卫星物联网终端", "tech": "Lora/NTN", "founded": "2021", "funding": "A轮", "products": ["卫星模组", "物联网终端"]},
+      {"name": "星联芯通", "city": "成都", "focus": "卫星通信芯片", "tech": "DVB-S2X/5G NTN", "founded": "2018", "funding": "B轮", "products": ["基带芯片", "调制解调器"]},
+      {"name": "国科宇航", "city": "成都", "focus": "卫星通信终端", "tech": "专有协议", "founded": "2019", "funding": "A轮", "products": ["手持终端", "车载终端"]},
+      {"name": "天行探索科技", "city": "深圳", "focus": "卫星互联网终端", "tech": "Ka/Ku频段", "founded": "2020", "funding": "Pre-A", "products": ["相控阵终端", "平板天线"]},
+      {"name": "华美钛", "city": "重庆", "focus": "卫星通信模组", "tech": "多模通信", "founded": "2022", "funding": "天使轮", "products": ["通信模组", "定位模组"]},
+      {"name": "鹏鹄物宇", "city": "北京", "focus": "低轨卫星终端", "tech": "5G NTN", "founded": "2021", "funding": "A轮", "products": ["NTN终端", "测试设备"]},
+      {"name": "环天智慧", "city": "成都", "focus": "卫星应用服务", "tech": "多星座兼容", "founded": "2019", "funding": "战略融资", "products": ["行业解决方案", "数据服务"]},
+      {"name": "星途智联", "city": "北京", "focus": "卫星车联网", "tech": "V2X+卫星", "founded": "2020", "funding": "A轮", "products": ["车载终端", "路侧单元"]},
+      {"name": "中国时空", "city": "北京", "focus": "导航增强服务", "tech": "北斗+低轨", "founded": "2022", "funding": "国资", "products": ["高精度定位", "时空服务"]},
+      {"name": "中兵北斗", "city": "西安", "focus": "北斗终端", "tech": "北斗三号", "founded": "2015", "funding": "上市公司", "products": ["军用终端", "民用终端"]},
+      {"name": "太极疆泰", "city": "乌鲁木齐", "focus": "卫星物联网", "tech": "LoRa卫星", "founded": "2021", "funding": "A轮", "products": ["物联网终端", "行业方案"]},
+      {"name": "航天金美", "city": "重庆", "focus": "卫星通信设备", "tech": "多频段", "founded": "2016", "funding": "B轮", "products": ["车载动中通", "便携终端"]}
+    ],
+    "international": [
+      {"name": "SpaceX Starlink", "region": "美国", "subscribers": "300万+", "terminal_price": "$599", "service_price": "$120/月"},
+      {"name": "Iridium", "region": "美国", "subscribers": "200万+", "terminal_price": "$1000+", "service_price": "$50/月起"},
+      {"name": "Inmarsat", "region": "英国", "subscribers": "100万+", "terminal_price": "$500+", "service_price": "$40/月起"},
+      {"name": "Thuraya", "region": "阿联酋", "subscribers": "50万+", "terminal_price": "$600+", "service_price": "$30/月起"},
+      {"name": "Globalstar", "region": "美国", "subscribers": "80万+", "terminal_price": "$300+", "service_price": "$25/月起"}
+    ]
+  },
+  "business_models": {
+    "domestic": [
+      {"model": "终端销售", "description": "销售卫星通信终端设备，包括芯片、模组、整机", "players": ["磐钴智能", "星联芯通", "国科宇航"]},
+      {"model": "卫星运营服务", "description": "提供卫星通信服务订阅，包括带宽租赁、数据服务", "players": ["中国星网", "垣信卫星"]},
+      {"model": "行业解决方案", "description": "针对特定行业（海洋、航空、应急）提供定制化方案", "players": ["环天智慧", "太极疆泰"]},
+      {"model": "位置服务", "description": "基于卫星的定位、导航、授时服务", "players": ["中国时空", "中兵北斗"]}
+    ],
+    "international": [
+      {"model": "Direct-to-Consumer", "description": "直接向消费者提供宽带服务", "players": ["Starlink"]},
+      {"model": "B2B Wholesale", "description": "向运营商和企业批发带宽", "players": ["OneWeb", "Inmarsat"]},
+      {"model": "IoT Connectivity", "description": "物联网设备连接服务", "players": ["Iridium", "Globalstar"]},
+      {"model": "Government/Defense", "description": "政府和国防专用服务", "players": ["Starlink", "Iridium"]}
+    ],
+    "price_comparison": {
+      "broadband": [
+        {"service": "Starlink 住宅", "terminal_usd": 599, "monthly_usd": 120, "speed": "50-250 Mbps"},
+        {"service": "Starlink 商业", "terminal_usd": 2500, "monthly_usd": 500, "speed": "150-500 Mbps"},
+        {"service": "OneWeb 企业", "terminal_usd": 3000, "monthly_usd": 300, "speed": "50-200 Mbps"},
+        {"service": "国内卫星宽带", "terminal_cny": 8000, "monthly_cny": 500, "speed": "20-100 Mbps"}
+      ]
+    }
+  },
+  "policy": {
+    "china": [
+      {"title": "《卫星网络国内协调管理办法》", "date": "2024", "issuer": "工信部", "content": "规范卫星网络频率和轨道资源管理", "impact": "high"},
+      {"title": "《卫星互联网产业发展行动计划》", "date": "2023", "issuer": "发改委", "content": "推动卫星互联网与5G/6G融合发展", "impact": "high"},
+      {"title": "低轨卫星星座发射许可", "date": "2024", "issuer": "国防科工局", "content": "简化商业航天发射审批流程", "impact": "medium"}
+    ],
+    "international": [
+      {"title": "FCC Part 25 卫星通信规则", "date": "2024", "issuer": "FCC", "content": "更新NGSO卫星系统频谱共享规则", "impact": "high"},
+      {"title": "ITU 卫星网络申报程序", "date": "2023", "issuer": "ITU", "content": "完善卫星频率/轨道资源协调程序", "impact": "medium"}
+    ],
+    "licensing": {
+      "china": {
+        "authority": "工信部无线电管理局",
+        "timeline": "6-12个月",
+        "requirements": ["频率许可", "轨道位置", "发射许可", "运营许可"]
+      },
+      "usa": {
+        "authority": "FCC",
+        "timeline": "12-24个月",
+        "requirements": ["频谱许可", "发射许可", "运营授权", "频谱共享协议"]
+      }
+    }
+  },
+  "tech_trends": [
+    {"trend": "5G NTN (非地面网络)", "description": "3GPP标准将卫星通信纳入5G/6G体系，实现天地一体化", "status": "商业化初期", "timeline": "2024-2027", "leaders": ["华为", "爱立信", "高通"]},
+    {"trend": "D2D 手机直连卫星", "description": "普通手机无需外接设备直接连接卫星", "status": "商业化初期", "timeline": "2023-2026", "leaders": ["苹果", "华为", "AST SpaceMobile"]},
+    {"trend": "相控阵天线成本下降", "description": "低成本电子扫描天线使终端小型化、低成本化", "status": "成本下降中", "timeline": "2024-2028", "leaders": ["Starlink", "Kymeta", "CesiumAstro"]},
+    {"trend": "激光星间链路", "description": "卫星间激光通信提高传输速率和安全性", "status": "部署中", "timeline": "2023-2027", "leaders": ["SpaceX", "Mynaric", "TESAT"]},
+    {"trend": "AI驱动的卫星运营", "description": "人工智能优化卫星轨道、功率分配和频谱利用", "status": "早期应用", "timeline": "2024-2030", "leaders": ["Amazon", "Google", "OneWeb"]}
+  ],
+  "news": []
+}

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卫星通信产业调研报告 | Satellite Communications Research</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
+        .tab-inactive:hover { color: #374151; border-bottom-color: #d1d5db; }
+        .company-card { transition: all 0.3s ease; }
+        .company-card:hover { transform: translateY(-4px); box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        .comparison-checkbox:checked + div { border-color: #3b82f6; background-color: #eff6ff; }
+        @media print {
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-satellite text-blue-600 text-2xl"></i>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">卫星通信产业调研报告</h1>
+                        <p class="text-xs text-gray-500">Satellite Communications Industry Research</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-500">
+                        <i class="far fa-calendar-alt mr-1"></i>
+                        数据更新：<span id="update-date">2025-04-08</span>
+                    </span>
+                    <button onclick="exportPDF()" class="no-print bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition">
+                        <i class="fas fa-file-pdf mr-2"></i>导出PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white border-b border-gray-200 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex space-x-8">
+                <button onclick="switchTab('constellation')" id="tab-constellation" class="tab-active py-4 px-1 text-sm font-medium">
+                    <i class="fas fa-globe mr-2"></i>星座层
+                </button>
+                <button onclick="switchTab('terminal')" id="tab-terminal" class="tab-inactive py-4 px-1 text-sm font-medium">
+                    <i class="fas fa-mobile-alt mr-2"></i>终端层
+                </button>
+                <button onclick="switchTab('commercial')" id="tab-commercial" class="tab-inactive py-4 px-1 text-sm font-medium">
+                    <i class="fas fa-chart-line mr-2"></i>商业层
+                </button>
+                <button onclick="switchTab('policy')" id="tab-policy" class="tab-inactive py-4 px-1 text-sm font-medium">
+                    <i class="fas fa-balance-scale mr-2"></i>政策层
+                </button>
+                <button onclick="switchTab('tech')" id="tab-tech" class="tab-inactive py-4 px-1 text-sm font-medium">
+                    <i class="fas fa-microchip mr-2"></i>技术趋势
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Search & Filter Bar -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-6 no-print">
+            <div class="flex flex-wrap gap-4 items-center">
+                <div class="flex-1 min-w-[300px]">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input type="text" id="search-input" placeholder="搜索企业、产品、技术..." 
+                            class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    </div>
+                </div>
+                <div class="flex gap-2">
+                    <select id="filter-region" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option value="">全部地区</option>
+                        <option value="china">中国</option>
+                        <option value="global">国际</option>
+                    </select>
+                    <select id="filter-type" class="px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                        <option value="">全部类型</option>
+                        <option value="leo">低轨(LEO)</option>
+                        <option value="geo">高轨(GEO)</option>
+                        <option value="iot">卫星物联网</option>
+                        <option value="broadband">卫星互联网</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-2 ml-auto">
+                    <span class="text-sm text-gray-500">对比模式</span>
+                    <button onclick="toggleCompareMode()" id="compare-btn" class="px-3 py-2 border border-gray-300 rounded-lg text-sm hover:bg-gray-50">
+                        <i class="fas fa-columns mr-1"></i>选择对比
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div id="content-constellation" class="tab-content">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center py-20">
+                <i class="fas fa-satellite-dish text-gray-300 text-6xl mb-4"></i>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">星座层数据加载中...</h3>
+                <p class="text-gray-500">正在抓取国内外卫星星座运营商最新数据</p>
+            </div>
+        </div>
+
+        <div id="content-terminal" class="tab-content hidden">
+            <!-- Terminal Layer Content Loaded via JS -->
+        </div>
+
+        <div id="content-commercial" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center py-20">
+                <i class="fas fa-chart-pie text-gray-300 text-6xl mb-4"></i>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">商业层数据加载中...</h3>
+                <p class="text-gray-500">正在分析商业模式与定价策略</p>
+            </div>
+        </div>
+
+        <div id="content-policy" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center py-20">
+                <i class="fas fa-file-contract text-gray-300 text-6xl mb-4"></i>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">政策层数据加载中...</h3>
+                <p class="text-gray-500">正在整理国内外政策法规动态</p>
+            </div>
+        </div>
+
+        <div id="content-tech" class="tab-content hidden">
+            <div class="bg-white rounded-lg shadow-sm p-8 text-center py-20">
+                <i class="fas fa-rocket text-gray-300 text-6xl mb-4"></i>
+                <h3 class="text-xl font-medium text-gray-900 mb-2">技术趋势数据加载中...</h3>
+                <p class="text-gray-500">正在追踪最新技术发展与体制演进</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Comparison Modal -->
+    <div id="compare-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="max-w-6xl mx-auto mt-10 bg-white rounded-lg shadow-xl max-h-[80vh] overflow-auto">
+            <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                <h3 class="text-lg font-bold">企业对比分析</h3>
+                <button onclick="closeCompareModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div id="compare-content" class="p-6">
+                <!-- Dynamic comparison content -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            // Update tab styles
+            document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+                tab.classList.remove('tab-active');
+                tab.classList.add('tab-inactive');
+            });
+            document.getElementById('tab-' + tabName).classList.remove('tab-inactive');
+            document.getElementById('tab-' + tabName).classList.add('tab-active');
+
+            // Show/hide content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById('content-' + tabName).classList.remove('hidden');
+
+            // Load content if needed
+            if (tabName === 'terminal') {
+                loadTerminalContent();
+            }
+        }
+
+        // Load terminal layer content
+        function loadTerminalContent() {
+            const container = document.getElementById('content-terminal');
+            if (container.innerHTML.trim() !== '') return;
+
+            const companies = [
+                { name: '磐钴智能', region: '中国', city: '成都', focus: '卫星物联网终端', tech: '天通/北斗', products: ['手持终端', '车载终端', '船载终端'] },
+                { name: '天行探索科技', region: '中国', city: '北京', focus: '卫星互联网终端', tech: '低轨星座', products: ['相控阵终端', '平板天线'] },
+                { name: '成都星联芯通', region: '中国', city: '成都', focus: '卫星通信芯片', tech: '自主协议栈', products: ['通信芯片', '模组'] },
+                { name: '成都国科宇航', region: '中国', city: '成都', focus: '卫星测控终端', tech: 'S/X频段', products: ['测控天线', '地面站'] },
+                { name: '华美钛', region: '中国', city: '-', focus: '卫星通信组件', tech: '射频器件', products: ['功放', 'LNB'] },
+                { name: '重庆两江卫星移动通信', region: '中国', city: '重庆', focus: '卫星移动通信', tech: '天通一号', products: ['手持机', '数据终端'] },
+                { name: '重庆航天新世纪', region: '中国', city: '重庆', focus: '卫星应用系统', tech: '北斗/GPS', products: ['导航终端', '监控系统'] },
+                { name: '航天金美通信', region: '中国', city: '-', focus: '军民用通信', tech: '多频段', products: ['保密通信', '卫星电话'] },
+                { name: '乐众科技', region: '中国', city: '-', focus: '卫星物联网', tech: 'LoRa+卫星', products: ['物联网终端', '传感器'] },
+                { name: '鹏鹄物宇', region: '中国', city: '-', focus: '卫星通信服务', tech: '多星座融合', products: ['融合终端', '解决方案'] },
+                { name: '环天智慧', region: '中国', city: '-', focus: '智慧农业/海洋', tech: '卫星遥感+通信', products: ['行业终端', '云平台'] },
+                { name: '星途智联', region: '中国', city: '-', focus: '车联网终端', tech: '北斗+5G', products: ['车载终端', 'V2X设备'] },
+                { name: '中国时空', region: '中国', city: '北京', focus: '高精度定位', tech: '北斗三号', products: ['高精度终端', '地基增强'] },
+                { name: '中兵北斗', region: '中国', city: '-', focus: '北斗军用/民用', tech: '北斗导航', products: ['军用终端', '民用产品'] },
+                { name: '太极疆泰', region: '中国', city: '-', focus: '应急通信', tech: '天通/北斗', products: ['应急终端', '指挥系统'] }
+            ];
+
+            let html = `
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-2">终端设备厂商</h2>
+                    <p class="text-gray-600">国内卫星通信终端主要玩家，共 ${companies.length} 家</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            `;
+
+            companies.forEach((company, index) => {
+                html += `
+                    <div class="company-card bg-white rounded-lg shadow-sm border border-gray-200 p-6 relative">
+                        <input type="checkbox" class="comparison-checkbox absolute top-4 right-4 w-5 h-5 cursor-pointer" 
+                            value="${company.name}" onchange="updateComparison()">
+                        <div class="border-2 border-transparent rounded-lg p-4 -m-4">
+                            <div class="flex items-start justify-between mb-4">
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-900">${company.name}</h3>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mt-2">
+                                        ${company.region}
+                                    </span>
+                                </div>
+                                <span class="text-sm text-gray-500">${company.city || '-'}</span>
+                            </div>
+                            <div class="space-y-3">
+                                <div>
+                                    <span class="text-xs text-gray-500 uppercase tracking-wide">业务聚焦</span>
+                                    <p class="text-sm font-medium text-gray-900">${company.focus}</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-500 uppercase tracking-wide">技术体制</span>
+                                    <p class="text-sm text-gray-900">${company.tech}</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-gray-500 uppercase tracking-wide">主要产品</span>
+                                    <div class="flex flex-wrap gap-1 mt-1">
+                                        ${company.products.map(p => `<span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">${p}</span>`).join('')}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-100">
+                                <button onclick="showCompanyDetail('${company.name}')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                                    查看详情 <i class="fas fa-arrow-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Comparison mode
+        let compareMode = false;
+        function toggleCompareMode() {
+            compareMode = !compareMode;
+            const btn = document.getElementById('compare-btn');
+            if (compareMode) {
+                btn.classList.add('bg-blue-100', 'border-blue-300', 'text-blue-700');
+                document.querySelectorAll('.comparison-checkbox').forEach(cb => cb.style.display = 'block');
+            } else {
+                btn.classList.remove('bg-blue-100', 'border-blue-300', 'text-blue-700');
+                document.querySelectorAll('.comparison-checkbox').forEach(cb => {
+                    cb.style.display = 'none';
+                    cb.checked = false;
+                });
+                closeCompareModal();
+            }
+        }
+
+        function updateComparison() {
+            const selected = Array.from(document.querySelectorAll('.comparison-checkbox:checked')).map(cb => cb.value);
+            if (selected.length >= 2) {
+                showComparison(selected);
+            }
+        }
+
+        function showComparison(companies) {
+            const modal = document.getElementById('compare-modal');
+            const content = document.getElementById('compare-content');
+            
+            content.innerHTML = `
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-left text-sm font-medium text-gray-500">维度</th>
+                                ${companies.map(c => `<th class="px-4 py-3 text-left text-sm font-bold text-gray-900">${c}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-700">总部地点</td>
+                                ${companies.map(() => `<td class="px-4 py-3 text-sm text-gray-900">-</td>`).join('')}
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-700">技术体制</td>
+                                ${companies.map(() => `<td class="px-4 py-3 text-sm text-gray-900">-</td>`).join('')}
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-700">终端类型</td>
+                                ${companies.map(() => `<td class="px-4 py-3 text-sm text-gray-900">-</td>`).join('')}
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-700">价格区间</td>
+                                ${companies.map(() => `<td class="px-4 py-3 text-sm text-gray-900">-</td>`).join('')}
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-700">服务模式</td>
+                                ${companies.map(() => `<td class="px-4 py-3 text-sm text-gray-900">-</td>`).join('')}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeCompareModal() {
+            document.getElementById('compare-modal').classList.add('hidden');
+        }
+
+        function showCompanyDetail(name) {
+            alert(`${name} 的详细数据正在采集中...`);
+        }
+
+        // PDF Export
+        function exportPDF() {
+            window.print();
+        }
+
+        // Search functionality
+        document.getElementById('search-input')?.addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            document.querySelectorAll('.company-card').forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(term) ? 'block' : 'none';
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set update date
+            document.getElementById('update-date').textContent = new Date().toISOString().split('T')[0];
+        });
+    </script>
+</body>
+</html>

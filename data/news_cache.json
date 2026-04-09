@@ -1,0 +1,116 @@
+{
+  "last_update": "2026-04-08T11:08:08.824371",
+  "total_count": 5,
+  "news": [
+    {
+      "title": "千帆星座第四批组网卫星成功发射",
+      "date": "2025-03-15",
+      "source": "航天科技",
+      "summary": "千帆星座第四批组网卫星在太原卫星发射中心成功发射，目前在轨卫星达到90颗。",
+      "tags": [
+        "千帆星座",
+        "组网",
+        "发射"
+      ],
+      "impact": "high",
+      "companies_mentioned": [
+        "上海垣信",
+        "航天科技"
+      ],
+      "url": "https://example.com/news/1",
+      "impact_analysis": {
+        "score": 6,
+        "level": "high",
+        "reasons": [
+          "关键词: 发射",
+          "关键词: 组网"
+        ]
+      }
+    },
+    {
+      "title": "SpaceX Starlink手机直连服务正式上线",
+      "date": "2025-03-10",
+      "source": "SpaceNews",
+      "summary": "Starlink宣布手机直连卫星服务正式商用，支持T-Mobile等运营商用户直连。",
+      "tags": [
+        "Starlink",
+        "手机直连",
+        "商业化"
+      ],
+      "impact": "high",
+      "companies_mentioned": [
+        "SpaceX",
+        "T-Mobile"
+      ],
+      "url": "https://example.com/news/2",
+      "impact_analysis": {
+        "score": 0,
+        "level": "low",
+        "reasons": []
+      }
+    },
+    {
+      "title": "国内某卫星通信终端厂商完成B轮融资",
+      "date": "2025-03-08",
+      "source": "投资界",
+      "summary": "某卫星通信终端解决方案提供商完成数亿元B轮融资，投资方包括多家知名机构。",
+      "tags": [
+        "融资",
+        "终端",
+        "投资"
+      ],
+      "impact": "medium",
+      "companies_mentioned": [],
+      "url": "https://example.com/news/3",
+      "impact_analysis": {
+        "score": 5,
+        "level": "high",
+        "reasons": [
+          "关键词: 融资"
+        ]
+      }
+    },
+    {
+      "title": "工信部发布卫星通信频率使用新规",
+      "date": "2025-03-05",
+      "source": "工信部",
+      "summary": "新规优化了卫星通信频率申报流程，简化了审批环节，支持商业航天发展。",
+      "tags": [
+        "政策",
+        "频率",
+        "监管"
+      ],
+      "impact": "high",
+      "companies_mentioned": [],
+      "url": "https://example.com/news/4",
+      "impact_analysis": {
+        "score": 3,
+        "level": "medium",
+        "reasons": []
+      }
+    },
+    {
+      "title": "银河航天完成新一轮融资，估值超百亿",
+      "date": "2025-02-28",
+      "source": "36氪",
+      "summary": "银河航天完成新一轮融资，累计融资额超过30亿元，估值突破百亿人民币。",
+      "tags": [
+        "融资",
+        "银河航天",
+        "低轨星座"
+      ],
+      "impact": "medium",
+      "companies_mentioned": [
+        "银河航天"
+      ],
+      "url": "https://example.com/news/5",
+      "impact_analysis": {
+        "score": 5,
+        "level": "high",
+        "reasons": [
+          "关键词: 融资"
+        ]
+      }
+    }
+  ]
+}

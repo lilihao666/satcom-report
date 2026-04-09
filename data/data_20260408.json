@@ -1,0 +1,269 @@
+{
+  "last_update": "2026-04-08T10:47:25.352596",
+  "companies": {
+    "domestic": [
+      {
+        "name": "磐钴智能",
+        "city": "成都",
+        "focus": "卫星物联网终端",
+        "tech": "天通/北斗",
+        "products": [
+          "手持终端",
+          "车载终端",
+          "船载终端"
+        ],
+        "category": "iot"
+      },
+      {
+        "name": "天行探索科技",
+        "city": "北京",
+        "focus": "卫星互联网终端",
+        "tech": "低轨星座",
+        "products": [
+          "相控阵终端",
+          "平板天线"
+        ],
+        "category": "broadband"
+      },
+      {
+        "name": "成都星联芯通",
+        "city": "成都",
+        "focus": "卫星通信芯片",
+        "tech": "自主协议栈",
+        "products": [
+          "通信芯片",
+          "模组"
+        ],
+        "category": "chip"
+      },
+      {
+        "name": "成都国科宇航",
+        "city": "成都",
+        "focus": "卫星测控终端",
+        "tech": "S/X频段",
+        "products": [
+          "测控天线",
+          "地面站"
+        ],
+        "category": "ground"
+      },
+      {
+        "name": "华美钛",
+        "city": "-",
+        "focus": "卫星通信组件",
+        "tech": "射频器件",
+        "products": [
+          "功放",
+          "LNB"
+        ],
+        "category": "component"
+      },
+      {
+        "name": "重庆两江卫星移动通信",
+        "city": "重庆",
+        "focus": "卫星移动通信",
+        "tech": "天通一号",
+        "products": [
+          "手持机",
+          "数据终端"
+        ],
+        "category": "iot"
+      },
+      {
+        "name": "重庆航天新世纪",
+        "city": "重庆",
+        "focus": "卫星应用系统",
+        "tech": "北斗/GPS",
+        "products": [
+          "导航终端",
+          "监控系统"
+        ],
+        "category": "navigation"
+      },
+      {
+        "name": "航天金美通信",
+        "city": "-",
+        "focus": "军民用通信",
+        "tech": "多频段",
+        "products": [
+          "保密通信",
+          "卫星电话"
+        ],
+        "category": "communication"
+      },
+      {
+        "name": "乐众科技",
+        "city": "-",
+        "focus": "卫星物联网",
+        "tech": "LoRa+卫星",
+        "products": [
+          "物联网终端",
+          "传感器"
+        ],
+        "category": "iot"
+      },
+      {
+        "name": "鹏鹄物宇",
+        "city": "-",
+        "focus": "卫星通信服务",
+        "tech": "多星座融合",
+        "products": [
+          "融合终端",
+          "解决方案"
+        ],
+        "category": "service"
+      },
+      {
+        "name": "环天智慧",
+        "city": "-",
+        "focus": "智慧农业/海洋",
+        "tech": "卫星遥感+通信",
+        "products": [
+          "行业终端",
+          "云平台"
+        ],
+        "category": "vertical"
+      },
+      {
+        "name": "星途智联",
+        "city": "-",
+        "focus": "车联网终端",
+        "tech": "北斗+5G",
+        "products": [
+          "车载终端",
+          "V2X设备"
+        ],
+        "category": "vehicle"
+      },
+      {
+        "name": "中国时空",
+        "city": "北京",
+        "focus": "高精度定位",
+        "tech": "北斗三号",
+        "products": [
+          "高精度终端",
+          "地基增强"
+        ],
+        "category": "navigation"
+      },
+      {
+        "name": "中兵北斗",
+        "city": "-",
+        "focus": "北斗军用/民用",
+        "tech": "北斗导航",
+        "products": [
+          "军用终端",
+          "民用产品"
+        ],
+        "category": "navigation"
+      },
+      {
+        "name": "太极疆泰",
+        "city": "-",
+        "focus": "应急通信",
+        "tech": "天通/北斗",
+        "products": [
+          "应急终端",
+          "指挥系统"
+        ],
+        "category": "emergency"
+      }
+    ],
+    "international": [
+      {
+        "name": "Starlink (SpaceX)",
+        "region": "美国",
+        "focus": "卫星互联网",
+        "tech": "LEO Ku/Ka",
+        "products": [
+          "用户终端",
+          "商业服务"
+        ]
+      },
+      {
+        "name": "Iridium",
+        "region": "美国",
+        "focus": "卫星移动通信",
+        "tech": "LEO L频段",
+        "products": [
+          "手持终端",
+          "IoT模组"
+        ]
+      },
+      {
+        "name": "Inmarsat",
+        "region": "英国",
+        "focus": "海事卫星通信",
+        "tech": "GEO L频段",
+        "products": [
+          "海事终端",
+          "航空终端"
+        ]
+      },
+      {
+        "name": "Thuraya",
+        "region": "阿联酋",
+        "focus": "区域卫星通信",
+        "tech": "GEO L频段",
+        "products": [
+          "手持终端",
+          "宽带终端"
+        ]
+      },
+      {
+        "name": "Globalstar",
+        "region": "美国",
+        "focus": "卫星物联网",
+        "tech": "LEO",
+        "products": [
+          "SPOT设备",
+          "IoT终端"
+        ]
+      },
+      {
+        "name": "Kymeta",
+        "region": "美国",
+        "focus": "平板天线",
+        "tech": "超材料",
+        "products": [
+          "u8终端",
+          "车载天线"
+        ]
+      },
+      {
+        "name": "HughesNet",
+        "region": "美国",
+        "focus": "卫星宽带",
+        "tech": "GEO Ka",
+        "products": [
+          "用户终端",
+          "调制解调器"
+        ]
+      },
+      {
+        "name": "Viasat",
+        "region": "美国",
+        "focus": "高通量卫星",
+        "tech": "GEO Ka",
+        "products": [
+          "机载终端",
+          "船载终端"
+        ]
+      }
+    ]
+  },
+  "constellations": {
+    "domestic": [
+      "千帆星座",
+      "国网星座",
+      "鸿雁星座",
+      "虹云工程"
+    ],
+    "international": [
+      "Starlink",
+      "OneWeb",
+      "Kuiper",
+      "Iridium NEXT"
+    ]
+  }
+}
