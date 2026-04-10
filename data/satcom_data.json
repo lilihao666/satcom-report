@@ -2,9 +2,11 @@
   "last_updated": "$(date +%Y-%m-%d)",
   "constellations": {
     "domestic": [
-      {"name": "国网星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网", "物联网"]},
+      {"name": "国网/GW星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网", "物联网", "导航增强"], "note": "国网星座与GW星座为同一项目"},
       {"name": "千帆星座", "operator": "垣信卫星", "planned": 15000, "launched": 54, "stage": "部署中", "use_cases": ["宽带", "物联网", "导航增强"]},
-      {"name": "GW星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网"]},
+      {"name": "天启星座", "operator": "国电高科", "planned": 38, "launched": 25, "stage": "运营中", "use_cases": ["物联网", "数据采集", "应急通信"]},
+      {"name": "吉利未来星座", "operator": "时空道宇", "planned": 168, "launched": 30, "stage": "部署中", "use_cases": ["自动驾驶", "智能网联", "手机直连"]},
+      {"name": "椭圆时空", "operator": "椭圆时空/国科宇航", "planned": 96, "launched": 6, "stage": "部署中", "use_cases": ["物联网", "遥感", "通信融合"]},
       {"name": "鸿雁星座", "operator": "航天科技", "planned": 324, "launched": 2, "stage": "试验阶段", "use_cases": ["物联网", "导航"]},
       {"name": "虹云星座", "operator": "航天科工", "planned": 156, "launched": 2, "stage": "试验阶段", "use_cases": ["宽带互联网"]}
     ],
