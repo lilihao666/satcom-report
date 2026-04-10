@@ -306,6 +306,23 @@ def generate_content(data):
         note_html = f'<p class="text-xs text-orange-600 mt-1">{note}</p>' if note else ""
         
         # 详情内容
+        isl = c.get("inter_satellite_link", {})
+        isl_html = ""
+        if isl:
+            isl_status = "✅ 支持" if isl.get("enabled") else "❌ 不支持"
+            isl_tech = isl.get("tech", "-")
+            isl_bw = isl.get("bandwidth", "-")
+            isl_note = isl.get("note", "")
+            isl_html = f'''
+            <div class="bg-blue-50 p-3 rounded-lg">
+                <p class="font-semibold text-blue-800 mb-2"><i class="fas fa-satellite mr-1"></i> 星间链路</p>
+                <p class="text-sm text-blue-700"><strong>状态:</strong> {isl_status}</p>
+                <p class="text-sm text-blue-700"><strong>技术:</strong> {isl_tech}</p>
+                {f'<p class="text-sm text-blue-700"><strong>带宽:</strong> {isl_bw}</p>' if isl.get("bandwidth") != "-" else ''}
+                {f'<p class="text-xs text-blue-600 mt-1"><i class="fas fa-info-circle mr-1"></i> {isl_note}</p>' if isl_note else ''}
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div>
@@ -314,6 +331,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>已发射:</strong> {c["launched"]} 颗</p>
                 <p class="text-gray-600"><strong>当前阶段:</strong> <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded">{c["stage"]}</span></p>
             </div>
+            {isl_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">
@@ -361,6 +379,24 @@ def generate_content(data):
         note = c.get("note", "")
         note_html = f'<p class="text-xs text-orange-600 mt-1">{note}</p>' if note else ""
         
+        # 星间链路信息
+        isl = c.get("inter_satellite_link", {})
+        isl_html = ""
+        if isl:
+            isl_status = "✅ 支持" if isl.get("enabled") else "❌ 不支持"
+            isl_tech = isl.get("tech", "-")
+            isl_bw = isl.get("bandwidth", "-")
+            isl_note = isl.get("note", "")
+            isl_html = f'''
+            <div class="bg-green-50 p-3 rounded-lg">
+                <p class="font-semibold text-green-800 mb-2"><i class="fas fa-satellite mr-1"></i> 星间链路</p>
+                <p class="text-sm text-green-700"><strong>状态:</strong> {isl_status}</p>
+                <p class="text-sm text-green-700"><strong>技术:</strong> {isl_tech}</p>
+                {f'<p class="text-sm text-green-700"><strong>带宽:</strong> {isl_bw}</p>' if isl.get("bandwidth") != "-" else ''}
+                {f'<p class="text-xs text-green-600 mt-1"><i class="fas fa-info-circle mr-1"></i> {isl_note}</p>' if isl_note else ''}
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div>
@@ -369,6 +405,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>已发射:</strong> {c["launched"]:,} 颗</p>
                 <p class="text-gray-600"><strong>当前阶段:</strong> <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded">{c["stage"]}</span></p>
             </div>
+            {isl_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">
@@ -415,6 +452,22 @@ def generate_content(data):
         note = c.get("note", "")
         note_html = f'<p class="text-xs text-purple-600 mt-1">{note}</p>' if note else ""
         
+        # 星间链路信息
+        isl = c.get("inter_satellite_link", {})
+        isl_html = ""
+        if isl:
+            isl_status = "✅ 支持" if isl.get("enabled") else "❌ 不支持"
+            isl_tech = isl.get("tech", "-")
+            isl_note = isl.get("note", "")
+            isl_html = f'''
+            <div class="bg-purple-50 p-3 rounded-lg">
+                <p class="font-semibold text-purple-800 mb-2"><i class="fas fa-satellite mr-1"></i> 星间链路</p>
+                <p class="text-sm text-purple-700"><strong>状态:</strong> {isl_status}</p>
+                <p class="text-sm text-purple-700"><strong>技术:</strong> {isl_tech}</p>
+                {f'<p class="text-xs text-purple-600 mt-1"><i class="fas fa-info-circle mr-1"></i> {isl_note}</p>' if isl_note else ''}
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div>
@@ -422,6 +475,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>卫星数量:</strong> {c["launched"]} 颗</p>
                 <p class="text-gray-600"><strong>轨道类型:</strong> <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded">GEO地球静止轨道</span></p>
             </div>
+            {isl_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">
@@ -456,6 +510,22 @@ def generate_content(data):
         note = c.get("note", "")
         note_html = f'<p class="text-xs text-indigo-600 mt-1">{note}</p>' if note else ""
         
+        # 星间链路信息
+        isl = c.get("inter_satellite_link", {})
+        isl_html = ""
+        if isl:
+            isl_status = "✅ 支持" if isl.get("enabled") else "❌ 不支持"
+            isl_tech = isl.get("tech", "-")
+            isl_note = isl.get("note", "")
+            isl_html = f'''
+            <div class="bg-indigo-50 p-3 rounded-lg">
+                <p class="font-semibold text-indigo-800 mb-2"><i class="fas fa-satellite mr-1"></i> 星间链路</p>
+                <p class="text-sm text-indigo-700"><strong>状态:</strong> {isl_status}</p>
+                <p class="text-sm text-indigo-700"><strong>技术:</strong> {isl_tech}</p>
+                {f'<p class="text-xs text-indigo-600 mt-1"><i class="fas fa-info-circle mr-1"></i> {isl_note}</p>' if isl_note else ''}
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div>
@@ -463,6 +533,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>卫星数量:</strong> {c["launched"]:,} 颗</p>
                 <p class="text-gray-600"><strong>轨道类型:</strong> <span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">{c.get("orbit", "GEO")}</span></p>
             </div>
+            {isl_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">

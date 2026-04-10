@@ -13,7 +13,13 @@
           "物联网",
           "导航增强"
         ],
-        "note": "国网星座与GW星座为同一项目"
+        "note": "国网星座与GW星座为同一项目",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "10Gbps",
+          "note": "计划2025年全面部署"
+        }
       },
       {
         "name": "千帆星座",
@@ -25,7 +31,13 @@
           "宽带",
           "物联网",
           "导航增强"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "5Gbps",
+          "note": "G60星座二期开始部署"
+        }
       },
       {
         "name": "天启星座",
@@ -37,7 +49,12 @@
           "物联网",
           "数据采集",
           "应急通信"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "窄带物联网，无需星间链路"
+        }
       },
       {
         "name": "吉利未来星座",
@@ -50,7 +67,13 @@
           "智能网联",
           "手机直连"
         ],
-        "note": "一期168颗，二期5676颗"
+        "note": "一期168颗，二期5676颗",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "1Gbps",
+          "note": "规划中，一期完成后部署"
+        }
       },
       {
         "name": "椭圆时空",
@@ -63,7 +86,12 @@
           "遥感",
           "通信融合"
         ],
-        "note": "与国电高科合作，非国科宇航旗下"
+        "note": "与国电高科合作，非国科宇航旗下",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "无星间链路设计"
+        }
       },
       {
         "name": "国科宇航星座",
@@ -76,7 +104,13 @@
           "遥感",
           "导航"
         ],
-        "note": "国科宇航自主规划星座，与椭圆时空为不同主体"
+        "note": "国科宇航自主规划星座，与椭圆时空为不同主体",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "未知",
+          "note": "规划中"
+        }
       },
       {
         "name": "钧天航宇星座",
@@ -88,7 +122,13 @@
           "宽带通信",
           "物联网",
           "导航增强"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "未知",
+          "note": "规划中"
+        }
       },
       {
         "name": "鸿雁星座",
@@ -99,7 +139,12 @@
         "use_cases": [
           "物联网",
           "导航"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "早期试验阶段"
+        }
       },
       {
         "name": "虹云星座",
@@ -109,7 +154,12 @@
         "stage": "试验阶段",
         "use_cases": [
           "宽带互联网"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "早期试验阶段"
+        }
       }
     ],
     "international": [
@@ -124,7 +174,13 @@
           "手机直连",
           "军事通信"
         ],
-        "note": "全球最大低轨星座，已盈利"
+        "note": "全球最大低轨星座，已盈利",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "100Gbps+",
+          "note": "已全面部署，支持极地覆盖"
+        }
       },
       {
         "name": "OneWeb",
@@ -136,7 +192,12 @@
           "企业宽带",
           "物联网",
           "政府通信"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "依赖地面站中继"
+        }
       },
       {
         "name": "Kuiper",
@@ -148,7 +209,13 @@
           "宽带互联网",
           "云服务"
         ],
-        "note": "计划2026年商用"
+        "note": "计划2026年商用",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "100Gbps",
+          "note": "计划2026年部署"
+        }
       },
       {
         "name": "Iridium NEXT",
@@ -160,7 +227,13 @@
           "卫星电话",
           "物联网",
           "航空海事"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "Ka频段微波",
+          "bandwidth": "未知",
+          "note": "支持星间路由"
+        }
       },
       {
         "name": "Telesat Lightspeed",
@@ -173,7 +246,13 @@
           "政府通信",
           "5G回传"
         ],
-        "note": "加拿大，计划2026年部署"
+        "note": "加拿大，计划2026年部署",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路",
+          "bandwidth": "未知",
+          "note": "规划中"
+        }
       },
       {
         "name": "AST SpaceMobile",
@@ -185,7 +264,12 @@
           "手机直连",
           "宽带互联网"
         ],
-        "note": "与AT&T合作，已打通首个卫星电话"
+        "note": "与AT&T合作，已打通首个卫星电话",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "直连手机，无需星间链路"
+        }
       },
       {
         "name": "Lynk",
@@ -196,7 +280,12 @@
         "use_cases": [
           "手机直连",
           "短信服务"
-        ]
+        ],
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "直连手机，无需星间链路"
+        }
       },
       {
         "name": "Omnispace",
@@ -209,7 +298,12 @@
           "物联网",
           "语音数据"
         ],
-        "note": "3GPP标准5G物联网"
+        "note": "3GPP标准5G物联网",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "无星间链路设计"
+        }
       },
       {
         "name": "Globalstar",
@@ -222,7 +316,12 @@
           "物联网",
           "应急通信"
         ],
-        "note": "苹果SOS服务合作方"
+        "note": "苹果SOS服务合作方",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "依赖地面站"
+        }
       },
       {
         "name": "Inmarsat",
@@ -235,7 +334,12 @@
           "政府通信",
           "企业宽带"
         ],
-        "note": "地球静止轨道，已被Viasat收购"
+        "note": "地球静止轨道，已被Viasat收购",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星，无需星间链路"
+        }
       },
       {
         "name": "AROGOS星座",
@@ -248,7 +352,12 @@
           "地球监测",
           "灾害预警"
         ],
-        "note": "全球首个商业SAR雷达卫星星座，计划2026年发射首星"
+        "note": "全球首个商业SAR雷达卫星星座，计划2026年发射首星",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "SAR雷达卫星，无星间链路"
+        }
       },
       {
         "name": "AROGOS星座",
@@ -261,7 +370,12 @@
           "地球监测",
           "灾害预警"
         ],
-        "note": "全球首个商业SAR雷达卫星星座，计划2026年发射首星"
+        "note": "全球首个商业SAR雷达卫星星座，计划2026年发射首星",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "SAR雷达卫星，无星间链路"
+        }
       }
     ],
     "geo_domestic": [
@@ -277,7 +391,12 @@
           "数据传输"
         ],
         "orbit": "GEO",
-        "note": "中国主要的高轨通信卫星系列"
+        "note": "中国主要的高轨通信卫星系列",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星，无需星间链路"
+        }
       },
       {
         "name": "亚太系列",
@@ -291,7 +410,12 @@
           "数据"
         ],
         "orbit": "GEO",
-        "note": "覆盖亚太地区的商业通信卫星"
+        "note": "覆盖亚太地区的商业通信卫星",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星，无需星间链路"
+        }
       },
       {
         "name": "天通一号",
@@ -305,7 +429,12 @@
           "海洋通信"
         ],
         "orbit": "GEO",
-        "note": "中国自主移动通信卫星系统"
+        "note": "中国自主移动通信卫星系统",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星，无需星间链路"
+        }
       }
     ],
     "geo_international": [
@@ -321,7 +450,12 @@
           "企业网络"
         ],
         "orbit": "GEO",
-        "note": "全球最大商业卫星运营商之一"
+        "note": "全球最大商业卫星运营商之一",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星"
+        }
       },
       {
         "name": "SES",
@@ -335,7 +469,13 @@
           "政府服务"
         ],
         "orbit": "GEO/MEO",
-        "note": "拥有GEO和MEO混合星座"
+        "note": "拥有GEO和MEO混合星座",
+        "inter_satellite_link": {
+          "enabled": true,
+          "tech": "激光星间链路(O3b mPOWER)",
+          "bandwidth": "未知",
+          "note": "仅MEO部分"
+        }
       },
       {
         "name": "Eutelsat",
@@ -349,7 +489,12 @@
           "数据服务"
         ],
         "orbit": "GEO",
-        "note": "欧洲主要卫星运营商"
+        "note": "欧洲主要卫星运营商",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "GEO卫星"
+        }
       }
     ]
   },
@@ -832,6 +977,27 @@
   "policy": {
     "china": [
       {
+        "title": "《2025年商业航天发展专项资金管理办法》",
+        "date": "2025-01",
+        "issuer": "财政部/工信部",
+        "content": "设立商业航天专项资金，支持卫星制造、火箭发射、地面设备等关键环节，单个项目最高补助5000万元",
+        "impact": "high"
+      },
+      {
+        "title": "卫星互联网频率使用许可简化审批",
+        "date": "2025-06",
+        "issuer": "工信部",
+        "content": "简化低轨卫星星座频率使用许可审批流程，审批周期从12个月缩短至6个月",
+        "impact": "medium"
+      },
+      {
+        "title": "《航天强国建设纲要（2026-2035）》",
+        "date": "2026-03",
+        "issuer": "国务院",
+        "content": "明确卫星互联网作为国家新型基础设施，计划2030年前建成全球覆盖的低轨星座网络",
+        "impact": "high"
+      },
+      {
         "title": "《卫星网络国内协调管理办法》",
         "date": "2024",
         "issuer": "工信部",
@@ -854,6 +1020,34 @@
       }
     ],
     "international": [
+      {
+        "title": "FCC批准Starlink第三代卫星部署",
+        "date": "2025-02",
+        "issuer": "FCC",
+        "content": "批准SpaceX部署7500颗第三代Starlink卫星，支持直接到手机服务",
+        "impact": "high"
+      },
+      {
+        "title": "EU Space Law正式生效",
+        "date": "2025-09",
+        "issuer": "欧盟",
+        "content": "欧盟空间法生效，要求所有在欧盟运营的卫星 constellation 遵守空间交通管理规则，包括主动碎片移除义务",
+        "impact": "high"
+      },
+      {
+        "title": "ITU更新非对地静止卫星协调规则",
+        "date": "2025-11",
+        "issuer": "ITU",
+        "content": "更新NGSO卫星协调规则，引入'先到达先服务'原则，要求星座运营方在7年内完成部署",
+        "impact": "high"
+      },
+      {
+        "title": "美国《2026年商业航天竞争力法案》",
+        "date": "2026-01",
+        "issuer": "美国国会",
+        "content": "延长商业航天发射责任保险上限至2028年，为商业航天公司提供监管确定性",
+        "impact": "medium"
+      },
       {
         "title": "FCC Part 25 卫星通信规则",
         "date": "2024",
