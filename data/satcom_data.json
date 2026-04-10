@@ -4,7 +4,7 @@
     "domestic": [
       {"name": "国网/GW星座", "operator": "中国星网", "planned": 12992, "launched": 136, "stage": "部署中", "use_cases": ["宽带互联网", "物联网", "导航增强"], "note": "国网星座与GW星座为同一项目"},
       {"name": "千帆星座", "operator": "垣信卫星", "planned": 15000, "launched": 108, "stage": "部署中", "use_cases": ["宽带", "物联网", "导航增强"]},
-      {"name": "天启星座", "operator": "国电高科", "planned": 38, "launched": 27, "stage": "运营中", "use_cases": ["物联网", "数据采集", "应急通信"]},
+      {"name": "天启星座", "operator": "国电高科", "planned": 38, "launched": 42, "stage": "运营中", "use_cases": ["物联网", "数据采集", "应急通信"]},
       {"name": "吉利未来星座", "operator": "时空道宇", "planned": 5676, "launched": 64, "stage": "部署中", "use_cases": ["自动驾驶", "智能网联", "手机直连"], "note": "一期168颗，二期5676颗"},
       {"name": "椭圆时空", "operator": "椭圆时空/国科宇航", "planned": 96, "launched": 6, "stage": "部署中", "use_cases": ["物联网", "遥感", "通信融合"]},
       {"name": "国科宇航星座", "operator": "国科宇航", "planned": 36, "launched": 0, "stage": "规划中", "use_cases": ["通信", "遥感", "导航"], "note": "与国电高科合作"},
