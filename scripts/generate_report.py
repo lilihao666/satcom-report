@@ -330,8 +330,7 @@ def generate_content(data):
         '''
         
         constellation_html.append(f'''
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
-             onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">{c["name"]}</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{c["stage"]}</span>
@@ -386,8 +385,7 @@ def generate_content(data):
         '''
         
         constellation_html.append(f'''
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
-             onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative" onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">{c["name"]}</h3>
                 <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{c["stage"]}</span>
@@ -455,8 +453,7 @@ def generate_content(data):
         '''
         
         terminal_html.append(f'''
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
-             onclick="openModal('{escape_js(company["name"])}', '{escape_js(detail_content)}')">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('{escape_js(company["name"])}', '{escape_js(detail_content)}')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">{company["name"]}</h3>
                 <span class="text-xs text-gray-500">{company.get("city", "")}</span>
@@ -521,9 +518,7 @@ def generate_content(data):
         </div>
         '''
         
-        terminal_html.append(f'''
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
-             onclick="openModal('{escape_js(company["name"])}', '{escape_js(detail_content)}')">
+        terminal_html.append(f'''         <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative" onclick="openModal('{escape_js(company["name"])}', '{escape_js(detail_content)}')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">{company["name"]}</h3>
                 <span class="text-xs text-gray-500">{company.get("region", "")}</span>
