@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-        body {{ font-family: 'Noto Sans SC', sans-serif; }}
-        .tab-active {{ border-bottom: 3px solid #3b82f6; color: #3b82f6; }}
-        .tab-inactive {{ border-bottom: 3px solid transparent; color: #6b7280; }}
-        @media print {{ .no-print {{ display: none !important; }} }}
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
+        @media print { .no-print { display: none !important; } }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -67,11 +67,11 @@
                 <div class="text-sm opacity-80">国内终端厂商</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">5</div>
+                <div class="text-3xl font-bold">7</div>
                 <div class="text-sm opacity-80">国内星座计划</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">58</div>
+                <div class="text-3xl font-bold">119</div>
                 <div class="text-sm opacity-80">在轨卫星数量</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
@@ -84,10 +84,11 @@
 <section id="constellation"><h2 class="text-2xl font-bold mb-4">🌐 卫星星座对比</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
             <div class="flex justify-between items-start">
-                <h3 class="font-bold text-lg">国网星座</h3>
+                <h3 class="font-bold text-lg">国网/GW星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
             </div>
             <p class="text-gray-600 text-sm">中国星网</p>
+            <p class="text-xs text-orange-600 mt-1">国网星座与GW星座为同一项目</p>
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 0颗</span>
@@ -105,6 +106,7 @@
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
             </div>
             <p class="text-gray-600 text-sm">垣信卫星</p>
+            
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 54颗</span>
@@ -118,17 +120,54 @@
         
         <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
             <div class="flex justify-between items-start">
-                <h3 class="font-bold text-lg">GW星座</h3>
-                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
+                <h3 class="font-bold text-lg">天启星座</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">运营中</span>
             </div>
-            <p class="text-gray-600 text-sm">中国星网</p>
+            <p class="text-gray-600 text-sm">国电高科</p>
+            
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
-                    <span>在轨: 0颗</span>
-                    <span>规划: 12992颗</span>
+                    <span>在轨: 25颗</span>
+                    <span>规划: 38颗</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.0%"></div>
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 65.78947368421053%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">吉利未来星座</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
+            </div>
+            <p class="text-gray-600 text-sm">时空道宇</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 30颗</span>
+                    <span>规划: 168颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 17.857142857142858%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">椭圆时空</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
+            </div>
+            <p class="text-gray-600 text-sm">椭圆时空/国科宇航</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 6颗</span>
+                    <span>规划: 96颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 6.25%"></div>
                 </div>
             </div>
         </div>
@@ -139,6 +178,7 @@
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">试验阶段</span>
             </div>
             <p class="text-gray-600 text-sm">航天科技</p>
+            
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 2颗</span>
@@ -156,6 +196,7 @@
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">试验阶段</span>
             </div>
             <p class="text-gray-600 text-sm">航天科工</p>
+            
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 2颗</span>
@@ -384,6 +425,164 @@
             </div>
         </div>
         </div></section>
+<section id="commercial"><h2 class="text-2xl font-bold mb-4">💰 商业模式</h2><h3 class="text-lg font-semibold mb-3 text-gray-700">国内商业模式</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h4 class="font-bold text-lg">终端销售</h4>
+                <p class="text-gray-600 text-sm mt-2">销售卫星通信终端设备，包括芯片、模组、整机</p>
+                <div class="mt-3">
+                    <span class="text-xs text-gray-500">主要玩家:</span>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">磐钴智能</span><span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">星联芯通</span><span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">国科宇航</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h4 class="font-bold text-lg">卫星运营服务</h4>
+                <p class="text-gray-600 text-sm mt-2">提供卫星通信服务订阅，包括带宽租赁、数据服务</p>
+                <div class="mt-3">
+                    <span class="text-xs text-gray-500">主要玩家:</span>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">中国星网</span><span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">垣信卫星</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h4 class="font-bold text-lg">行业解决方案</h4>
+                <p class="text-gray-600 text-sm mt-2">针对特定行业（海洋、航空、应急）提供定制化方案</p>
+                <div class="mt-3">
+                    <span class="text-xs text-gray-500">主要玩家:</span>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">环天智慧</span><span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">太极疆泰</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h4 class="font-bold text-lg">位置服务</h4>
+                <p class="text-gray-600 text-sm mt-2">基于卫星的定位、导航、授时服务</p>
+                <div class="mt-3">
+                    <span class="text-xs text-gray-500">主要玩家:</span>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">中国时空</span><span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">中兵北斗</span>
+                    </div>
+                </div>
+            </div>
+            </div><h3 class="text-lg font-semibold mb-3 text-gray-700">价格对比</h3><div class="bg-white rounded-lg shadow overflow-hidden">
+            <table class="min-w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-2 text-left">服务</th>
+                        <th class="px-4 py-2 text-left">终端价格</th>
+                        <th class="px-4 py-2 text-left">月费</th>
+                        <th class="px-4 py-2 text-left">速率</th>
+                    </tr>
+                </thead>
+                <tbody>
+            
+                <tr class="border-t">
+                    <td class="px-4 py-2">Starlink 住宅</td>
+                    <td class="px-4 py-2">$599</td>
+                    <td class="px-4 py-2">$120/月</td>
+                    <td class="px-4 py-2">50-250 Mbps</td>
+                </tr>
+                
+                <tr class="border-t">
+                    <td class="px-4 py-2">Starlink 商业</td>
+                    <td class="px-4 py-2">$2500</td>
+                    <td class="px-4 py-2">$500/月</td>
+                    <td class="px-4 py-2">150-500 Mbps</td>
+                </tr>
+                
+                <tr class="border-t">
+                    <td class="px-4 py-2">OneWeb 企业</td>
+                    <td class="px-4 py-2">$3000</td>
+                    <td class="px-4 py-2">$300/月</td>
+                    <td class="px-4 py-2">50-200 Mbps</td>
+                </tr>
+                
+                <tr class="border-t">
+                    <td class="px-4 py-2">国内卫星宽带</td>
+                    <td class="px-4 py-2">¥8000</td>
+                    <td class="px-4 py-2">¥500/月</td>
+                    <td class="px-4 py-2">20-100 Mbps</td>
+                </tr>
+                </tbody></table></div></section>
+<section id="policy"><h2 class="text-2xl font-bold mb-4">📜 政策法规</h2><h3 class="text-lg font-semibold mb-3 text-gray-700">国内政策</h3><div class="space-y-3 mb-6">
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold">《卫星网络国内协调管理办法》</h4>
+                    <span class="text-xs text-gray-500">2024 · 工信部</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">规范卫星网络频率和轨道资源管理</p>
+                <span class="inline-block mt-2 text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded">
+                    影响: 高
+                </span>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold">《卫星互联网产业发展行动计划》</h4>
+                    <span class="text-xs text-gray-500">2023 · 发改委</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">推动卫星互联网与5G/6G融合发展</p>
+                <span class="inline-block mt-2 text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded">
+                    影响: 高
+                </span>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold">低轨卫星星座发射许可</h4>
+                    <span class="text-xs text-gray-500">2024 · 国防科工局</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">简化商业航天发射审批流程</p>
+                <span class="inline-block mt-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">
+                    影响: 中
+                </span>
+            </div>
+            </div><h3 class="text-lg font-semibold mb-3 text-gray-700">国际政策</h3><div class="space-y-3">
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold">FCC Part 25 卫星通信规则</h4>
+                        <span class="text-xs text-gray-500">2024 · FCC</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">更新NGSO卫星系统频谱共享规则</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold">ITU 卫星网络申报程序</h4>
+                        <span class="text-xs text-gray-500">2023 · ITU</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">完善卫星频率/轨道资源协调程序</p>
+                </div>
+                </div><h3 class="text-lg font-semibold mb-3 mt-6 text-gray-700">许可流程对比</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white rounded-lg shadow p-4">
+                <h4 class="font-bold text-blue-700 mb-2">🇨🇳 中国</h4>
+                <p class="text-sm text-gray-600 mb-2">主管机构: 工信部无线电管理局</p>
+                <p class="text-sm text-gray-600 mb-2">周期: 6-12个月</p>
+                <div class="text-sm">
+                    <span class="text-gray-500">要求:</span>
+                    <ul class="list-disc list-inside mt-1 text-gray-600">
+                        <li>频率许可</li><li>轨道位置</li><li>发射许可</li><li>运营许可</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4">
+                <h4 class="font-bold text-blue-700 mb-2">🇺🇸 美国</h4>
+                <p class="text-sm text-gray-600 mb-2">主管机构: FCC</p>
+                <p class="text-sm text-gray-600 mb-2">周期: 12-24个月</p>
+                <div class="text-sm">
+                    <span class="text-gray-500">要求:</span>
+                    <ul class="list-disc list-inside mt-1 text-gray-600">
+                        <li>频谱许可</li><li>发射许可</li><li>运营授权</li><li>频谱共享协议</li>
+                    </ul>
+                </div>
+            </div>
+            </div></section>
 <section id="tech"><h2 class="text-2xl font-bold mb-4">🔬 技术趋势</h2><div class="space-y-4">
         <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start">
@@ -450,11 +649,18 @@
             </div>
         </div>
         </div></section>
+<section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2>
+        <div class="bg-gray-100 rounded-lg p-8 text-center">
+            <i class="fas fa-newspaper text-gray-400 text-4xl mb-3"></i>
+            <p class="text-gray-500">暂无最新动态数据</p>
+            <p class="text-xs text-gray-400 mt-2">动态数据将由 GitHub Actions 每日自动抓取更新</p>
+        </div>
+        </section>
     </main>
     
     <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
-            <p>本报告由 GitHub Actions 自动生成 | 数据更新时间：2026-04-09</p>
+            <p>本报告由 GitHub Actions 自动生成 | 数据更新时间：2026-04-10</p>
         </div>
     </footer>
 </body>

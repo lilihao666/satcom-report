@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-报告生成器 - 从JSON数据生成HTML报告
+报告生成器 - 从JSON数据生成完整HTML报告
 """
 import json
 from datetime import datetime
@@ -16,10 +16,10 @@ TEMPLATE = '''<!DOCTYPE html>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
-        body {{ font-family: 'Noto Sans SC', sans-serif; }}
-        .tab-active {{ border-bottom: 3px solid #3b82f6; color: #3b82f6; }}
-        .tab-inactive {{ border-bottom: 3px solid transparent; color: #6b7280; }}
-        @media print {{ .no-print {{ display: none !important; }} }}
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
+        @media print { .no-print { display: none !important; } }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -117,6 +117,8 @@ def generate_content(data):
     
     for c in data["constellations"]["domestic"]:
         progress = (c.get("launched", 0) / c.get("planned", 1)) * 100
+        note = c.get("note", "")
+        note_html = f'<p class="text-xs text-orange-600 mt-1">{note}</p>' if note else ""
         constellation_html.append(f'''
         <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
             <div class="flex justify-between items-start">
@@ -124,6 +126,7 @@ def generate_content(data):
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">{c["stage"]}</span>
             </div>
             <p class="text-gray-600 text-sm">{c["operator"]}</p>
+            {note_html}
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: {c["launched"]}颗</span>
@@ -167,11 +170,147 @@ def generate_content(data):
     terminal_html.append('</div></section>')
     content.append("".join(terminal_html))
     
+    # 商业层
+    if "business_models" in data:
+        commercial_html = ['<section id="commercial"><h2 class="text-2xl font-bold mb-4">💰 商业模式</h2>']
+        
+        # 国内商业模式
+        commercial_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国内商业模式</h3>')
+        commercial_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">')
+        for model in data["business_models"].get("domestic", []):
+            commercial_html.append(f'''
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+                <h4 class="font-bold text-lg">{model["model"]}</h4>
+                <p class="text-gray-600 text-sm mt-2">{model["description"]}</p>
+                <div class="mt-3">
+                    <span class="text-xs text-gray-500">主要玩家:</span>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        {''.join(f'<span class="bg-green-50 text-green-700 text-xs px-2 py-0.5 rounded">{p}</span>' for p in model.get("players", []))}
+                    </div>
+                </div>
+            </div>
+            ''')
+        commercial_html.append('</div>')
+        
+        # 价格对比
+        if "price_comparison" in data["business_models"]:
+            commercial_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">价格对比</h3>')
+            commercial_html.append('<div class="bg-white rounded-lg shadow overflow-hidden">')
+            commercial_html.append('''
+            <table class="min-w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-2 text-left">服务</th>
+                        <th class="px-4 py-2 text-left">终端价格</th>
+                        <th class="px-4 py-2 text-left">月费</th>
+                        <th class="px-4 py-2 text-left">速率</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ''')
+            for item in data["business_models"]["price_comparison"].get("broadband", []):
+                terminal = f"${item['terminal_usd']}" if 'terminal_usd' in item else f"¥{item.get('terminal_cny', '-')}"
+                monthly = f"${item['monthly_usd']}/月" if 'monthly_usd' in item else f"¥{item.get('monthly_cny', '-')}/月"
+                commercial_html.append(f'''
+                <tr class="border-t">
+                    <td class="px-4 py-2">{item["service"]}</td>
+                    <td class="px-4 py-2">{terminal}</td>
+                    <td class="px-4 py-2">{monthly}</td>
+                    <td class="px-4 py-2">{item["speed"]}</td>
+                </tr>
+                ''')
+            commercial_html.append('</tbody></table></div>')
+        
+        commercial_html.append('</section>')
+        content.append("".join(commercial_html))
+    
+    # 政策层
+    if "policy" in data:
+        policy_html = ['<section id="policy"><h2 class="text-2xl font-bold mb-4">📜 政策法规</h2>']
+        
+        # 国内政策
+        policy_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国内政策</h3>')
+        policy_html.append('<div class="space-y-3 mb-6">')
+        for policy in data["policy"].get("china", []):
+            impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
+            color = impact_colors.get(policy.get("impact", "low"), "gray")
+            policy_html.append(f'''
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{color}-500">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-bold">{policy["title"]}</h4>
+                    <span class="text-xs text-gray-500">{policy["date"]} · {policy["issuer"]}</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">{policy["content"]}</p>
+                <span class="inline-block mt-2 text-xs bg-{color}-100 text-{color}-800 px-2 py-0.5 rounded">
+                    影响: {"高" if policy.get("impact") == "high" else "中" if policy.get("impact") == "medium" else "低"}
+                </span>
+            </div>
+            ''')
+        policy_html.append('</div>')
+        
+        # 国际政策
+        if data["policy"].get("international"):
+            policy_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国际政策</h3>')
+            policy_html.append('<div class="space-y-3">')
+            for policy in data["policy"]["international"]:
+                impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
+                color = impact_colors.get(policy.get("impact", "low"), "gray")
+                policy_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{color}-500">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold">{policy["title"]}</h4>
+                        <span class="text-xs text-gray-500">{policy["date"]} · {policy["issuer"]}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">{policy["content"]}</p>
+                </div>
+                ''')
+            policy_html.append('</div>')
+        
+        # 许可流程
+        if "licensing" in data["policy"]:
+            policy_html.append('<h3 class="text-lg font-semibold mb-3 mt-6 text-gray-700">许可流程对比</h3>')
+            policy_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4">')
+            
+            china_license = data["policy"]["licensing"].get("china", {})
+            policy_html.append(f'''
+            <div class="bg-white rounded-lg shadow p-4">
+                <h4 class="font-bold text-blue-700 mb-2">🇨🇳 中国</h4>
+                <p class="text-sm text-gray-600 mb-2">主管机构: {china_license.get("authority", "-")}</p>
+                <p class="text-sm text-gray-600 mb-2">周期: {china_license.get("timeline", "-")}</p>
+                <div class="text-sm">
+                    <span class="text-gray-500">要求:</span>
+                    <ul class="list-disc list-inside mt-1 text-gray-600">
+                        {''.join(f"<li>{r}</li>" for r in china_license.get("requirements", []))}
+                    </ul>
+                </div>
+            </div>
+            ''')
+            
+            usa_license = data["policy"]["licensing"].get("usa", {})
+            policy_html.append(f'''
+            <div class="bg-white rounded-lg shadow p-4">
+                <h4 class="font-bold text-blue-700 mb-2">🇺🇸 美国</h4>
+                <p class="text-sm text-gray-600 mb-2">主管机构: {usa_license.get("authority", "-")}</p>
+                <p class="text-sm text-gray-600 mb-2">周期: {usa_license.get("timeline", "-")}</p>
+                <div class="text-sm">
+                    <span class="text-gray-500">要求:</span>
+                    <ul class="list-disc list-inside mt-1 text-gray-600">
+                        {''.join(f"<li>{r}</li>" for r in usa_license.get("requirements", []))}
+                    </ul>
+                </div>
+            </div>
+            ''')
+            
+            policy_html.append('</div>')
+        
+        policy_html.append('</section>')
+        content.append("".join(policy_html))
+    
     # 技术趋势
     tech_html = ['<section id="tech"><h2 class="text-2xl font-bold mb-4">🔬 技术趋势</h2>']
     tech_html.append('<div class="space-y-4">')
     
-    for trend in data["tech_trends"]:
+    for trend in data.get("tech_trends", []):
         status_colors = {
             "商业化初期": "green",
             "成本下降中": "blue",
@@ -199,11 +338,10 @@ def generate_content(data):
     content.append("".join(tech_html))
     
     # 最新动态
+    news_html = ['<section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2>']
     if data.get("news"):
-        news_html = ['<section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2>']
         news_html.append('<div class="space-y-4">')
-        
-        for news in data["news"][:10]:  # 只显示最近10条
+        for news in data["news"][:10]:
             impact = news.get("impact_analysis", {}).get("level", "low")
             impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
             color = impact_colors.get(impact, "gray")
@@ -223,9 +361,17 @@ def generate_content(data):
                 </div>
             </div>
             ''')
-        
-        news_html.append('</div></section>')
-        content.append("".join(news_html))
+        news_html.append('</div>')
+    else:
+        news_html.append('''
+        <div class="bg-gray-100 rounded-lg p-8 text-center">
+            <i class="fas fa-newspaper text-gray-400 text-4xl mb-3"></i>
+            <p class="text-gray-500">暂无最新动态数据</p>
+            <p class="text-xs text-gray-400 mt-2">动态数据将由 GitHub Actions 每日自动抓取更新</p>
+        </div>
+        ''')
+    news_html.append('</section>')
+    content.append("".join(news_html))
     
     return "\n".join(content)
 
@@ -243,8 +389,4 @@ def generate():
     print(f"✅ 报告已生成: {output_file}")
 
 if __name__ == "__main__":
-    import sys
-    if len(sys.argv) > 1 and sys.argv[1] == "generate":
-        generate()
-    else:
-        generate()
+    generate()
