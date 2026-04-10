@@ -258,7 +258,8 @@ def escape_js(s):
         return ""
     # 移除换行符和多余空格，使内容适合单行HTML属性
     s = ' '.join(s.split())
-    return s.replace('\\', '\\\\').replace("'", "\\'").replace('"', '\\"')
+    # 使用HTML实体&quot;代替\"，避免与HTML属性引号冲突
+    return s.replace('\\', '\\\\').replace("'", "\\'").replace('"', '&quot;')
 
 def generate_content(data):
     """生成报告内容"""
