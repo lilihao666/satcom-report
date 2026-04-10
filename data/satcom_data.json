@@ -2,42 +2,55 @@
   "last_updated": "$(date +%Y-%m-%d)",
   "constellations": {
     "domestic": [
-      {"name": "国网/GW星座", "operator": "中国星网", "planned": 12992, "launched": 0, "stage": "规划中", "use_cases": ["宽带互联网", "物联网", "导航增强"], "note": "国网星座与GW星座为同一项目"},
-      {"name": "千帆星座", "operator": "垣信卫星", "planned": 15000, "launched": 54, "stage": "部署中", "use_cases": ["宽带", "物联网", "导航增强"]},
-      {"name": "天启星座", "operator": "国电高科", "planned": 38, "launched": 25, "stage": "运营中", "use_cases": ["物联网", "数据采集", "应急通信"]},
-      {"name": "吉利未来星座", "operator": "时空道宇", "planned": 168, "launched": 30, "stage": "部署中", "use_cases": ["自动驾驶", "智能网联", "手机直连"]},
+      {"name": "国网/GW星座", "operator": "中国星网", "planned": 12992, "launched": 136, "stage": "部署中", "use_cases": ["宽带互联网", "物联网", "导航增强"], "note": "国网星座与GW星座为同一项目"},
+      {"name": "千帆星座", "operator": "垣信卫星", "planned": 15000, "launched": 108, "stage": "部署中", "use_cases": ["宽带", "物联网", "导航增强"]},
+      {"name": "天启星座", "operator": "国电高科", "planned": 38, "launched": 27, "stage": "运营中", "use_cases": ["物联网", "数据采集", "应急通信"]},
+      {"name": "吉利未来星座", "operator": "时空道宇", "planned": 5676, "launched": 64, "stage": "部署中", "use_cases": ["自动驾驶", "智能网联", "手机直连"], "note": "一期168颗，二期5676颗"},
       {"name": "椭圆时空", "operator": "椭圆时空/国科宇航", "planned": 96, "launched": 6, "stage": "部署中", "use_cases": ["物联网", "遥感", "通信融合"]},
+      {"name": "国科宇航星座", "operator": "国科宇航", "planned": 36, "launched": 0, "stage": "规划中", "use_cases": ["通信", "遥感", "导航"], "note": "与国电高科合作"},
+      {"name": "钧天航宇星座", "operator": "钧天航宇", "planned": 72, "launched": 0, "stage": "规划中", "use_cases": ["宽带通信", "物联网", "导航增强"]},
       {"name": "鸿雁星座", "operator": "航天科技", "planned": 324, "launched": 2, "stage": "试验阶段", "use_cases": ["物联网", "导航"]},
       {"name": "虹云星座", "operator": "航天科工", "planned": 156, "launched": 2, "stage": "试验阶段", "use_cases": ["宽带互联网"]}
     ],
     "international": [
-      {"name": "Starlink", "operator": "SpaceX", "planned": 42000, "launched": 7000, "stage": "运营中", "use_cases": ["宽带互联网", "手机直连"]},
-      {"name": "OneWeb", "operator": "Eutelsat", "planned": 648, "launched": 634, "stage": "运营中", "use_cases": ["企业宽带", "物联网"]},
-      {"name": "Kuiper", "operator": "Amazon", "planned": 3236, "launched": 2, "stage": "部署中", "use_cases": ["宽带互联网"]},
-      {"name": "Iridium NEXT", "operator": "Iridium", "planned": 75, "launched": 75, "stage": "运营中", "use_cases": ["卫星电话", "物联网"]}
+      {"name": "Starlink", "operator": "SpaceX", "planned": 42000, "launched": 7500, "stage": "运营中", "use_cases": ["宽带互联网", "手机直连", "军事通信"], "note": "全球最大低轨星座，已盈利"},
+      {"name": "OneWeb", "operator": "Eutelsat OneWeb", "planned": 648, "launched": 634, "stage": "运营中", "use_cases": ["企业宽带", "物联网", "政府通信"]},
+      {"name": "Kuiper", "operator": "Amazon", "planned": 3236, "launched": 2, "stage": "部署中", "use_cases": ["宽带互联网", "云服务"], "note": "计划2026年商用"},
+      {"name": "Iridium NEXT", "operator": "Iridium", "planned": 75, "launched": 75, "stage": "运营中", "use_cases": ["卫星电话", "物联网", "航空海事"]},
+      {"name": "Telesat Lightspeed", "operator": "Telesat", "planned": 198, "launched": 0, "stage": "规划中", "use_cases": ["企业宽带", "政府通信", "5G回传"], "note": "加拿大，计划2026年部署"},
+      {"name": "AST SpaceMobile", "operator": "AST SpaceMobile", "planned": 168, "launched": 5, "stage": "部署中", "use_cases": ["手机直连", "宽带互联网"], "note": "与AT&T合作，已打通首个卫星电话"},
+      {"name": "Lynk", "operator": "Lynk Global", "planned": 5000, "launched": 4, "stage": "试验阶段", "use_cases": ["手机直连", "短信服务"]},
+      {"name": "Omnispace", "operator": "Omnispace", "planned": 300, "launched": 2, "stage": "部署中", "use_cases": ["5G-IoT", "物联网", "语音数据"], "note": "3GPP标准5G物联网"},
+      {"name": "Globalstar", "operator": "Globalstar", "planned": 48, "launched": 48, "stage": "运营中", "use_cases": ["卫星电话", "物联网", "应急通信"], "note": "苹果SOS服务合作方"},
+      {"name": "Inmarsat", "operator": "Viasat", "planned": 5, "launched": 5, "stage": "运营中", "use_cases": ["海事航空", "政府通信", "企业宽带"], "note": "地球静止轨道，已被Viasat收购"}
     ]
   },
   "companies": {
     "domestic": [
-      {"name": "磐钴智能", "city": "成都", "focus": "卫星物联网终端", "tech": "Lora/NTN", "founded": "2021", "funding": "A轮", "products": ["卫星模组", "物联网终端"]},
-      {"name": "星联芯通", "city": "成都", "focus": "卫星通信芯片", "tech": "DVB-S2X/5G NTN", "founded": "2018", "funding": "B轮", "products": ["基带芯片", "调制解调器"]},
-      {"name": "国科宇航", "city": "成都", "focus": "卫星通信终端", "tech": "专有协议", "founded": "2019", "funding": "A轮", "products": ["手持终端", "车载终端"]},
-      {"name": "天行探索科技", "city": "深圳", "focus": "卫星互联网终端", "tech": "Ka/Ku频段", "founded": "2020", "funding": "Pre-A", "products": ["相控阵终端", "平板天线"]},
-      {"name": "华美钛", "city": "重庆", "focus": "卫星通信模组", "tech": "多模通信", "founded": "2022", "funding": "天使轮", "products": ["通信模组", "定位模组"]},
-      {"name": "鹏鹄物宇", "city": "北京", "focus": "低轨卫星终端", "tech": "5G NTN", "founded": "2021", "funding": "A轮", "products": ["NTN终端", "测试设备"]},
-      {"name": "环天智慧", "city": "成都", "focus": "卫星应用服务", "tech": "多星座兼容", "founded": "2019", "funding": "战略融资", "products": ["行业解决方案", "数据服务"]},
-      {"name": "星途智联", "city": "北京", "focus": "卫星车联网", "tech": "V2X+卫星", "founded": "2020", "funding": "A轮", "products": ["车载终端", "路侧单元"]},
-      {"name": "中国时空", "city": "北京", "focus": "导航增强服务", "tech": "北斗+低轨", "founded": "2022", "funding": "国资", "products": ["高精度定位", "时空服务"]},
-      {"name": "中兵北斗", "city": "西安", "focus": "北斗终端", "tech": "北斗三号", "founded": "2015", "funding": "上市公司", "products": ["军用终端", "民用终端"]},
-      {"name": "太极疆泰", "city": "乌鲁木齐", "focus": "卫星物联网", "tech": "LoRa卫星", "founded": "2021", "funding": "A轮", "products": ["物联网终端", "行业方案"]},
-      {"name": "航天金美", "city": "重庆", "focus": "卫星通信设备", "tech": "多频段", "founded": "2016", "funding": "B轮", "products": ["车载动中通", "便携终端"]}
+      {"name": "磐钴智能", "city": "成都", "focus": "卫星物联网终端", "tech": "Lora/NTN", "founded": "2021", "funding": "A轮", "products": ["卫星模组", "物联网终端"], "description": "专注卫星物联网通信，提供低功耗广域网解决方案", "website": "https://www.pangusat.com"},
+      {"name": "星联芯通", "city": "成都", "focus": "卫星通信芯片", "tech": "DVB-S2X/5G NTN", "founded": "2018", "funding": "B轮", "products": ["基带芯片", "调制解调器", "终端模组"], "description": "卫星通信基带芯片和终端解决方案提供商", "website": "https://www.satcomtec.com"},
+      {"name": "国科宇航", "city": "成都", "focus": "卫星通信终端", "tech": "专有协议/NTN", "founded": "2019", "funding": "A轮", "products": ["手持终端", "车载终端", "船载终端"], "description": "卫星通信终端和星座运营服务", "website": "https://www.guokespace.com"},
+      {"name": "天行探索科技", "city": "深圳", "focus": "卫星互联网终端", "tech": "Ka/Ku频段相控阵", "founded": "2020", "funding": "Pre-A", "products": ["相控阵终端", "平板天线", "动中通"], "description": "低成本相控阵卫星互联网终端", "website": ""},
+      {"name": "华美钛", "city": "重庆", "focus": "卫星通信模组", "tech": "多模通信", "founded": "2022", "funding": "天使轮", "products": ["通信模组", "定位模组"], "description": "多模卫星通信模组和定位方案", "website": ""},
+      {"name": "鹏鹄物宇", "city": "北京", "focus": "低轨卫星终端", "tech": "5G NTN", "founded": "2021", "funding": "A轮", "products": ["NTN终端", "测试设备", "开发套件"], "description": "5G NTN卫星通信终端和测试解决方案", "website": ""},
+      {"name": "环天智慧", "city": "成都", "focus": "卫星应用服务", "tech": "多星座兼容", "founded": "2019", "funding": "战略融资", "products": ["行业解决方案", "数据服务"], "description": "卫星数据应用和行业解决方案", "website": ""},
+      {"name": "星途智联", "city": "北京", "focus": "卫星车联网", "tech": "V2X+卫星", "founded": "2020", "funding": "A轮", "products": ["车载终端", "路侧单元"], "description": "卫星车联网和智能交通解决方案", "website": ""},
+      {"name": "中国时空", "city": "北京", "focus": "导航增强服务", "tech": "北斗+低轨", "founded": "2022", "funding": "国资", "products": ["高精度定位", "时空服务"], "description": "北斗高精度定位和时空信息服务", "website": ""},
+      {"name": "中兵北斗", "city": "西安", "focus": "北斗终端", "tech": "北斗三号", "founded": "2015", "funding": "上市公司", "products": ["军用终端", "民用终端", "模组"], "description": "北斗导航终端设备和解决方案", "website": ""},
+      {"name": "太极疆泰", "city": "乌鲁木齐", "focus": "卫星物联网", "tech": "LoRa卫星", "founded": "2021", "funding": "A轮", "products": ["物联网终端", "行业方案"], "description": "边远地区卫星物联网解决方案", "website": ""},
+      {"name": "航天金美", "city": "重庆", "focus": "卫星通信设备", "tech": "多频段", "founded": "2016", "funding": "B轮", "products": ["车载动中通", "便携终端", "固定站"], "description": "卫星通信设备和系统集成", "website": ""}
     ],
     "international": [
-      {"name": "SpaceX Starlink", "region": "美国", "subscribers": "300万+", "terminal_price": "$599", "service_price": "$120/月"},
-      {"name": "Iridium", "region": "美国", "subscribers": "200万+", "terminal_price": "$1000+", "service_price": "$50/月起"},
-      {"name": "Inmarsat", "region": "英国", "subscribers": "100万+", "terminal_price": "$500+", "service_price": "$40/月起"},
-      {"name": "Thuraya", "region": "阿联酋", "subscribers": "50万+", "terminal_price": "$600+", "service_price": "$30/月起"},
-      {"name": "Globalstar", "region": "美国", "subscribers": "80万+", "terminal_price": "$300+", "service_price": "$25/月起"}
+      {"name": "Kymeta", "region": "美国", "focus": "平板卫星天线", "tech": "液晶超材料", "products": ["u8平板天线", "车载终端", "海事终端"], "founded": "2012", "customers": "美军/政府/企业", "description": "液晶超材料电子扫描平板天线领导者", "website": "https://www.kymetacorp.com"},
+      {"name": "CesiumAstro", "region": "美国", "focus": "相控阵天线", "tech": "有源相控阵", "products": ["相控阵天线模组", "卫星载荷", "用户终端"], "founded": "2017", "customers": "卫星制造商/国防", "description": "航空级相控阵通信解决方案", "website": "https://www.cesiumastro.com"},
+      {"name": "SatixFy", "region": "英国/以色列", "focus": "卫星通信芯片", "tech": "DVB-S2X/5G NTN", "products": ["基带芯片", "调制解调器", "电子扫描天线"], "founded": "2012", "customers": "卫星运营商/终端厂商", "description": "卫星通信芯片和终端解决方案", "website": "https://www.satixfy.com"},
+      {"name": "Hughes Network", "region": "美国", "focus": "卫星宽带终端", "tech": "GEO/LEO多频", "products": ["家庭宽带终端", "企业终端", "移动卫星互联网"], "founded": "1971", "customers": "家庭/企业/政府", "description": "全球最大卫星互联网服务提供商之一", "website": "https://www.hughesnet.com"},
+      {"name": "Thales Alenia", "region": "法国/意大利", "focus": "卫星通信系统", "tech": "多轨道", "products": ["卫星载荷", "地面系统", "用户终端"], "founded": "2007", "customers": "政府/军方/商业", "description": "欧洲最大卫星系统集成商", "website": "https://www.thalesaleniaspace.com"},
+      {"name": "Gilat Satellite", "region": "以色列", "focus": "VSAT终端", "tech": "多频多轨", "products": ["VSAT终端", "卫星调制解调器", "云平台"], "founded": "1987", "customers": "运营商/企业/政府", "description": "全球领先的VSAT网络解决方案", "website": "https://www.gilat.com"},
+      {"name": "Norsat", "region": "加拿大", "focus": "卫星终端", "tech": "L/S/C/Ku/Ka", "products": ["便携终端", "动中通", "卫星组件"], "founded": "1977", "customers": "政府/军方/资源行业", "description": "高精度卫星通信终端和组件", "website": "https://www.norsat.com"},
+      {"name": "Cobham Satcom", "region": "丹麦", "focus": "海事卫星通信", "tech": "Inmarsat/Iridium", "products": ["海事终端", "航空终端", "陆地便携"], "founded": "2011", "customers": "海事/航空/政府", "description": "海事和航空卫星通信终端领导者", "website": "https://www.cobhamsatcom.com"},
+      {"name": "Intellian", "region": "韩国", "focus": "海事卫星天线", "tech": "多频卫星", "products": ["船载天线", "VSAT终端", "TVRO天线"], "founded": "2004", "customers": "商船/游艇/政府", "description": "全球领先的海事卫星天线制造商", "website": "https://www.intelliantech.com"},
+      {"name": "SpaceX Starlink", "region": "美国", "focus": "消费级终端", "tech": "Ku/Ka相控阵", "products": ["标准终端", "扁平高性能终端", "海事终端"], "founded": "2015", "customers": "消费者/企业/政府", "description": "全球最大卫星互联网星座", "website": "https://www.starlink.com"}
     ]
   },
   "business_models": {

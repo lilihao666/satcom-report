@@ -12,6 +12,8 @@
         .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
         .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
         @media print { .no-print { display: none !important; } }
+        
+        /* 回到顶部按钮 */
         #back-to-top {
             position: fixed;
             bottom: 30px;
@@ -38,6 +40,90 @@
         #back-to-top.hidden {
             opacity: 0;
             visibility: hidden;
+        }
+        
+        /* 详情弹窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 0;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px 16px 0 0;
+        }
+        .modal-body {
+            padding: 24px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* 可点击卡片 */
+        .clickable-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .clickable-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        .clickable-card::after {
+            content: "点击查看详情";
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 10px;
+            color: #3b82f6;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .clickable-card:hover::after {
+            opacity: 1;
         }
     </style>
 </head>
@@ -90,16 +176,16 @@
         <h2 class="text-2xl font-bold mb-4">📊 执行摘要</h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">12</div>
-                <div class="text-sm opacity-80">国内终端厂商</div>
+                <div class="text-3xl font-bold">12+10</div>
+                <div class="text-sm opacity-80">终端厂商</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">7</div>
-                <div class="text-sm opacity-80">国内星座计划</div>
+                <div class="text-3xl font-bold">9+10</div>
+                <div class="text-sm opacity-80">星座计划</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">119</div>
-                <div class="text-sm opacity-80">在轨卫星数量</div>
+                <div class="text-3xl font-bold">8,620</div>
+                <div class="text-sm opacity-80">全球在轨卫星</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
                 <div class="text-3xl font-bold">10</div>
@@ -108,26 +194,28 @@
         </div>
     </div>
     
-<section id="constellation"><h2 class="text-2xl font-bold mb-4">🌐 卫星星座对比</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+<section id="constellation"><h2 class="text-2xl font-bold mb-4">🌐 卫星星座对比</h2><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>国内星座</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('国网/GW星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 中国星网</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 12,992 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 136 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带互联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">导航增强</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 国网星座与GW星座为同一项目</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 1.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 1.0467980295566501%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">国网/GW星座</h3>
-                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
             </div>
             <p class="text-gray-600 text-sm">中国星网</p>
             <p class="text-xs text-orange-600 mt-1">国网星座与GW星座为同一项目</p>
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
-                    <span>在轨: 0颗</span>
+                    <span>在轨: 136颗</span>
                     <span>规划: 12992颗</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.0%"></div>
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 1.0467980295566501%"></div>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('千帆星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 垣信卫星</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 15,000 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 108 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">导航增强</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.7%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 0.72%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">千帆星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
@@ -136,16 +224,17 @@
             
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
-                    <span>在轨: 54颗</span>
+                    <span>在轨: 108颗</span>
                     <span>规划: 15000颗</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.36%"></div>
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.72%"></div>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('天启星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 国电高科</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 38 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 27 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">数据采集</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">应急通信</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 71.1%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 71.05263157894737%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">天启星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">运营中</span>
@@ -154,34 +243,36 @@
             
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
-                    <span>在轨: 25颗</span>
+                    <span>在轨: 27颗</span>
                     <span>规划: 38颗</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-blue-600 h-2 rounded-full" style="width: 65.78947368421053%"></div>
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 71.05263157894737%"></div>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('吉利未来星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 时空道宇</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 5,676 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 64 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">自动驾驶</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">智能网联</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">手机直连</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 一期168颗，二期5676颗</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 1.1%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 1.127554615926709%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">吉利未来星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
             </div>
             <p class="text-gray-600 text-sm">时空道宇</p>
-            
+            <p class="text-xs text-orange-600 mt-1">一期168颗，二期5676颗</p>
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
-                    <span>在轨: 30颗</span>
-                    <span>规划: 168颗</span>
+                    <span>在轨: 64颗</span>
+                    <span>规划: 5676颗</span>
                 </div>
                 <div class="w-full bg-gray-200 rounded-full h-2">
-                    <div class="bg-blue-600 h-2 rounded-full" style="width: 17.857142857142858%"></div>
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 1.127554615926709%"></div>
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('椭圆时空', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 椭圆时空/国科宇航</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 96 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 6 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">遥感</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">通信融合</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 6.2%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 6.25%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">椭圆时空</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
@@ -199,7 +290,46 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('国科宇航星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 国科宇航</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 36 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 0 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">规划中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">通信</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">遥感</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">导航</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 与国电高科合作</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 0.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">国科宇航星座</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
+            </div>
+            <p class="text-gray-600 text-sm">国科宇航</p>
+            <p class="text-xs text-orange-600 mt-1">与国电高科合作</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 0颗</span>
+                    <span>规划: 36颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('钧天航宇星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 钧天航宇</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 72 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 0 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">规划中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带通信</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">导航增强</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 0.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">钧天航宇星座</h3>
+                <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
+            </div>
+            <p class="text-gray-600 text-sm">钧天航宇</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 0颗</span>
+                    <span>规划: 72颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-blue-600 h-2 rounded-full" style="width: 0.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('鸿雁星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 航天科技</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 324 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 2 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">试验阶段</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">导航</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.6%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 0.6172839506172839%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">鸿雁星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">试验阶段</span>
@@ -217,7 +347,8 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" 
+             onclick="openModal('虹云星座', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> 航天科工</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 156 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 2 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">试验阶段</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带互联网</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 1.3%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full\" style=\"width: 1.282051282051282%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">虹云星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">试验阶段</span>
@@ -234,9 +365,200 @@
                 </div>
             </div>
         </div>
+        </div><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>国际星座</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Starlink', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> SpaceX</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 42,000 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 7,500 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带互联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">手机直连</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">军事通信</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 全球最大低轨星座，已盈利</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 17.9%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 17.857142857142858%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Starlink</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">SpaceX</p>
+            <p class="text-xs text-orange-600 mt-1">全球最大低轨星座，已盈利</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 7,500颗</span>
+                    <span>规划: 42,000颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 17.857142857142858%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('OneWeb', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Eutelsat OneWeb</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 648 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 634 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">企业宽带</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">政府通信</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 97.8%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 97.8395061728395%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">OneWeb</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Eutelsat OneWeb</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 634颗</span>
+                    <span>规划: 648颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 97.8395061728395%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Kuiper', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Amazon</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 3,236 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 2 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带互联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">云服务</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 计划2026年商用</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.1%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 0.061804697156983925%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Kuiper</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">部署中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Amazon</p>
+            <p class="text-xs text-orange-600 mt-1">计划2026年商用</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 2颗</span>
+                    <span>规划: 3,236颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.061804697156983925%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Iridium NEXT', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Iridium</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 75 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 75 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">卫星电话</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">航空海事</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 100.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 100.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Iridium NEXT</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Iridium</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 75颗</span>
+                    <span>规划: 75颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 100.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Telesat Lightspeed', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Telesat</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 198 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 0 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">规划中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">企业宽带</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">政府通信</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">5G回传</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 加拿大，计划2026年部署</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 0.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Telesat Lightspeed</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">规划中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Telesat</p>
+            <p class="text-xs text-orange-600 mt-1">加拿大，计划2026年部署</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 0颗</span>
+                    <span>规划: 198颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('AST SpaceMobile', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> AST SpaceMobile</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 168 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 5 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">手机直连</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">宽带互联网</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 与AT&T合作，已打通首个卫星电话</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 3.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 2.976190476190476%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">AST SpaceMobile</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">部署中</span>
+            </div>
+            <p class="text-gray-600 text-sm">AST SpaceMobile</p>
+            <p class="text-xs text-orange-600 mt-1">与AT&T合作，已打通首个卫星电话</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 5颗</span>
+                    <span>规划: 168颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 2.976190476190476%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Lynk', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Lynk Global</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 5,000 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 4 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">试验阶段</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">手机直连</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">短信服务</span>\n                </div>\n            </div>\n            \n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.1%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 0.08%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Lynk</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">试验阶段</span>
+            </div>
+            <p class="text-gray-600 text-sm">Lynk Global</p>
+            
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 4颗</span>
+                    <span>规划: 5,000颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.08%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Omnispace', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Omnispace</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 300 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 2 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">部署中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">5G-IoT</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">语音数据</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 3GPP标准5G物联网</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 0.7%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 0.6666666666666667%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Omnispace</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">部署中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Omnispace</p>
+            <p class="text-xs text-orange-600 mt-1">3GPP标准5G物联网</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 2颗</span>
+                    <span>规划: 300颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.6666666666666667%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Globalstar', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Globalstar</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 48 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 48 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">卫星电话</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">物联网</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">应急通信</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 苹果SOS服务合作方</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 100.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 100.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Globalstar</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Globalstar</p>
+            <p class="text-xs text-orange-600 mt-1">苹果SOS服务合作方</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 48颗</span>
+                    <span>规划: 48颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 100.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative"
+             onclick="openModal('Inmarsat', '\n        <div class=\"space-y-4\">\n            <div>\n                <p class=\"text-gray-600\"><strong>运营方:</strong> Viasat</p>\n                <p class=\"text-gray-600\"><strong>规划数量:</strong> 5 颗</p>\n                <p class=\"text-gray-600\"><strong>已发射:</strong> 5 颗</p>\n                <p class=\"text-gray-600\"><strong>当前阶段:</strong> <span class=\"bg-green-100 text-green-800 px-2 py-0.5 rounded\">运营中</span></p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">应用场景:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">海事航空</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">政府通信</span><span class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm\">企业宽带</span>\n                </div>\n            </div>\n            <div class=\"bg-orange-50 p-3 rounded-lg\"><p class=\"text-sm text-orange-700\"><i class=\"fas fa-info-circle mr-1\"></i> 地球静止轨道，已被Viasat收购</p></div>\n            <div class=\"mt-4\">\n                <p class=\"text-sm text-gray-500 mb-2\">部署进度: 100.0%</p>\n                <div class=\"w-full bg-gray-200 rounded-full h-3\">\n                    <div class=\"bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full\" style=\"width: 100.0%\"></div>\n                </div>\n            </div>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Inmarsat</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Viasat</p>
+            <p class="text-xs text-orange-600 mt-1">地球静止轨道，已被Viasat收购</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 5颗</span>
+                    <span>规划: 5颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 100.0%"></div>
+                </div>
+            </div>
+        </div>
         </div></section>
-<section id="terminal"><h2 class="text-2xl font-bold mb-4">📱 终端设备厂商</h2><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+<section id="terminal"><h2 class="text-2xl font-bold mb-4">📱 终端设备厂商</h2><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>国内厂商</h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('磐钴智能', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">成都</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2021</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">A轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">Lora/NTN</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星物联网终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">专注卫星物联网通信，提供低功耗广域网解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">卫星模组</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">物联网终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.pangusat.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">磐钴智能</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -250,11 +572,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">卫星模组</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">物联网终端</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('星联芯通', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">成都</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2018</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">B轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">DVB-S2X/5G NTN</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信芯片</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星通信基带芯片和终端解决方案提供商</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">基带芯片</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">调制解调器</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">终端模组</span>\n                </div>\n            </div>\n            <a href=\"https://www.satcomtec.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">星联芯通</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -267,48 +591,54 @@
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">基带芯片</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">调制解调器</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">基带芯片</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">调制解调器</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">终端模组</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('国科宇航', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">成都</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2019</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">A轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">专有协议/NTN</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星通信终端和星座运营服务</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">手持终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">车载终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">船载终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.guokespace.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">国科宇航</h3>
                 <span class="text-xs text-gray-500">成都</span>
             </div>
             <div class="mt-2 text-sm space-y-1">
                 <p><span class="text-gray-500">聚焦:</span> 卫星通信终端</p>
-                <p><span class="text-gray-500">技术:</span> 专有协议</p>
+                <p><span class="text-gray-500">技术:</span> 专有协议/NTN</p>
                 <p><span class="text-gray-500">融资:</span> <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs">A轮</span></p>
             </div>
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">手持终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">车载终端</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">手持终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">车载终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">船载终端</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('天行探索科技', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">深圳</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2020</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">Pre-A</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">Ka/Ku频段相控阵</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星互联网终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">低成本相控阵卫星互联网终端</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">相控阵终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">平板天线</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">动中通</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">天行探索科技</h3>
                 <span class="text-xs text-gray-500">深圳</span>
             </div>
             <div class="mt-2 text-sm space-y-1">
                 <p><span class="text-gray-500">聚焦:</span> 卫星互联网终端</p>
-                <p><span class="text-gray-500">技术:</span> Ka/Ku频段</p>
+                <p><span class="text-gray-500">技术:</span> Ka/Ku频段相控阵</p>
                 <p><span class="text-gray-500">融资:</span> <span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs">Pre-A</span></p>
             </div>
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">相控阵终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">平板天线</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">相控阵终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">平板天线</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">动中通</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('华美钛', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">重庆</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2022</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">天使轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多模通信</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信模组</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">多模卫星通信模组和定位方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">通信模组</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">定位模组</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">华美钛</h3>
                 <span class="text-xs text-gray-500">重庆</span>
@@ -322,11 +652,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">通信模组</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">定位模组</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('鹏鹄物宇', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">北京</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2021</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">A轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">5G NTN</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">低轨卫星终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">5G NTN卫星通信终端和测试解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">NTN终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">测试设备</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">开发套件</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">鹏鹄物宇</h3>
                 <span class="text-xs text-gray-500">北京</span>
@@ -339,12 +671,14 @@
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">NTN终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">测试设备</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">NTN终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">测试设备</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">开发套件</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('环天智慧', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">成都</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2019</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">战略融资</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多星座兼容</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星应用服务</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星数据应用和行业解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">行业解决方案</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">数据服务</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">环天智慧</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -358,11 +692,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">行业解决方案</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">数据服务</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('星途智联', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">北京</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2020</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">A轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">V2X+卫星</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星车联网</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星车联网和智能交通解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">车载终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">路侧单元</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">星途智联</h3>
                 <span class="text-xs text-gray-500">北京</span>
@@ -376,11 +712,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">车载终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">路侧单元</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('中国时空', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">北京</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2022</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">国资</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">北斗+低轨</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">导航增强服务</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">北斗高精度定位和时空信息服务</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">高精度定位</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">时空服务</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">中国时空</h3>
                 <span class="text-xs text-gray-500">北京</span>
@@ -394,11 +732,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">高精度定位</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">时空服务</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('中兵北斗', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">西安</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2015</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">上市公司</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">北斗三号</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">北斗终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">北斗导航终端设备和解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">军用终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">民用终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">模组</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">中兵北斗</h3>
                 <span class="text-xs text-gray-500">西安</span>
@@ -411,12 +751,14 @@
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">军用终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">民用终端</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">军用终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">民用终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">模组</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('太极疆泰', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">乌鲁木齐</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2021</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">A轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">LoRa卫星</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星物联网</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">边远地区卫星物联网解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">物联网终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">行业方案</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">太极疆泰</h3>
                 <span class="text-xs text-gray-500">乌鲁木齐</span>
@@ -430,11 +772,13 @@
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
                     <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">物联网终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">行业方案</span>
+                    
                 </div>
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('航天金美', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">总部</p>\n                    <p class=\"font-medium\">重庆</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2016</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">融资阶段</p>\n                    <p class=\"font-medium\"><span class=\"bg-blue-100 text-blue-800 px-2 py-0.5 rounded\">B轮</span></p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多频段</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信设备</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星通信设备和系统集成</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">车载动中通</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">便携终端</span><span class=\"bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm\">固定站</span>\n                </div>\n            </div>\n            \n        </div>\n        ')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">航天金美</h3>
                 <span class="text-xs text-gray-500">重庆</span>
@@ -447,7 +791,208 @@
             <div class="mt-3">
                 <span class="text-xs text-gray-500">产品:</span>
                 <div class="flex flex-wrap gap-1 mt-1">
-                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">车载动中通</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">便携终端</span>
+                    <span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">车载动中通</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">便携终端</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">固定站</span>
+                    
+                </div>
+            </div>
+        </div>
+        </div><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>国际厂商</h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Kymeta', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">美国</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2012</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">美军/政府/企业</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">液晶超材料</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">平板卫星天线</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">液晶超材料电子扫描平板天线领导者</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">u8平板天线</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">车载终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">海事终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.kymetacorp.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Kymeta</h3>
+                <span class="text-xs text-gray-500">美国</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 平板卫星天线</p>
+                <p><span class="text-gray-500">技术:</span> 液晶超材料</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">美军/政府/企业</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">u8平板天线</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">车载终端</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('CesiumAstro', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">美国</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2017</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">卫星制造商/国防</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">有源相控阵</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">相控阵天线</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">航空级相控阵通信解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">相控阵天线模组</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">卫星载荷</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">用户终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.cesiumastro.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">CesiumAstro</h3>
+                <span class="text-xs text-gray-500">美国</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 相控阵天线</p>
+                <p><span class="text-gray-500">技术:</span> 有源相控阵</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">卫星制造商/国防</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">相控阵天线模组</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">卫星载荷</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('SatixFy', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">英国/以色列</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2012</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">卫星运营商/终端厂商</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">DVB-S2X/5G NTN</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信芯片</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">卫星通信芯片和终端解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">基带芯片</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">调制解调器</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">电子扫描天线</span>\n                </div>\n            </div>\n            <a href=\"https://www.satixfy.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">SatixFy</h3>
+                <span class="text-xs text-gray-500">英国/以色列</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 卫星通信芯片</p>
+                <p><span class="text-gray-500">技术:</span> DVB-S2X/5G NTN</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">卫星运营商/终端厂商</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">基带芯片</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">调制解调器</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Hughes Network', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">美国</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">1971</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">家庭/企业/政府</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">GEO/LEO多频</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星宽带终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">全球最大卫星互联网服务提供商之一</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">家庭宽带终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">企业终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">移动卫星互联网</span>\n                </div>\n            </div>\n            <a href=\"https://www.hughesnet.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Hughes Network</h3>
+                <span class="text-xs text-gray-500">美国</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 卫星宽带终端</p>
+                <p><span class="text-gray-500">技术:</span> GEO/LEO多频</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">家庭/企业/政府</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">家庭宽带终端</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">企业终端</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Thales Alenia', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">法国/意大利</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2007</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">政府/军方/商业</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多轨道</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星通信系统</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">欧洲最大卫星系统集成商</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">卫星载荷</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">地面系统</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">用户终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.thalesaleniaspace.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Thales Alenia</h3>
+                <span class="text-xs text-gray-500">法国/意大利</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 卫星通信系统</p>
+                <p><span class="text-gray-500">技术:</span> 多轨道</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">政府/军方/商业</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">卫星载荷</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">地面系统</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Gilat Satellite', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">以色列</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">1987</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">运营商/企业/政府</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多频多轨</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">VSAT终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">全球领先的VSAT网络解决方案</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">VSAT终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">卫星调制解调器</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">云平台</span>\n                </div>\n            </div>\n            <a href=\"https://www.gilat.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Gilat Satellite</h3>
+                <span class="text-xs text-gray-500">以色列</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> VSAT终端</p>
+                <p><span class="text-gray-500">技术:</span> 多频多轨</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">运营商/企业/政府</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">VSAT终端</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">卫星调制解调器</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Norsat', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">加拿大</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">1977</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">政府/军方/资源行业</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">L/S/C/Ku/Ka</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">卫星终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">高精度卫星通信终端和组件</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">便携终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">动中通</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">卫星组件</span>\n                </div>\n            </div>\n            <a href=\"https://www.norsat.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Norsat</h3>
+                <span class="text-xs text-gray-500">加拿大</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 卫星终端</p>
+                <p><span class="text-gray-500">技术:</span> L/S/C/Ku/Ka</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">政府/军方/资源行业</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">便携终端</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">动中通</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Cobham Satcom', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">丹麦</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2011</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">海事/航空/政府</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">Inmarsat/Iridium</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">海事卫星通信</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">海事和航空卫星通信终端领导者</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">海事终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">航空终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">陆地便携</span>\n                </div>\n            </div>\n            <a href=\"https://www.cobhamsatcom.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Cobham Satcom</h3>
+                <span class="text-xs text-gray-500">丹麦</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 海事卫星通信</p>
+                <p><span class="text-gray-500">技术:</span> Inmarsat/Iridium</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">海事/航空/政府</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">海事终端</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">航空终端</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('Intellian', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">韩国</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2004</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">商船/游艇/政府</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">多频卫星</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">海事卫星天线</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">全球领先的海事卫星天线制造商</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">船载天线</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">VSAT终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">TVRO天线</span>\n                </div>\n            </div>\n            <a href=\"https://www.intelliantech.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">Intellian</h3>
+                <span class="text-xs text-gray-500">韩国</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 海事卫星天线</p>
+                <p><span class="text-gray-500">技术:</span> 多频卫星</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">商船/游艇/政府</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">船载天线</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">VSAT终端</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"
+             onclick="openModal('SpaceX Starlink', '\n        <div class=\"space-y-4\">\n            <div class=\"grid grid-cols-2 gap-4\">\n                <div>\n                    <p class=\"text-sm text-gray-500\">国家/地区</p>\n                    <p class=\"font-medium\">美国</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">成立时间</p>\n                    <p class=\"font-medium\">2015</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">主要客户</p>\n                    <p class=\"font-medium\">消费者/企业/政府</p>\n                </div>\n                <div>\n                    <p class=\"text-sm text-gray-500\">核心技术</p>\n                    <p class=\"font-medium\">Ku/Ka相控阵</p>\n                </div>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">主营业务</p>\n                <p class=\"text-gray-700\">消费级终端</p>\n            </div>\n            <div>\n                <p class=\"text-sm text-gray-500 mb-2\">公司简介</p>\n                <p class=\"text-gray-700\">全球最大卫星互联网星座</p>\n            </div>\n            <div>\n                <p class=\"font-semibold mb-2\">主要产品:</p>\n                <div class=\"flex flex-wrap gap-2\">\n                    <span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">标准终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">扁平高性能终端</span><span class=\"bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm\">海事终端</span>\n                </div>\n            </div>\n            <a href=\"https://www.starlink.com\" target=\"_blank\" class=\"inline-flex items-center text-blue-600 hover:text-blue-800 mt-2\"><i class=\"fas fa-external-link-alt mr-1\"></i> 访问官网</a>\n        </div>\n        ')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold">SpaceX Starlink</h3>
+                <span class="text-xs text-gray-500">美国</span>
+            </div>
+            <div class="mt-2 text-sm space-y-1">
+                <p><span class="text-gray-500">聚焦:</span> 消费级终端</p>
+                <p><span class="text-gray-500">技术:</span> Ku/Ka相控阵</p>
+                <p><span class="text-gray-500">客户:</span> <span class="text-xs">消费者/企业/政府</span></p>
+            </div>
+            <div class="mt-3">
+                <span class="text-xs text-gray-500">产品:</span>
+                <div class="flex flex-wrap gap-1 mt-1">
+                    <span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">标准终端</span><span class="bg-blue-50 text-blue-600 text-xs px-2 py-0.5 rounded">扁平高性能终端</span>
+                    <span class="bg-gray-50 text-gray-400 text-xs px-2 py-0.5 rounded">+1</span>
                 </div>
             </div>
         </div>
@@ -543,9 +1088,6 @@
                     <span class="text-xs text-gray-500">2024 · 工信部</span>
                 </div>
                 <p class="text-gray-600 text-sm mt-2">规范卫星网络频率和轨道资源管理</p>
-                <span class="inline-block mt-2 text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded">
-                    影响: 高
-                </span>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
@@ -554,9 +1096,6 @@
                     <span class="text-xs text-gray-500">2023 · 发改委</span>
                 </div>
                 <p class="text-gray-600 text-sm mt-2">推动卫星互联网与5G/6G融合发展</p>
-                <span class="inline-block mt-2 text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded">
-                    影响: 高
-                </span>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
@@ -565,9 +1104,6 @@
                     <span class="text-xs text-gray-500">2024 · 国防科工局</span>
                 </div>
                 <p class="text-gray-600 text-sm mt-2">简化商业航天发射审批流程</p>
-                <span class="inline-block mt-2 text-xs bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded">
-                    影响: 中
-                </span>
             </div>
             </div><h3 class="text-lg font-semibold mb-3 text-gray-700">国际政策</h3><div class="space-y-3">
                 <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
@@ -585,31 +1121,7 @@
                     </div>
                     <p class="text-gray-600 text-sm mt-2">完善卫星频率/轨道资源协调程序</p>
                 </div>
-                </div><h3 class="text-lg font-semibold mb-3 mt-6 text-gray-700">许可流程对比</h3><div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-white rounded-lg shadow p-4">
-                <h4 class="font-bold text-blue-700 mb-2">🇨🇳 中国</h4>
-                <p class="text-sm text-gray-600 mb-2">主管机构: 工信部无线电管理局</p>
-                <p class="text-sm text-gray-600 mb-2">周期: 6-12个月</p>
-                <div class="text-sm">
-                    <span class="text-gray-500">要求:</span>
-                    <ul class="list-disc list-inside mt-1 text-gray-600">
-                        <li>频率许可</li><li>轨道位置</li><li>发射许可</li><li>运营许可</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow p-4">
-                <h4 class="font-bold text-blue-700 mb-2">🇺🇸 美国</h4>
-                <p class="text-sm text-gray-600 mb-2">主管机构: FCC</p>
-                <p class="text-sm text-gray-600 mb-2">周期: 12-24个月</p>
-                <div class="text-sm">
-                    <span class="text-gray-500">要求:</span>
-                    <ul class="list-disc list-inside mt-1 text-gray-600">
-                        <li>频谱许可</li><li>发射许可</li><li>运营授权</li><li>频谱共享协议</li>
-                    </ul>
-                </div>
-            </div>
-            </div></section>
+                </div></section>
 <section id="tech"><h2 class="text-2xl font-bold mb-4">🔬 技术趋势</h2><div class="space-y-4">
         <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start">
@@ -819,24 +1331,28 @@
             </div></section>
     </main>
     
-    <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-    
     <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
             <p>本报告由 GitHub Actions 自动生成 | 数据更新时间：2026-04-10</p>
         </div>
     </footer>
     
+    <!-- 详情弹窗 -->
+    <div id="detail-modal" class="modal-overlay no-print" onclick="closeModal(event)">
+        <div class="modal-content relative" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modal-header" class="modal-header"></div>
+            <div id="modal-body" class="modal-body"></div>
+        </div>
+    </div>
+    
     <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
         <i class="fas fa-arrow-up"></i>
     </button>
     
     <script>
-        // 回到顶部按钮显示/隐藏控制
+        // 回到顶部按钮
         const backToTopBtn = document.getElementById('back-to-top');
-        
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
                 backToTopBtn.classList.remove('hidden');
@@ -845,7 +1361,7 @@
             }
         });
         
-        // Tab切换高亮
+        // Tab切换
         document.querySelectorAll('nav a').forEach(tab => {
             tab.addEventListener('click', function() {
                 document.querySelectorAll('nav a').forEach(t => {
@@ -855,6 +1371,26 @@
                 this.classList.remove('tab-inactive');
                 this.classList.add('tab-active');
             });
+        });
+        
+        // 弹窗控制
+        function openModal(title, content) {
+            document.getElementById('modal-header').innerHTML = `<h3 class="text-xl font-bold">${title}</h3>`;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('detail-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (!event || event.target.id === 'detail-modal') {
+                document.getElementById('detail-modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // ESC键关闭弹窗
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
         });
     </script>
 </body>
