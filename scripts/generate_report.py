@@ -253,10 +253,12 @@ def load_data():
         return json.load(f)
 
 def escape_js(s):
-    """转义JavaScript字符串"""
+    """转义JavaScript字符串，用于HTML属性"""
     if not s:
         return ""
-    return s.replace('\\', '\\\\').replace("'", "\\'").replace('"', '\\"').replace('\n', '\\n')
+    # 移除换行符和多余空格，使内容适合单行HTML属性
+    s = ' '.join(s.split())
+    return s.replace('\\', '\\\\').replace("'", "\\'").replace('"', '\\"')
 
 def generate_content(data):
     """生成报告内容"""
