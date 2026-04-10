@@ -12,6 +12,33 @@
         .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
         .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
         @media print { .no-print { display: none !important; } }
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+        #back-to-top.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -75,7 +102,7 @@
                 <div class="text-sm opacity-80">在轨卫星数量</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">0</div>
+                <div class="text-3xl font-bold">10</div>
                 <div class="text-sm opacity-80">近期动态</div>
             </div>
         </div>
@@ -649,19 +676,186 @@
             </div>
         </div>
         </div></section>
-<section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2>
-        <div class="bg-gray-100 rounded-lg p-8 text-center">
-            <i class="fas fa-newspaper text-gray-400 text-4xl mb-3"></i>
-            <p class="text-gray-500">暂无最新动态数据</p>
-            <p class="text-xs text-gray-400 mt-2">动态数据将由 GitHub Actions 每日自动抓取更新</p>
-        </div>
-        </section>
+<section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2><div class="space-y-4">
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">上海垣信启动50-60亿元融资，估值超400亿</h3>
+                    <span class="text-xs text-gray-500">2025-10-14</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">中国版'星链'千帆星座运营方上海垣信开启新一轮融资，投前估值超400亿人民币。计划2026年发射648颗卫星，2027年完成1296颗，2030年后达15000颗。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 界面新闻/新浪财经</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">融资</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">千帆星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">垣信卫星</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">卫星激光通信赛道两个月融资超5亿</h3>
+                    <span class="text-xs text-gray-500">2026-03-11</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">光邮星空、氦星光联、极光星通三家企业密集官宣融资，其中两笔金额突破亿元。极光星通完成近3亿元A4轮融资，预计2026年交付超百台套。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: C114通信网</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">融资</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">激光通信</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星间链路</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">银河航天启动A股上市进程</h3>
+                    <span class="text-xs text-gray-500">2026-03-31</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">银河航天完成新一轮融资并启动A股上市。公司年产中型卫星能力100-150颗，已在泰国建立中国卫星互联网首个海外地面基站。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 财新网</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">银河航天</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星制造</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">时空道宇计划2026年底冲刺IPO</h3>
+                    <span class="text-xs text-gray-500">2026-04-09</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">吉利未来出行星座运营方时空道宇计划2026年底IPO。一期64颗卫星组网完成，实现除南北极外全球实时通信覆盖，2025年获20亿元投资。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 财经报纸</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">时空道宇</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">吉利星座</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">中国向ITU提交20.3万颗卫星频轨申请</h3>
+                    <span class="text-xs text-gray-500">2026-01-12</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2025年底中国正式向ITU提交总计约20.3万颗低轨卫星的频率与轨道资源申请，覆盖14个独立卫星星座，创下国内最大规模集中申报纪录。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 国际电信联盟</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">频轨资源</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">ITU</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政策</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">蓝箭航天IPO申请获受理，冲刺商业火箭第一股</h3>
+                    <span class="text-xs text-gray-500">2026-01-03</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">蓝箭航天科创板IPO申请获受理，拟募资75亿元用于可重复使用火箭项目。2025年12月朱雀三号完成中国首次轨道助推器回收尝试。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 北京日报</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">蓝箭航天</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">可重复使用火箭</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">国内首次在轨星间400Gbps超高速激光通信试验成功</h3>
+                    <span class="text-xs text-gray-500">2025-12</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">极光星通牵头完成国内首次在轨星间400Gbps超高速激光通信数据传输试验，为未来空间高宽带组网应用提供有力技术支撑。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 极光星通</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">技术突破</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">激光通信</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星间链路</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">政府工作报告首提卫星互联网为新兴支柱产业</h3>
+                    <span class="text-xs text-gray-500">2026-03-05</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">2026年政府工作报告首次将航空航天定位为'新兴支柱产业'，商业航天连续三年被写入政府工作报告，措辞由'培育'变为'推动'。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 证券时报</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政策</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政府工作报告</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">商业航天</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">千帆星座在轨卫星达108颗，GW星座达136颗</h3>
+                    <span class="text-xs text-gray-500">2025-12-31</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">截至2025年底，两大星座在轨卫星均突破百颗。千帆星座完成6组发射部署108颗；GW星座累计发射17组部署136颗，进入'高密度发射、规模化部署'关键期。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: C114年终盘点</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星座部署</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">千帆星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">GW星座</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">天启星座一期27颗卫星组网完成正式运营</h3>
+                    <span class="text-xs text-gray-500">2025-05</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">我国首个低轨窄带卫星物联网星座天启星座一期组网完成，正式开启行业与消费级规模化应用新局面，为能源、农业、应急救援等行业提供服务。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 国电高科</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星座部署</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">天启星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">物联网</span>
+                    </div>
+                </div>
+            </div>
+            </div></section>
     </main>
+    
+    <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
     
     <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
             <p>本报告由 GitHub Actions 自动生成 | 数据更新时间：2026-04-10</p>
         </div>
     </footer>
+    
+    <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // 回到顶部按钮显示/隐藏控制
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+        
+        // Tab切换高亮
+        document.querySelectorAll('nav a').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('tab-inactive');
+                });
+                this.classList.remove('tab-inactive');
+                this.classList.add('tab-active');
+            });
+        });
+    </script>
 </body>
 </html>

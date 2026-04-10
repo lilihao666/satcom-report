@@ -20,6 +20,33 @@ TEMPLATE = '''<!DOCTYPE html>
         .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
         .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
         @media print { .no-print { display: none !important; } }
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+        #back-to-top.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -69,11 +96,44 @@ TEMPLATE = '''<!DOCTYPE html>
         {{content}}
     </main>
     
+    <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
     <footer class="bg-gray-800 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
             <p>本报告由 GitHub Actions 自动生成 | 数据更新时间：{{date}}</p>
         </div>
     </footer>
+    
+    <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    
+    <script>
+        // 回到顶部按钮显示/隐藏控制
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        });
+        
+        // Tab切换高亮
+        document.querySelectorAll('nav a').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('tab-inactive');
+                });
+                this.classList.remove('tab-inactive');
+                this.classList.add('tab-active');
+            });
+        });
+    </script>
 </body>
 </html>'''
 
