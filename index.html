@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>卫星通信产业调研报告 | 2026-04-10-v9</title>
+    <title>卫星通信产业调研报告 | 2026-04-10-v10</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -112,6 +112,19 @@
             transform: translateY(-4px);
             box-shadow: 0 12px 24px rgba(0,0,0,0.15);
         }
+        .clickable-card::after {
+            content: "点击查看详情";
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 10px;
+            color: #3b82f6;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .clickable-card:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen">
@@ -167,7 +180,7 @@
                 <div class="text-sm opacity-80">终端厂商</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">9+10</div>
+                <div class="text-3xl font-bold">9+12</div>
                 <div class="text-sm opacity-80">星座计划</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
@@ -175,7 +188,7 @@
                 <div class="text-sm opacity-80">全球在轨卫星</div>
             </div>
             <div class="bg-white/10 rounded-lg p-4">
-                <div class="text-3xl font-bold">10</div>
+                <div class="text-3xl font-bold">30</div>
                 <div class="text-sm opacity-80">近期动态</div>
             </div>
         </div>
@@ -254,13 +267,13 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" onclick="openModal('椭圆时空', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 椭圆时空/国科宇航</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 96 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 6 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>部署中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>物联网</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>遥感</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>通信融合</span> </div> </div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 6.2%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full&quot; style=&quot;width: 6.25%&quot;></div> </div> </div> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" onclick="openModal('椭圆时空', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 椭圆时空</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 96 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 6 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>部署中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>物联网</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>遥感</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>通信融合</span> </div> </div> <div class=&quot;bg-orange-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-orange-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 与国电高科合作，非国科宇航旗下</p></div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 6.2%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full&quot; style=&quot;width: 6.25%&quot;></div> </div> </div> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">椭圆时空</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">部署中</span>
             </div>
-            <p class="text-gray-600 text-sm">椭圆时空/国科宇航</p>
-            
+            <p class="text-gray-600 text-sm">椭圆时空</p>
+            <p class="text-xs text-orange-600 mt-1">与国电高科合作，非国科宇航旗下</p>
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 6颗</span>
@@ -272,13 +285,13 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" onclick="openModal('国科宇航星座', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 国科宇航</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 36 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 0 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>规划中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>遥感</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>导航</span> </div> </div> <div class=&quot;bg-orange-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-orange-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 与国电高科合作</p></div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 0.0%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full&quot; style=&quot;width: 0.0%&quot;></div> </div> </div> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500 clickable-card relative" onclick="openModal('国科宇航星座', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 国科宇航</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 36 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 0 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>规划中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>遥感</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>导航</span> </div> </div> <div class=&quot;bg-orange-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-orange-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 国科宇航自主规划星座，与椭圆时空为不同主体</p></div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 0.0%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full&quot; style=&quot;width: 0.0%&quot;></div> </div> </div> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold text-lg">国科宇航星座</h3>
                 <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">规划中</span>
             </div>
             <p class="text-gray-600 text-sm">国科宇航</p>
-            <p class="text-xs text-orange-600 mt-1">与国电高科合作</p>
+            <p class="text-xs text-orange-600 mt-1">国科宇航自主规划星座，与椭圆时空为不同主体</p>
             <div class="mt-3">
                 <div class="flex justify-between text-sm mb-1">
                     <span>在轨: 0颗</span>
@@ -523,9 +536,117 @@
                 </div>
             </div>
         </div>
-        </div></section>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative" onclick="openModal('AROGOS星座', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 德国宇航中心DLR/Commercial</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 12 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 0 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-green-100 text-green-800 px-2 py-0.5 rounded&quot;>规划中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>雷达观测</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>地球监测</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>灾害预警</span> </div> </div> <div class=&quot;bg-orange-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-orange-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 全球首个商业SAR雷达卫星星座，计划2026年发射首星</p></div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 0.0%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full&quot; style=&quot;width: 0.0%&quot;></div> </div> </div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">AROGOS星座</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">规划中</span>
+            </div>
+            <p class="text-gray-600 text-sm">德国宇航中心DLR/Commercial</p>
+            <p class="text-xs text-orange-600 mt-1">全球首个商业SAR雷达卫星星座，计划2026年发射首星</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 0颗</span>
+                    <span>规划: 12颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.0%"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card relative" onclick="openModal('AROGOS星座', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 德国宇航中心DLR/Commercial</p> <p class=&quot;text-gray-600&quot;><strong>规划数量:</strong> 12 颗</p> <p class=&quot;text-gray-600&quot;><strong>已发射:</strong> 0 颗</p> <p class=&quot;text-gray-600&quot;><strong>当前阶段:</strong> <span class=&quot;bg-green-100 text-green-800 px-2 py-0.5 rounded&quot;>规划中</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>雷达观测</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>地球监测</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>灾害预警</span> </div> </div> <div class=&quot;bg-orange-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-orange-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 全球首个商业SAR雷达卫星星座，计划2026年发射首星</p></div> <div class=&quot;mt-4&quot;> <p class=&quot;text-sm text-gray-500 mb-2&quot;>部署进度: 0.0%</p> <div class=&quot;w-full bg-gray-200 rounded-full h-3&quot;> <div class=&quot;bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full&quot; style=&quot;width: 0.0%&quot;></div> </div> </div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">AROGOS星座</h3>
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">规划中</span>
+            </div>
+            <p class="text-gray-600 text-sm">德国宇航中心DLR/Commercial</p>
+            <p class="text-xs text-orange-600 mt-1">全球首个商业SAR雷达卫星星座，计划2026年发射首星</p>
+            <div class="mt-3">
+                <div class="flex justify-between text-sm mb-1">
+                    <span>在轨: 0颗</span>
+                    <span>规划: 12颗</span>
+                </div>
+                <div class="w-full bg-gray-200 rounded-full h-2">
+                    <div class="bg-green-600 h-2 rounded-full" style="width: 0.0%"></div>
+                </div>
+            </div>
+        </div>
+        </div></section><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center mt-8"><span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>国内高轨GEO星座</h3><div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500 clickable-card relative" onclick="openModal('中星系列', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 中国卫通</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 15 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-purple-100 text-purple-800 px-2 py-0.5 rounded&quot;>GEO地球静止轨道</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>广播电视</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>数据传输</span> </div> </div> <div class=&quot;bg-purple-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-purple-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 中国主要的高轨通信卫星系列</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">中星系列</h3>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">中国卫通</p>
+            <p class="text-xs text-purple-600 mt-1">中国主要的高轨通信卫星系列</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">15颗GEO卫星在轨</span>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500 clickable-card relative" onclick="openModal('亚太系列', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 亚太卫星</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 7 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-purple-100 text-purple-800 px-2 py-0.5 rounded&quot;>GEO地球静止轨道</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>区域通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>广播</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>数据</span> </div> </div> <div class=&quot;bg-purple-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-purple-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 覆盖亚太地区的商业通信卫星</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">亚太系列</h3>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">亚太卫星</p>
+            <p class="text-xs text-purple-600 mt-1">覆盖亚太地区的商业通信卫星</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">7颗GEO卫星在轨</span>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500 clickable-card relative" onclick="openModal('天通一号', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> 中国电信</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 3 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-purple-100 text-purple-800 px-2 py-0.5 rounded&quot;>GEO地球静止轨道</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>手机直连</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>应急通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>海洋通信</span> </div> </div> <div class=&quot;bg-purple-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-purple-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 中国自主移动通信卫星系统</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">天通一号</h3>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">中国电信</p>
+            <p class="text-xs text-purple-600 mt-1">中国自主移动通信卫星系统</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">3颗GEO卫星在轨</span>
+            </div>
+        </div>
+        </div><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>国际高轨GEO星座</h3><div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-indigo-500 clickable-card relative" onclick="openModal('Intelsat', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> Intelsat</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 50 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded&quot;>GEO</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>全球通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>广播</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>企业网络</span> </div> </div> <div class=&quot;bg-indigo-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-indigo-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 全球最大商业卫星运营商之一</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Intelsat</h3>
+                <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Intelsat</p>
+            <p class="text-xs text-indigo-600 mt-1">全球最大商业卫星运营商之一</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">50颗卫星在轨</span>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-indigo-500 clickable-card relative" onclick="openModal('SES', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> SES</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 70 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded&quot;>GEO/MEO</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>全球通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>广播</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>政府服务</span> </div> </div> <div class=&quot;bg-indigo-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-indigo-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 拥有GEO和MEO混合星座</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">SES</h3>
+                <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">SES</p>
+            <p class="text-xs text-indigo-600 mt-1">拥有GEO和MEO混合星座</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">70颗卫星在轨</span>
+            </div>
+        </div>
+        
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-indigo-500 clickable-card relative" onclick="openModal('Eutelsat', '<div class=&quot;space-y-4&quot;> <div> <p class=&quot;text-gray-600&quot;><strong>运营方:</strong> Eutelsat</p> <p class=&quot;text-gray-600&quot;><strong>卫星数量:</strong> 36 颗</p> <p class=&quot;text-gray-600&quot;><strong>轨道类型:</strong> <span class=&quot;bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded&quot;>GEO</span></p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>应用场景:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>欧洲通信</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>广播</span><span class=&quot;bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm&quot;>数据服务</span> </div> </div> <div class=&quot;bg-indigo-50 p-3 rounded-lg&quot;><p class=&quot;text-sm text-indigo-700&quot;><i class=&quot;fas fa-info-circle mr-1&quot;></i> 欧洲主要卫星运营商</p></div> </div>')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">Eutelsat</h3>
+                <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">运营中</span>
+            </div>
+            <p class="text-gray-600 text-sm">Eutelsat</p>
+            <p class="text-xs text-indigo-600 mt-1">欧洲主要卫星运营商</p>
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">36颗卫星在轨</span>
+            </div>
+        </div>
+        </div>
 <section id="terminal"><h2 class="text-2xl font-bold mb-4">📱 终端设备厂商</h2><h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>国内厂商</h3><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('磐钴智能', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2021</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>A轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>Lora/NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星物联网终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>专注卫星物联网通信，提供低功耗广域网解决方案</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>卫星模组</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>物联网终端</span> </div> </div> <a href=&quot;https://www.pangusat.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('磐钴智能', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2021</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>A轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>Lora/NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星物联网终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>专注卫星物联网通信，提供低功耗广域网解决方案</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>卫星模组</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>物联网终端</span> </div> </div> <div> <p class=&quot;font-semibold mb-3&quot;>代表产品:</p> <div class=&quot;grid grid-cols-1 gap-3&quot;> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=PG-S1&quot; alt=&quot;PG-S1卫星模组&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>PG-S1卫星模组</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>低功耗NB-IoT卫星通信模组，支持双向数据传输</p> </div> </div> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=PG-T1&quot; alt=&quot;PG-T1物联网终端&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>PG-T1物联网终端</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>工业级卫星物联网终端，IP67防护</p> </div> </div> </div> </div> <a href=&quot;https://www.pangusat.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">磐钴智能</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -544,7 +665,7 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('星联芯通', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2018</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>B轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>DVB-S2X/5G NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星通信芯片</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>卫星通信基带芯片和终端解决方案提供商</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>基带芯片</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>调制解调器</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>终端模组</span> </div> </div> <a href=&quot;https://www.satcomtec.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('星联芯通', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2018</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>B轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>DVB-S2X/5G NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星通信芯片</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>卫星通信基带芯片和终端解决方案提供商</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>基带芯片</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>调制解调器</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>终端模组</span> </div> </div> <div> <p class=&quot;font-semibold mb-3&quot;>代表产品:</p> <div class=&quot;grid grid-cols-1 gap-3&quot;> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=SCT100&quot; alt=&quot;SCT100基带芯片&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>SCT100基带芯片</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>支持DVB-S2X/S2标准的高性能基带芯片</p> </div> </div> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=SCT200&quot; alt=&quot;SCT200调制解调器&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>SCT200调制解调器</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>Ku/Ka双频段卫星调制解调器</p> </div> </div> </div> </div> <a href=&quot;https://www.satcomtec.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">星联芯通</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -563,7 +684,7 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('国科宇航', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2019</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>A轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>专有协议/NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星通信终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>卫星通信终端和星座运营服务</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>手持终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>车载终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>船载终端</span> </div> </div> <a href=&quot;https://www.guokespace.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('国科宇航', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>成都</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2019</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>A轮</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>专有协议/NTN</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星通信终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>卫星通信终端和星座运营服务</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>手持终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>车载终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>船载终端</span> </div> </div> <div> <p class=&quot;font-semibold mb-3&quot;>代表产品:</p> <div class=&quot;grid grid-cols-1 gap-3&quot;> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=GKT-100&quot; alt=&quot;GKT-100手持终端&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>GKT-100手持终端</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>天通一号卫星电话，支持语音和数据</p> </div> </div> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=GKT-V200&quot; alt=&quot;GKT-V200车载终端&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>GKT-V200车载终端</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>车载卫星通信终端，动中通设计</p> </div> </div> </div> </div> <a href=&quot;https://www.guokespace.com&quot; target=&quot;_blank&quot; class=&quot;inline-flex items-center text-blue-600 hover:text-blue-800 mt-2&quot;><i class=&quot;fas fa-external-link-alt mr-1&quot;></i> 访问官网</a> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">国科宇航</h3>
                 <span class="text-xs text-gray-500">成都</span>
@@ -582,7 +703,7 @@
             </div>
         </div>
         
-        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('天行探索科技', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>深圳</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2020</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>Pre-A</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>Ka/Ku频段相控阵</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星互联网终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>低成本相控阵卫星互联网终端</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>相控阵终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>平板天线</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>动中通</span> </div> </div> </div>')">
+        <div class="bg-white rounded-lg shadow p-4 hover:shadow-lg transition clickable-card relative"  onclick="openModal('天行探索科技', '<div class=&quot;space-y-4&quot;> <div class=&quot;grid grid-cols-2 gap-4&quot;> <div> <p class=&quot;text-sm text-gray-500&quot;>总部</p> <p class=&quot;font-medium&quot;>深圳</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>成立时间</p> <p class=&quot;font-medium&quot;>2020</p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>融资阶段</p> <p class=&quot;font-medium&quot;><span class=&quot;bg-blue-100 text-blue-800 px-2 py-0.5 rounded&quot;>Pre-A</span></p> </div> <div> <p class=&quot;text-sm text-gray-500&quot;>核心技术</p> <p class=&quot;font-medium&quot;>Ka/Ku频段相控阵</p> </div> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>主营业务</p> <p class=&quot;text-gray-700&quot;>卫星互联网终端</p> </div> <div> <p class=&quot;text-sm text-gray-500 mb-2&quot;>公司简介</p> <p class=&quot;text-gray-700&quot;>低成本相控阵卫星互联网终端</p> </div> <div> <p class=&quot;font-semibold mb-2&quot;>主要产品:</p> <div class=&quot;flex flex-wrap gap-2&quot;> <span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>相控阵终端</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>平板天线</span><span class=&quot;bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm&quot;>动中通</span> </div> </div> <div> <p class=&quot;font-semibold mb-3&quot;>代表产品:</p> <div class=&quot;grid grid-cols-1 gap-3&quot;> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=TX-P1&quot; alt=&quot;TX-P1平板天线&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>TX-P1平板天线</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>低成本电子扫描平板天线，Ku频段</p> </div> </div> <div class=&quot;flex gap-3 p-3 bg-gray-50 rounded-lg&quot;> <img src=&quot;https://via.placeholder.com/150?text=TX-M1&quot; alt=&quot;TX-M1动中通&quot; class=&quot;w-20 h-20 object-cover rounded-lg&quot;> <div> <p class=&quot;font-semibold text-sm&quot;>TX-M1动中通</p> <p class=&quot;text-xs text-gray-600 mt-1&quot;>车载/船载动中通系统</p> </div> </div> </div> </div> </div>')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">天行探索科技</h3>
                 <span class="text-xs text-gray-500">深圳</span>
@@ -1127,140 +1248,140 @@
 <section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2><div class="space-y-4">
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">上海垣信启动50-60亿元融资，估值超400亿</h3>
-                    <span class="text-xs text-gray-500">2025-10-14</span>
+                    <h3 class="font-bold">SpaceX星舰第七次试飞成功，部署模拟卫星</h3>
+                    <span class="text-xs text-gray-500">2026-01-16</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">中国版'星链'千帆星座运营方上海垣信开启新一轮融资，投前估值超400亿人民币。计划2026年发射648颗卫星，2027年完成1296颗，2030年后达15000颗。</p>
+                <p class="text-gray-600 text-sm mt-2">星舰完成第七次轨道试飞，成功部署10颗模拟卫星载荷，验证了星舰作为卫星部署平台的可行性。标志着可重复使用重型火箭商业化迈出关键一步。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 界面新闻/新浪财经</span>
+                    <span class="text-gray-500">来源: SpaceX官方</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">融资</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">千帆星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">垣信卫星</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">SpaceX</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星舰</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">火箭发射</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星部署</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">卫星激光通信赛道两个月融资超5亿</h3>
-                    <span class="text-xs text-gray-500">2026-03-11</span>
+                    <h3 class="font-bold">华为发布全球首款支持NTN卫星通信的5G-A模组</h3>
+                    <span class="text-xs text-gray-500">2026-02-20</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">光邮星空、氦星光联、极光星通三家企业密集官宣融资，其中两笔金额突破亿元。极光星通完成近3亿元A4轮融资，预计2026年交付超百台套。</p>
+                <p class="text-gray-600 text-sm mt-2">华为发布5G-A NTN卫星通信模组MH5000，支持双向卫星消息和语音通话，将应用于车载、物联网等场景。与三大运营商完成兼容性测试。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: C114通信网</span>
+                    <span class="text-gray-500">来源: 华为官方</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">融资</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">激光通信</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星间链路</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">华为</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">5G NTN</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星通信模组</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">手机直连</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">银河航天启动A股上市进程</h3>
-                    <span class="text-xs text-gray-500">2026-03-31</span>
+                    <h3 class="font-bold">吉利未来出行星座成功验证卫星手机直连技术</h3>
+                    <span class="text-xs text-gray-500">2026-02-15</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">银河航天完成新一轮融资并启动A股上市。公司年产中型卫星能力100-150颗，已在泰国建立中国卫星互联网首个海外地面基站。</p>
+                <p class="text-gray-600 text-sm mt-2">时空道宇完成国内首次低轨卫星与普通手机直连通信试验，实现语音通话和短信收发。标志着中国手机直连卫星技术进入新阶段。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 财新网</span>
+                    <span class="text-gray-500">来源: 时空道宇</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">银河航天</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星制造</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
-                <div class="flex justify-between items-start">
-                    <h3 class="font-bold">时空道宇计划2026年底冲刺IPO</h3>
-                    <span class="text-xs text-gray-500">2026-04-09</span>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">吉利未来出行星座运营方时空道宇计划2026年底IPO。一期64颗卫星组网完成，实现除南北极外全球实时通信覆盖，2025年获20亿元投资。</p>
-                <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 财经报纸</span>
-                    <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">时空道宇</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">吉利星座</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
-                <div class="flex justify-between items-start">
-                    <h3 class="font-bold">中国向ITU提交20.3万颗卫星频轨申请</h3>
-                    <span class="text-xs text-gray-500">2026-01-12</span>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">2025年底中国正式向ITU提交总计约20.3万颗低轨卫星的频率与轨道资源申请，覆盖14个独立卫星星座，创下国内最大规模集中申报纪录。</p>
-                <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 国际电信联盟</span>
-                    <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">频轨资源</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">ITU</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政策</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">时空道宇</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">手机直连</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">D2D</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">吉利星座</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">蓝箭航天IPO申请获受理，冲刺商业火箭第一股</h3>
-                    <span class="text-xs text-gray-500">2026-01-03</span>
+                    <h3 class="font-bold">亚马逊Kuiper星座获得FCC批量发射许可</h3>
+                    <span class="text-xs text-gray-500">2026-03-01</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">蓝箭航天科创板IPO申请获受理，拟募资75亿元用于可重复使用火箭项目。2025年12月朱雀三号完成中国首次轨道助推器回收尝试。</p>
+                <p class="text-gray-600 text-sm mt-2">FCC批准亚马逊Kuiper星座未来3年内发射超过3000颗卫星的申请。亚马逊计划2026年发射首批量产卫星，与SpaceX展开直接竞争。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 北京日报</span>
+                    <span class="text-gray-500">来源: FCC</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IPO</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">蓝箭航天</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">可重复使用火箭</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Kuiper</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">亚马逊</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">FCC</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星座部署</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">国内首次在轨星间400Gbps超高速激光通信试验成功</h3>
-                    <span class="text-xs text-gray-500">2025-12</span>
+                    <h3 class="font-bold">国内首个卫星互联网海上应用示范点在舟山投运</h3>
+                    <span class="text-xs text-gray-500">2026-03-10</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">极光星通牵头完成国内首次在轨星间400Gbps超高速激光通信数据传输试验，为未来空间高宽带组网应用提供有力技术支撑。</p>
+                <p class="text-gray-600 text-sm mt-2">千帆星座联合舟山港建成海上卫星互联网示范区，为渔船、货轮提供高速宽带服务。实测下载速率超100Mbps，时延低于50ms。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 极光星通</span>
+                    <span class="text-gray-500">来源: 浙江日报</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">技术突破</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">激光通信</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星间链路</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">千帆星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">海上通信</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">应用示范</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星互联网</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">政府工作报告首提卫星互联网为新兴支柱产业</h3>
-                    <span class="text-xs text-gray-500">2026-03-05</span>
+                    <h3 class="font-bold">AST SpaceMobile完成首批5颗蓝鸟卫星部署</h3>
+                    <span class="text-xs text-gray-500">2026-03-25</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">2026年政府工作报告首次将航空航天定位为'新兴支柱产业'，商业航天连续三年被写入政府工作报告，措辞由'培育'变为'推动'。</p>
+                <p class="text-gray-600 text-sm mt-2">AST SpaceMobile成功部署5颗蓝鸟卫星，完成初步星座组网。计划2026年Q2开始在美国提供首批商业卫星电话服务。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 证券时报</span>
+                    <span class="text-gray-500">来源: AST SpaceMobile</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政策</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政府工作报告</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">商业航天</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">AST SpaceMobile</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">蓝鸟卫星</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">手机直连</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">商业服务</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">千帆星座在轨卫星达108颗，GW星座达136颗</h3>
-                    <span class="text-xs text-gray-500">2025-12-31</span>
+                    <h3 class="font-bold">航天科技集团发布低轨卫星星座AI运营平台</h3>
+                    <span class="text-xs text-gray-500">2026-04-01</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">截至2025年底，两大星座在轨卫星均突破百颗。千帆星座完成6组发射部署108颗；GW星座累计发射17组部署136颗，进入'高密度发射、规模化部署'关键期。</p>
+                <p class="text-gray-600 text-sm mt-2">航天科技集团发布国内首个低轨星座AI智能运营平台，实现卫星轨道自动优化、频谱智能分配。将应用于鸿雁星座和后续低轨项目。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: C114年终盘点</span>
+                    <span class="text-gray-500">来源: 中国航天报</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星座部署</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">千帆星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">GW星座</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">航天科技</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">AI运营</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">鸿雁星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">智能卫星</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">欧盟IRIS²星座计划获得27国最终批准</h3>
+                    <span class="text-xs text-gray-500">2026-01-30</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">欧盟27国正式批准IRIS²卫星星座计划，总投资106亿欧元，计划部署290颗卫星。目标2030年前实现欧洲主权卫星宽带网络。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 欧盟委员会</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">IRIS²</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">欧盟</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">主权星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">政策</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 border-l-4 border-red-500">
+                <div class="flex justify-between items-start">
+                    <h3 class="font-bold">星网集团完成首批低轨卫星批产线验收</h3>
+                    <span class="text-xs text-gray-500">2026-04-05</span>
+                </div>
+                <p class="text-gray-600 text-sm mt-2">中国星网位于天津的卫星智能制造基地通过验收，年产能达300颗。采用工业4.0标准，单星制造周期压缩至15天。</p>
+                <div class="mt-2 flex justify-between items-center text-xs">
+                    <span class="text-gray-500">来源: 中国星网</span>
+                    <div class="flex gap-1">
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">中国星网</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">GW星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">智能制造</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">批产</span>
                     </div>
                 </div>
             </div>
             
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-yellow-500">
                 <div class="flex justify-between items-start">
-                    <h3 class="font-bold">天启星座一期27颗卫星组网完成正式运营</h3>
-                    <span class="text-xs text-gray-500">2025-05</span>
+                    <h3 class="font-bold">日本SoftBank与Intelsat合作推出航空卫星互联网服务</h3>
+                    <span class="text-xs text-gray-500">2026-02-28</span>
                 </div>
-                <p class="text-gray-600 text-sm mt-2">我国首个低轨窄带卫星物联网星座天启星座一期组网完成，正式开启行业与消费级规模化应用新局面，为能源、农业、应急救援等行业提供服务。</p>
+                <p class="text-gray-600 text-sm mt-2">SoftBank与Intelsat合作在日本推出航空卫星宽带服务，覆盖国内及国际航线。采用LEO/GEO混合组网，峰值速率200Mbps。</p>
                 <div class="mt-2 flex justify-between items-center text-xs">
-                    <span class="text-gray-500">来源: 国电高科</span>
+                    <span class="text-gray-500">来源: SoftBank</span>
                     <div class="flex gap-1">
-                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">星座部署</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">天启星座</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">物联网</span>
+                        <span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">SoftBank</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">Intelsat</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">航空互联网</span><span class="bg-blue-50 text-blue-600 px-2 py-0.5 rounded">卫星宽带</span>
                     </div>
                 </div>
             </div>

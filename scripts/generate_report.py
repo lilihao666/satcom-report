@@ -406,6 +406,89 @@ def generate_content(data):
         ''')
     
     constellation_html.append('</div></section>')
+    
+    # 高轨GEO星座 - 国内
+    constellation_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center mt-8"><span class="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>国内高轨GEO星座</h3>')
+    constellation_html.append('<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">')
+    
+    for c in data["constellations"].get("geo_domestic", []):
+        note = c.get("note", "")
+        note_html = f'<p class="text-xs text-purple-600 mt-1">{note}</p>' if note else ""
+        
+        detail_content = f'''
+        <div class="space-y-4">
+            <div>
+                <p class="text-gray-600"><strong>运营方:</strong> {c["operator"]}</p>
+                <p class="text-gray-600"><strong>卫星数量:</strong> {c["launched"]} 颗</p>
+                <p class="text-gray-600"><strong>轨道类型:</strong> <span class="bg-purple-100 text-purple-800 px-2 py-0.5 rounded">GEO地球静止轨道</span></p>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">应用场景:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(f'<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{uc}</span>' for uc in c.get("use_cases", []))}
+                </div>
+            </div>
+            {f'<div class="bg-purple-50 p-3 rounded-lg"><p class="text-sm text-purple-700"><i class="fas fa-info-circle mr-1"></i> {note}</p></div>' if note else ''}
+        </div>
+        '''
+        
+        constellation_html.append(f'''
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500 clickable-card relative" onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">{c["name"]}</h3>
+                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">{c["stage"]}</span>
+            </div>
+            <p class="text-gray-600 text-sm">{c["operator"]}</p>
+            {note_html}
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">{c["launched"]}颗GEO卫星在轨</span>
+            </div>
+        </div>
+        ''')
+    
+    constellation_html.append('</div>')
+    
+    # 高轨GEO星座 - 国际
+    constellation_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-indigo-500 rounded-full mr-2"></span>国际高轨GEO星座</h3>')
+    constellation_html.append('<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">')
+    
+    for c in data["constellations"].get("geo_international", []):
+        note = c.get("note", "")
+        note_html = f'<p class="text-xs text-indigo-600 mt-1">{note}</p>' if note else ""
+        
+        detail_content = f'''
+        <div class="space-y-4">
+            <div>
+                <p class="text-gray-600"><strong>运营方:</strong> {c["operator"]}</p>
+                <p class="text-gray-600"><strong>卫星数量:</strong> {c["launched"]:,} 颗</p>
+                <p class="text-gray-600"><strong>轨道类型:</strong> <span class="bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">{c.get("orbit", "GEO")}</span></p>
+            </div>
+            <div>
+                <p class="font-semibold mb-2">应用场景:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(f'<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{uc}</span>' for uc in c.get("use_cases", []))}
+                </div>
+            </div>
+            {f'<div class="bg-indigo-50 p-3 rounded-lg"><p class="text-sm text-indigo-700"><i class="fas fa-info-circle mr-1"></i> {note}</p></div>' if note else ''}
+        </div>
+        '''
+        
+        constellation_html.append(f'''
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-indigo-500 clickable-card relative" onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
+            <div class="flex justify-between items-start">
+                <h3 class="font-bold text-lg">{c["name"]}</h3>
+                <span class="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">{c["stage"]}</span>
+            </div>
+            <p class="text-gray-600 text-sm">{c["operator"]}</p>
+            {note_html}
+            <div class="mt-3">
+                <span class="text-sm text-gray-500">{c["launched"]:,}颗卫星在轨</span>
+            </div>
+        </div>
+        ''')
+    
+    constellation_html.append('</div>')
+    
     content.append("".join(constellation_html))
     
     # 终端层 - 国内厂商
@@ -449,6 +532,22 @@ def generate_content(data):
                     {''.join(f'<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">{p}</span>' for p in company.get("products", []))}
                 </div>
             </div>
+            {f'''
+            <div>
+                <p class="font-semibold mb-3">代表产品:</p>
+                <div class="grid grid-cols-1 gap-3">
+                    {''.join(f'''
+                    <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                        <img src="{fp.get("image", "")}" alt="{fp.get("name", "")}" class="w-20 h-20 object-cover rounded-lg">
+                        <div>
+                            <p class="font-semibold text-sm">{fp.get("name", "")}</p>
+                            <p class="text-xs text-gray-600 mt-1">{fp.get("description", "")}</p>
+                        </div>
+                    </div>
+                    ''' for fp in company.get("featured_products", []))}
+                </div>
+            </div>
+            ''' if company.get("featured_products") else ''}
             {f'<a href="{company["website"]}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-2"><i class="fas fa-external-link-alt mr-1"></i> 访问官网</a>' if company.get("website") else ''}
         </div>
         '''
