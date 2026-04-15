@@ -23,7 +23,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=国网/GW星座",
           "发射动态": "https://www.baidu.com/s?wd=国网/GW星座+发射"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "千帆星座",
@@ -45,7 +46,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=千帆星座",
           "发射动态": "https://www.baidu.com/s?wd=千帆星座+发射"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "天启星座",
@@ -66,7 +68,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=天启星座",
           "发射动态": "https://www.baidu.com/s?wd=天启星座+发射"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "吉利未来星座",
@@ -89,7 +92,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=吉利未来星座",
           "发射动态": "https://www.baidu.com/s?wd=吉利未来星座+发射"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "椭圆时空",
@@ -111,7 +115,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=椭圆时空",
           "发射动态": "https://www.baidu.com/s?wd=椭圆时空+发射"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "国科宇航星座",
@@ -134,7 +139,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=国科宇航星座",
           "发射动态": "https://www.baidu.com/s?wd=国科宇航星座+发射"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "钧天航宇星座",
@@ -156,7 +162,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=钧天航宇星座",
           "发射动态": "https://www.baidu.com/s?wd=钧天航宇星座+发射"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "鸿雁星座",
@@ -176,7 +183,8 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=鸿雁星座",
           "发射动态": "https://www.baidu.com/s?wd=鸿雁星座+发射"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "虹云星座",
@@ -195,6 +203,29 @@
         "detail_links": {
           "搜索": "https://www.baidu.com/s?wd=虹云星座",
           "发射动态": "https://www.baidu.com/s?wd=虹云星座+发射"
+        },
+        "category": "卫星互联网"
+      },
+      {
+        "name": "蓝凌星通",
+        "operator": "蓝凌星通",
+        "planned": 12,
+        "launched": 0,
+        "stage": "规划中",
+        "use_cases": [
+          "物联网",
+          "数据采集",
+          "行业应用"
+        ],
+        "category": "卫星物联网",
+        "inter_satellite_link": {
+          "enabled": false,
+          "tech": "无",
+          "note": "规划中"
+        },
+        "detail_links": {
+          "搜索": "https://www.baidu.com/s?wd=蓝凌星通",
+          "发射动态": "https://www.baidu.com/s?wd=蓝凌星通+发射"
         }
       }
     ],
@@ -219,7 +250,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Starlink+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "OneWeb",
@@ -239,7 +271,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=OneWeb+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Kuiper",
@@ -260,7 +293,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Kuiper+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Iridium NEXT",
@@ -281,7 +315,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Iridium NEXT+satellite+constellation"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "Telesat Lightspeed",
@@ -303,7 +338,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Telesat Lightspeed+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "AST SpaceMobile",
@@ -323,7 +359,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=AST SpaceMobile+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Lynk",
@@ -342,7 +379,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Lynk+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Omnispace",
@@ -363,7 +401,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Omnispace+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Globalstar",
@@ -384,7 +423,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Globalstar+satellite+constellation"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "Inmarsat",
@@ -405,7 +445,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Inmarsat+satellite+constellation"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "AROGOS星座",
@@ -426,7 +467,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=AROGOS星座+satellite+constellation"
-        }
+        },
+        "category": "卫星物联网"
       },
       {
         "name": "AROGOS星座",
@@ -447,7 +489,8 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=AROGOS星座+satellite+constellation"
-        }
+        },
+        "category": "卫星物联网"
       }
     ],
     "geo_domestic": [
@@ -468,7 +511,8 @@
           "enabled": false,
           "tech": "无",
           "note": "GEO卫星，无需星间链路"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "亚太系列",
@@ -487,7 +531,8 @@
           "enabled": false,
           "tech": "无",
           "note": "GEO卫星，无需星间链路"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "天通一号",
@@ -506,7 +551,8 @@
           "enabled": false,
           "tech": "无",
           "note": "GEO卫星，无需星间链路"
-        }
+        },
+        "category": "卫星互联网"
       }
     ],
     "geo_international": [
@@ -527,7 +573,8 @@
           "enabled": false,
           "tech": "无",
           "note": "GEO卫星"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "SES",
@@ -547,7 +594,8 @@
           "tech": "激光星间链路(O3b mPOWER)",
           "bandwidth": "未知",
           "note": "仅MEO部分"
-        }
+        },
+        "category": "卫星互联网"
       },
       {
         "name": "Eutelsat",
@@ -566,7 +614,8 @@
           "enabled": false,
           "tech": "无",
           "note": "GEO卫星"
-        }
+        },
+        "category": "卫星互联网"
       }
     ]
   },
@@ -602,7 +651,8 @@
           "天眼查": "https://www.tianyancha.com/search?key=磐钴智能",
           "产品搜索": "https://www.baidu.com/s?wd=磐钴智能+产品",
           "官网": "https://www.pangusat.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "星联芯通",
@@ -635,7 +685,8 @@
           "天眼查": "https://www.tianyancha.com/search?key=星联芯通",
           "产品搜索": "https://www.baidu.com/s?wd=星联芯通+产品",
           "官网": "https://www.satcomtec.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "国科宇航",
@@ -668,7 +719,8 @@
           "天眼查": "https://www.tianyancha.com/search?key=国科宇航",
           "产品搜索": "https://www.baidu.com/s?wd=国科宇航+产品",
           "官网": "https://www.guokespace.com"
-        }
+        },
+        "category": "卫星互联网终端"
       },
       {
         "name": "天行探索科技",
@@ -700,7 +752,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=天行探索科技+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=天行探索科技",
           "产品搜索": "https://www.baidu.com/s?wd=天行探索科技+产品"
-        }
+        },
+        "category": "卫星互联网终端"
       },
       {
         "name": "华美钛",
@@ -719,7 +772,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=华美钛+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=华美钛",
           "产品搜索": "https://www.baidu.com/s?wd=华美钛+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "鹏鹄物宇",
@@ -734,12 +788,13 @@
           "开发套件"
         ],
         "description": "5G NTN卫星通信终端和测试解决方案",
-        "website": "",
+        "website": "https://www.penghusat.com",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=鹏鹄物宇+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=鹏鹄物宇",
           "产品搜索": "https://www.baidu.com/s?wd=鹏鹄物宇+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "环天智慧",
@@ -753,12 +808,13 @@
           "数据服务"
         ],
         "description": "卫星数据应用和行业解决方案",
-        "website": "",
+        "website": "https://www.htzhihui.com",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=环天智慧+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=环天智慧",
           "产品搜索": "https://www.baidu.com/s?wd=环天智慧+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "星途智联",
@@ -777,7 +833,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=星途智联+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=星途智联",
           "产品搜索": "https://www.baidu.com/s?wd=星途智联+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "中国时空",
@@ -796,7 +853,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=中国时空+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=中国时空",
           "产品搜索": "https://www.baidu.com/s?wd=中国时空+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "中兵北斗",
@@ -816,7 +874,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=中兵北斗+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=中兵北斗",
           "产品搜索": "https://www.baidu.com/s?wd=中兵北斗+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "太极疆泰",
@@ -835,7 +894,8 @@
           "百度搜索": "https://www.baidu.com/s?wd=太极疆泰+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=太极疆泰",
           "产品搜索": "https://www.baidu.com/s?wd=太极疆泰+产品"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "航天金美",
@@ -855,6 +915,29 @@
           "百度搜索": "https://www.baidu.com/s?wd=航天金美+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=航天金美",
           "产品搜索": "https://www.baidu.com/s?wd=航天金美+产品"
+        },
+        "category": "卫星物联网终端"
+      },
+      {
+        "name": "南京控维通信",
+        "city": "南京",
+        "focus": "卫星互联网终端",
+        "tech": "VSAT/卫星通信",
+        "category": "卫星互联网终端",
+        "founded": "2018",
+        "funding": "B轮",
+        "products": [
+          "VSAT终端",
+          "卫星调制解调器",
+          "动中通"
+        ],
+        "description": "卫星通信VSAT终端和系统集成解决方案提供商",
+        "website": "http://www.ctrlsky.com",
+        "detail_links": {
+          "百度搜索": "https://www.baidu.com/s?wd=南京控维通信+卫星通信",
+          "天眼查": "https://www.tianyancha.com/search?key=南京控维通信",
+          "产品搜索": "https://www.baidu.com/s?wd=南京控维通信+产品",
+          "官网": "http://www.ctrlsky.com"
         }
       }
     ],
@@ -877,7 +960,8 @@
           "Google搜索": "https://www.google.com/search?q=Kymeta+satellite",
           "产品搜索": "https://www.google.com/search?q=Kymeta+product",
           "官网": "https://www.kymetacorp.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "CesiumAstro",
@@ -897,7 +981,8 @@
           "Google搜索": "https://www.google.com/search?q=CesiumAstro+satellite",
           "产品搜索": "https://www.google.com/search?q=CesiumAstro+product",
           "官网": "https://www.cesiumastro.com"
-        }
+        },
+        "category": "卫星互联网终端"
       },
       {
         "name": "SatixFy",
@@ -917,7 +1002,8 @@
           "Google搜索": "https://www.google.com/search?q=SatixFy+satellite",
           "产品搜索": "https://www.google.com/search?q=SatixFy+product",
           "官网": "https://www.satixfy.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "Hughes Network",
@@ -937,7 +1023,8 @@
           "Google搜索": "https://www.google.com/search?q=Hughes Network+satellite",
           "产品搜索": "https://www.google.com/search?q=Hughes Network+product",
           "官网": "https://www.hughesnet.com"
-        }
+        },
+        "category": "卫星互联网终端"
       },
       {
         "name": "Thales Alenia",
@@ -957,7 +1044,8 @@
           "Google搜索": "https://www.google.com/search?q=Thales Alenia+satellite",
           "产品搜索": "https://www.google.com/search?q=Thales Alenia+product",
           "官网": "https://www.thalesaleniaspace.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "Gilat Satellite",
@@ -977,7 +1065,8 @@
           "Google搜索": "https://www.google.com/search?q=Gilat Satellite+satellite",
           "产品搜索": "https://www.google.com/search?q=Gilat Satellite+product",
           "官网": "https://www.gilat.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "Norsat",
@@ -997,7 +1086,8 @@
           "Google搜索": "https://www.google.com/search?q=Norsat+satellite",
           "产品搜索": "https://www.google.com/search?q=Norsat+product",
           "官网": "https://www.norsat.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "Cobham Satcom",
@@ -1017,7 +1107,8 @@
           "Google搜索": "https://www.google.com/search?q=Cobham Satcom+satellite",
           "产品搜索": "https://www.google.com/search?q=Cobham Satcom+product",
           "官网": "https://www.cobhamsatcom.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "Intellian",
@@ -1037,7 +1128,8 @@
           "Google搜索": "https://www.google.com/search?q=Intellian+satellite",
           "产品搜索": "https://www.google.com/search?q=Intellian+product",
           "官网": "https://www.intelliantech.com"
-        }
+        },
+        "category": "卫星物联网终端"
       },
       {
         "name": "SpaceX Starlink",
@@ -1057,7 +1149,8 @@
           "Google搜索": "https://www.google.com/search?q=SpaceX Starlink+satellite",
           "产品搜索": "https://www.google.com/search?q=SpaceX Starlink+product",
           "官网": "https://www.starlink.com"
-        }
+        },
+        "category": "卫星物联网终端"
       }
     ]
   },
@@ -1346,7 +1439,8 @@
           "火箭发射",
           "星座部署"
         ]
-      }
+      },
+      "url": "https://www.spacex.com"
     },
     {
       "title": "华为发布全球首款支持NTN卫星通信的5G-A模组",
@@ -1365,7 +1459,8 @@
           "终端设备",
           "芯片模组"
         ]
-      }
+      },
+      "url": "https://www.huawei.com"
     },
     {
       "title": "吉利未来出行星座成功验证卫星手机直连技术",
@@ -1384,7 +1479,8 @@
           "手机直连",
           "星座运营"
         ]
-      }
+      },
+      "url": "https://www.geespace.com"
     },
     {
       "title": "亚马逊Kuiper星座获得FCC批量发射许可",
@@ -1403,7 +1499,8 @@
           "政策监管",
           "星座运营"
         ]
-      }
+      },
+      "url": "https://www.fcc.gov"
     },
     {
       "title": "国内首个卫星互联网海上应用示范点在舟山投运",
@@ -1422,7 +1519,8 @@
           "行业应用",
           "海洋通信"
         ]
-      }
+      },
+      "url": "http://www.zjnews.cn"
     },
     {
       "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
@@ -1441,7 +1539,8 @@
           "手机直连",
           "商业服务"
         ]
-      }
+      },
+      "url": "https://www.ast-science.com"
     },
     {
       "title": "航天科技集团发布低轨卫星星座AI运营平台",
@@ -1460,7 +1559,8 @@
           "技术突破",
           "AI应用"
         ]
-      }
+      },
+      "url": "http://www.spacechina.com"
     },
     {
       "title": "欧盟IRIS²星座计划获得27国最终批准",
@@ -1479,7 +1579,8 @@
           "政策监管",
           "国际竞争"
         ]
-      }
+      },
+      "url": "https://ec.europa.eu"
     },
     {
       "title": "星网集团完成首批低轨卫星批产线验收",
@@ -1498,7 +1599,8 @@
           "卫星制造",
           "产能建设"
         ]
-      }
+      },
+      "url": "http://www.chinasatnet.com"
     },
     {
       "title": "日本SoftBank与Intelsat合作推出航空卫星互联网服务",
@@ -1517,7 +1619,8 @@
           "行业应用",
           "航空通信"
         ]
-      }
+      },
+      "url": "https://www.softbank.jp"
     },
     {
       "title": "SpaceX星舰第七次试飞成功，部署模拟卫星",
@@ -1536,7 +1639,8 @@
           "火箭发射",
           "星座部署"
         ]
-      }
+      },
+      "url": "https://www.spacex.com"
     },
     {
       "title": "华为发布全球首款支持NTN卫星通信的5G-A模组",
@@ -1555,7 +1659,8 @@
           "终端设备",
           "芯片模组"
         ]
-      }
+      },
+      "url": "https://www.huawei.com"
     },
     {
       "title": "吉利未来出行星座成功验证卫星手机直连技术",
@@ -1574,7 +1679,8 @@
           "手机直连",
           "星座运营"
         ]
-      }
+      },
+      "url": "https://www.geespace.com"
     },
     {
       "title": "亚马逊Kuiper星座获得FCC批量发射许可",
@@ -1593,7 +1699,8 @@
           "政策监管",
           "星座运营"
         ]
-      }
+      },
+      "url": "https://www.fcc.gov"
     },
     {
       "title": "国内首个卫星互联网海上应用示范点在舟山投运",
@@ -1612,7 +1719,8 @@
           "行业应用",
           "海洋通信"
         ]
-      }
+      },
+      "url": "http://www.zjnews.cn"
     },
     {
       "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
@@ -1631,7 +1739,8 @@
           "手机直连",
           "商业服务"
         ]
-      }
+      },
+      "url": "https://www.ast-science.com"
     },
     {
       "title": "航天科技集团发布低轨卫星星座AI运营平台",
@@ -1650,7 +1759,8 @@
           "技术突破",
           "AI应用"
         ]
-      }
+      },
+      "url": "http://www.spacechina.com"
     },
     {
       "title": "欧盟IRIS²星座计划获得27国最终批准",
@@ -1669,7 +1779,8 @@
           "政策监管",
           "国际竞争"
         ]
-      }
+      },
+      "url": "https://ec.europa.eu"
     },
     {
       "title": "星网集团完成首批低轨卫星批产线验收",
@@ -1688,7 +1799,8 @@
           "卫星制造",
           "产能建设"
         ]
-      }
+      },
+      "url": "http://www.chinasatnet.com"
     },
     {
       "title": "日本SoftBank与Intelsat合作推出航空卫星互联网服务",
@@ -1707,7 +1819,8 @@
           "行业应用",
           "航空通信"
         ]
-      }
+      },
+      "url": "https://www.softbank.jp"
     },
     {
       "title": "上海垣信启动50-60亿元融资，估值超400亿",
@@ -1725,7 +1838,8 @@
           "星座运营",
           "卫星制造"
         ]
-      }
+      },
+      "url": "https://www.jiemian.com"
     },
     {
       "title": "卫星激光通信赛道两个月融资超5亿",
@@ -1743,7 +1857,8 @@
           "卫星通信",
           "光通信"
         ]
-      }
+      },
+      "url": "https://www.c114.com.cn"
     },
     {
       "title": "银河航天启动A股上市进程",
@@ -1761,7 +1876,8 @@
           "卫星制造",
           "资本市场"
         ]
-      }
+      },
+      "url": "https://www.caixin.com"
     },
     {
       "title": "时空道宇计划2026年底冲刺IPO",
@@ -1779,7 +1895,8 @@
           "星座运营",
           "资本市场"
         ]
-      }
+      },
+      "url": "https://www.caijing.com.cn"
     },
     {
       "title": "中国向ITU提交20.3万颗卫星频轨申请",
@@ -1797,7 +1914,8 @@
           "卫星互联网",
           "政策监管"
         ]
-      }
+      },
+      "url": "https://www.itu.int"
     },
     {
       "title": "蓝箭航天IPO申请获受理，冲刺商业火箭第一股",
@@ -1815,7 +1933,8 @@
           "火箭发射",
           "资本市场"
         ]
-      }
+      },
+      "url": "https://www.bjd.com.cn"
     },
     {
       "title": "国内首次在轨星间400Gbps超高速激光通信试验成功",
@@ -1833,7 +1952,8 @@
           "卫星通信",
           "技术"
         ]
-      }
+      },
+      "url": "http://www.jlxt.com"
     },
     {
       "title": "政府工作报告首提卫星互联网为新兴支柱产业",
@@ -1851,7 +1971,8 @@
           "政策监管",
           "商业航天"
         ]
-      }
+      },
+      "url": "http://www.stcn.com"
     },
     {
       "title": "千帆星座在轨卫星达108颗，GW星座达136颗",
@@ -1868,7 +1989,8 @@
         "sectors": [
           "星座运营"
         ]
-      }
+      },
+      "url": "https://www.baidu.com/s?wd=千帆星座在轨卫星达108颗，GW星座达136颗"
     },
     {
       "title": "天启星座一期27颗卫星组网完成正式运营",
@@ -1885,7 +2007,8 @@
         "sectors": [
           "卫星物联网"
         ]
-      }
+      },
+      "url": "http://www.chinasatcom.com"
     }
   ]
 }
