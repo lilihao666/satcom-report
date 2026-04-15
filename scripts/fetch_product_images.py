@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-卫星通信厂商产品图片抓取器
+卫星通信厂商产品图片抓取器 (标准库版本)
 从厂商官网抓取产品图片
 """
 import json
@@ -10,12 +10,6 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
-
-try:
-    from bs4 import BeautifulSoup
-except ImportError:
-    print("需要安装依赖: pip install beautifulsoup4")
-    exit(1)
 
 # 项目路径
 BASE_DIR = Path(__file__).parent.parent
@@ -49,10 +43,10 @@ def download_image(url, save_path):
                 save_path.parent.mkdir(parents=True, exist_ok=True)
                 with open(save_path, 'wb') as f:
                     f.write(data)
-                print(f"✅ 下载成功: {save_path.name}")
+                print(f"  ✅ 下载成功: {save_path.name}")
                 return True
     except Exception as e:
-        print(f"❌ 下载失败: {url} - {e}")
+        print(f"  ❌ 下载失败: {str(e)[:50]}")
     return False
 
 def fetch_webpage(url):
@@ -63,63 +57,31 @@ def fetch_webpage(url):
             if response.status == 200:
                 return response.read().decode('utf-8', errors='ignore')
     except Exception as e:
-        print(f"❌ 获取页面失败: {url} - {e}")
+        print(f"  ❌ 获取页面失败: {str(e)[:50]}")
     return None
 
-def extract_product_images(html, base_url, company_name):
-    """从产品页面提取图片"""
-    soup = BeautifulSoup(html, 'html.parser')
+def extract_images_from_html(html, base_url):
+    """从HTML中提取图片URL (使用正则，不依赖bs4)"""
     images = []
     
-    # 1. 查找产品相关的图片
-    # 常见的产品图片选择器
-    selectors = [
-        'img[src*="product"]', 'img[src*="Product"]', 
-        '.product img', '.product-item img',
-        '.solution img', '.device img',
-        'img[src*="device"]', 'img[src*="terminal"]',
-        'img[src*="module"]', 'img[src*="chip"]'
-    ]
+    # 匹配 img 标签的 src 属性
+    img_pattern = r'<img[^>]+src=["\']([^"\']+)["\'][^>]*>'
+    matches = re.findall(img_pattern, html, re.IGNORECASE)
     
-    for selector in selectors:
-        for img in soup.select(selector):
-            src = img.get('src') or img.get('data-src')
-            if src:
-                full_url = urljoin(base_url, src)
-                alt = img.get('alt', '')
-                images.append({
-                    'url': full_url,
-                    'alt': alt,
-                    'type': 'product'
-                })
-    
-    # 2. 查找所有图片，过滤出可能的产品的
-    if not images:
-        all_imgs = soup.find_all('img')
-        for img in all_imgs:
-            src = img.get('src') or img.get('data-src')
-            if src and not any(x in src.lower() for x in ['logo', 'icon', 'banner', 'bg', 'background']):
-                full_url = urljoin(base_url, src)
-                if full_url.startswith('http'):
-                    images.append({
-                        'url': full_url,
-                        'alt': img.get('alt', ''),
-                        'type': 'general'
-                    })
+    for src in matches:
+        # 过滤掉 logo、icon 等小图标
+        if any(x in src.lower() for x in ['logo', 'icon', 'bg.', 'banner', 'nav', 'footer']):
+            continue
+        
+        full_url = urljoin(base_url, src)
+        if full_url.startswith('http'):
+            images.append(full_url)
     
     # 去重
-    seen = set()
-    unique = []
-    for img in images:
-        if img['url'] not in seen:
-            seen.add(img['url'])
-            unique.append(img)
-    
-    return unique[:3]  # 最多返回3张
+    return list(dict.fromkeys(images))[:5]  # 最多5张
 
 def get_company_folder_name(company_name):
     """生成公司文件夹名"""
-    # 拼音映射
     pinyin_map = {
         '磐钴智能': 'pangu',
         '星联芯通': 'xinglian',
@@ -132,9 +94,10 @@ def get_company_folder_name(company_name):
         '中国时空': 'shikong',
         '中兵北斗': 'zhongbing',
         '太极疆泰': 'taiji',
-        '航天金美': 'hangtianjinmei'
+        '航天金美': 'hangtianjinmei',
+        '南京控维通信': 'ctrlsky'
     }
-    return pinyin_map.get(company_name, company_name.lower().replace(' ', '_'))
+    return pinyin_map.get(company_name, company_name.lower().replace(' ', '_').replace('/', '_'))
 
 def process_company(company, is_domestic=True):
     """处理单个厂商"""
@@ -143,32 +106,31 @@ def process_company(company, is_domestic=True):
     folder = get_company_folder_name(name)
     company_img_dir = IMAGES_DIR / folder
     
-    print(f"\n📦 处理: {name}")
+    print(f"\n📦 {name}")
     print(f"   官网: {website or '无'}")
     
-    # 检查是否已有 featured_products
     featured = company.get('featured_products', [])
     
     # 如果有官网，尝试抓取产品图片
     if website and not featured:
-        print(f"   正在抓取产品图片...")
+        print(f"   正在抓取...")
         html = fetch_webpage(website)
         if html:
-            images = extract_product_images(html, website, name)
+            images = extract_images_from_html(html, website)
             if images:
                 print(f"   找到 {len(images)} 张图片")
                 new_products = []
-                for i, img_info in enumerate(images, 1):
-                    ext = Path(urlparse(img_info['url']).path).suffix or '.jpg'
+                for i, img_url in enumerate(images, 1):
+                    ext = Path(urlparse(img_url).path).suffix or '.jpg'
                     if ext not in ['.jpg', '.jpeg', '.png', '.webp', '.gif']:
                         ext = '.jpg'
                     
                     filename = f"product_{i}{ext}"
                     save_path = company_img_dir / filename
                     
-                    if download_image(img_info['url'], save_path):
+                    if download_image(img_url, save_path):
                         new_products.append({
-                            "name": img_info['alt'] or f"产品 {i}",
+                            "name": f"产品 {i}",
                             "description": f"{name} 产品",
                             "image": f"images/{folder}/{filename}"
                         })
@@ -177,18 +139,11 @@ def process_company(company, is_domestic=True):
                     company['featured_products'] = new_products
                     print(f"   ✅ 已添加 {len(new_products)} 个产品")
             else:
-                print(f"   ⚠️ 未找到产品图片")
-    
-    # 如果已有 featured_products 但图片是 placeholder，尝试更新
+                print(f"   ⚠️ 未找到图片")
     elif featured:
         print(f"   已有 {len(featured)} 个产品")
-        for i, product in enumerate(featured):
-            img_url = product.get('image', '')
-            if 'placeholder' in img_url or not img_url.startswith('images/'):
-                if website:
-                    print(f"   尝试抓取产品 {i+1} 的真实图片...")
-                    # 简化处理：先用占位图逻辑
-                    pass
+    else:
+        print(f"   ⚠️ 无官网，跳过")
     
     return company
 
@@ -216,6 +171,10 @@ def main():
     print("\n" + "=" * 50)
     print("✅ 数据已更新")
     print(f"📁 图片目录: {IMAGES_DIR}")
+    
+    # 统计
+    img_count = sum(1 for _ in IMAGES_DIR.rglob('*') if _.is_file())
+    print(f"📊 已下载图片: {img_count} 张")
 
 if __name__ == "__main__":
     main()

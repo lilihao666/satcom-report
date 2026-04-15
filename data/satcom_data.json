@@ -982,7 +982,19 @@
           "产品搜索": "https://www.google.com/search?q=CesiumAstro+product",
           "官网": "https://www.cesiumastro.com"
         },
-        "category": "卫星互联网终端"
+        "category": "卫星互联网终端",
+        "featured_products": [
+          {
+            "name": "产品 1",
+            "description": "CesiumAstro 产品",
+            "image": "images/cesiumastro/product_1.jpg"
+          },
+          {
+            "name": "产品 2",
+            "description": "CesiumAstro 产品",
+            "image": "images/cesiumastro/product_2.jpg"
+          }
+        ]
       },
       {
         "name": "SatixFy",
@@ -1003,7 +1015,29 @@
           "产品搜索": "https://www.google.com/search?q=SatixFy+product",
           "官网": "https://www.satixfy.com"
         },
-        "category": "卫星物联网终端"
+        "category": "卫星物联网终端",
+        "featured_products": [
+          {
+            "name": "产品 1",
+            "description": "SatixFy 产品",
+            "image": "images/satixfy/product_1.jpg"
+          },
+          {
+            "name": "产品 2",
+            "description": "SatixFy 产品",
+            "image": "images/satixfy/product_2.jpg"
+          },
+          {
+            "name": "产品 3",
+            "description": "SatixFy 产品",
+            "image": "images/satixfy/product_3.jpg"
+          },
+          {
+            "name": "产品 4",
+            "description": "SatixFy 产品",
+            "image": "images/satixfy/product_4.jpg"
+          }
+        ]
       },
       {
         "name": "Hughes Network",
@@ -1045,7 +1079,34 @@
           "产品搜索": "https://www.google.com/search?q=Thales Alenia+product",
           "官网": "https://www.thalesaleniaspace.com"
         },
-        "category": "卫星物联网终端"
+        "category": "卫星物联网终端",
+        "featured_products": [
+          {
+            "name": "产品 1",
+            "description": "Thales Alenia 产品",
+            "image": "images/thales_alenia/product_1.webp"
+          },
+          {
+            "name": "产品 2",
+            "description": "Thales Alenia 产品",
+            "image": "images/thales_alenia/product_2.webp"
+          },
+          {
+            "name": "产品 3",
+            "description": "Thales Alenia 产品",
+            "image": "images/thales_alenia/product_3.webp"
+          },
+          {
+            "name": "产品 4",
+            "description": "Thales Alenia 产品",
+            "image": "images/thales_alenia/product_4.webp"
+          },
+          {
+            "name": "产品 5",
+            "description": "Thales Alenia 产品",
+            "image": "images/thales_alenia/product_5.webp"
+          }
+        ]
       },
       {
         "name": "Gilat Satellite",
@@ -1108,7 +1169,34 @@
           "产品搜索": "https://www.google.com/search?q=Cobham Satcom+product",
           "官网": "https://www.cobhamsatcom.com"
         },
-        "category": "卫星物联网终端"
+        "category": "卫星物联网终端",
+        "featured_products": [
+          {
+            "name": "产品 1",
+            "description": "Cobham Satcom 产品",
+            "image": "images/cobham_satcom/product_1.jpg"
+          },
+          {
+            "name": "产品 2",
+            "description": "Cobham Satcom 产品",
+            "image": "images/cobham_satcom/product_2.png"
+          },
+          {
+            "name": "产品 3",
+            "description": "Cobham Satcom 产品",
+            "image": "images/cobham_satcom/product_3.png"
+          },
+          {
+            "name": "产品 4",
+            "description": "Cobham Satcom 产品",
+            "image": "images/cobham_satcom/product_4.png"
+          },
+          {
+            "name": "产品 5",
+            "description": "Cobham Satcom 产品",
+            "image": "images/cobham_satcom/product_5.jpg"
+          }
+        ]
       },
       {
         "name": "Intellian",
