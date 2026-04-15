@@ -305,6 +305,21 @@ def generate_content(data):
         note = c.get("note", "")
         note_html = f'<p class="text-xs text-orange-600 mt-1">{note}</p>' if note else ""
         
+        # 详情链接
+        detail_links_html = ""
+        if c.get('detail_links'):
+            links_items = []
+            for link_name, link_url in c['detail_links'].items():
+                links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-600 rounded-lg text-sm hover:bg-red-100 transition"><i class="fas fa-search mr-1.5"></i>{link_name}</a>')
+            detail_links_html = f'''
+            <div>
+                <p class="font-semibold mb-2">🔍 了解更多:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(links_items)}
+                </div>
+            </div>
+            '''
+        
         # 详情内容
         isl = c.get("inter_satellite_link", {})
         isl_html = ""
@@ -332,6 +347,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>当前阶段:</strong> <span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded">{c["stage"]}</span></p>
             </div>
             {isl_html}
+            {detail_links_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">
@@ -397,6 +413,21 @@ def generate_content(data):
             </div>
             '''
         
+        # 详情链接
+        detail_links_html = ""
+        if c.get('detail_links'):
+            links_items = []
+            for link_name, link_url in c['detail_links'].items():
+                links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-600 rounded-lg text-sm hover:bg-green-100 transition"><i class="fas fa-search mr-1.5"></i>{link_name}</a>')
+            detail_links_html = f'''
+            <div>
+                <p class="font-semibold mb-2">🔍 Learn More:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(links_items)}
+                </div>
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div>
@@ -406,6 +437,7 @@ def generate_content(data):
                 <p class="text-gray-600"><strong>当前阶段:</strong> <span class="bg-green-100 text-green-800 px-2 py-0.5 rounded">{c["stage"]}</span></p>
             </div>
             {isl_html}
+            {detail_links_html}
             <div>
                 <p class="font-semibold mb-2">应用场景:</p>
                 <div class="flex flex-wrap gap-2">
@@ -569,6 +601,21 @@ def generate_content(data):
     terminal_html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
     
     for company in data["companies"]["domestic"]:
+        # 生成详情链接HTML
+        detail_links_html = ""
+        if company.get('detail_links'):
+            links_items = []
+            for link_name, link_url in company['detail_links'].items():
+                links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm hover:bg-blue-100 transition"><i class="fas fa-external-link-alt mr-1.5"></i>{link_name}</a>')
+            detail_links_html = f'''
+            <div>
+                <p class="font-semibold mb-2">🔍 详细调研:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(links_items)}
+                </div>
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
@@ -603,13 +650,14 @@ def generate_content(data):
                     {''.join(f'<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">{p}</span>' for p in company.get("products", []))}
                 </div>
             </div>
+            {detail_links_html}
             {f'''
             <div>
                 <p class="font-semibold mb-3">代表产品:</p>
                 <div class="grid grid-cols-1 gap-3">
                     {''.join(f'''
                     <div class="flex gap-3 p-3 bg-gray-50 rounded-lg">
-                        <img src="{fp.get("image", "")}" alt="{fp.get("name", "")}" class="w-20 h-20 object-cover rounded-lg">
+                        <img src="{fp.get("image", "")}" alt="{fp.get("name", "")}" class="w-20 h-20 object-cover rounded-lg" onerror="this.style.display='none'">
                         <div>
                             <p class="font-semibold text-sm">{fp.get("name", "")}</p>
                             <p class="text-xs text-gray-600 mt-1">{fp.get("description", "")}</p>
@@ -651,6 +699,21 @@ def generate_content(data):
     terminal_html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">')
     
     for company in data["companies"]["international"]:
+        # 生成详情链接HTML
+        detail_links_html = ""
+        if company.get('detail_links'):
+            links_items = []
+            for link_name, link_url in company['detail_links'].items():
+                links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-600 rounded-lg text-sm hover:bg-green-100 transition"><i class="fas fa-external-link-alt mr-1.5"></i>{link_name}</a>')
+            detail_links_html = f'''
+            <div>
+                <p class="font-semibold mb-2">🔍 More Info:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(links_items)}
+                </div>
+            </div>
+            '''
+        
         detail_content = f'''
         <div class="space-y-4">
             <div class="grid grid-cols-2 gap-4">
@@ -685,6 +748,7 @@ def generate_content(data):
                     {''.join(f'<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">{p}</span>' for p in company.get("products", []))}
                 </div>
             </div>
+            {detail_links_html}
             {f'<a href="{company["website"]}" target="_blank" class="inline-flex items-center text-blue-600 hover:text-blue-800 mt-2"><i class="fas fa-external-link-alt mr-1"></i> 访问官网</a>' if company.get("website") else ''}
         </div>
         '''
