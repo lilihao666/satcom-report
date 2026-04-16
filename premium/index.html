@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>卫星通信产业调研报告 | 专业版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        body { font-family: 'Noto Sans SC', sans-serif; }
+        .tab-active { border-bottom: 3px solid #3b82f6; color: #3b82f6; }
+        .tab-inactive { border-bottom: 3px solid transparent; color: #6b7280; }
+        @media print { .no-print { display: none !important; } }
+        
+        /* 密码墙遮罩 */
+        #password-wall {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #8b5cf6 100%);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #password-wall.hidden {
+            display: none !important;
+        }
+        
+        .password-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 480px;
+            width: 90%;
+            text-align: center;
+        }
+        
+        .password-box h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #1f2937;
+        }
+        
+        .password-box .subtitle {
+            color: #6b7280;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+        
+        .password-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 4px;
+            transition: border-color 0.2s;
+            margin-bottom: 16px;
+        }
+        
+        .password-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .unlock-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .unlock-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+        }
+        
+        .error-msg {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 12px;
+            display: none;
+        }
+        
+        .tier-info {
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .tier-card {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background: #f9fafb;
+            text-align: left;
+        }
+        
+        .tier-card i {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border-radius: 8px;
+            margin-right: 12px;
+        }
+        
+        .tier-card .price {
+            font-weight: bold;
+            color: #3b82f6;
+        }
+        
+        /* 内容锁定遮罩 */
+        .content-locked {
+            position: relative;
+            filter: blur(8px);
+            user-select: none;
+            pointer-events: none;
+        }
+        
+        .content-locked::after {
+            content: '🔒 输入密码解锁完整内容';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(59, 130, 246, 0.9);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            white-space: nowrap;
+            z-index: 100;
+        }
+        
+        /* 回到顶部按钮 */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+        }
+        #back-to-top.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        /* 详情弹窗 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 0;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-header {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 20px 24px;
+            border-radius: 16px 16px 0 0;
+        }
+        .modal-body {
+            padding: 24px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+        .modal-close:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* 可点击卡片 */
+        .clickable-card {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .clickable-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* 分类标签 */
+        .category-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+        .cat-internet { background: #dbeafe; color: #1e40af; }
+        .cat-iot { background: #dcfce7; color: #166534; }
+        .cat-mixed { background: #fef3c7; color: #92400e; }
+
+        /* 用户状态栏 */
+        .user-status-bar {
+            background: linear-gradient(135deg, #10b981, #3b82f6);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- 密码墙 -->
+    <div id="password-wall">
+        <div class="password-box">
+            <h2>🔐 卫星通信产业调研报告</h2>
+            <p class="subtitle">专业版 · 密码访问</p>
+            
+            <input type="password" id="password-input" class="password-input" placeholder="请输入访问密码" maxlength="20">
+            <button class="unlock-btn" onclick="checkPassword()">
+                <i class="fas fa-unlock mr-2"></i>解锁报告
+            </button>
+            <p id="error-msg" class="error-msg">密码错误，请重试</p>
+            
+            <div class="tier-info">
+                <p style="color: #6b7280; font-size: 14px; margin-bottom: 12px;">获取访问权限</p>
+                
+                <div class="tier-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <div>
+                        <p style="font-weight: 600; color: #1f2937;">调研版</p>
+                        <p class="price">¥39.9/月</p>
+                        <p style="font-size: 12px; color: #6b7280;">全部数据仪表板 + 实时更新</p>
+                    </div>
+                </div>
+                
+                <div class="tier-card">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <p style="font-weight: 600; color: #1f2937;">分析版</p>
+                        <p class="price">¥99/月</p>
+                        <p style="font-size: 12px; color: #6b7280;">调研版全部 + 深度研报 + 投资建议</p>
+                    </div>
+                </div>
+                
+                <p style="color: #9ca3af; font-size: 12px; margin-top: 12px;">
+                    联系微信：your-wechat-id<br>
+                    付款后获取专属密码
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 主内容（默认隐藏，解锁后显示） -->
+    <div id="main-content" style="display: none;">
+        <!-- 导航栏 -->
+        <nav class="bg-white shadow-sm sticky top-0 z-50 no-print">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center">
+                        <i class="fas fa-satellite text-blue-600 text-2xl mr-2"></i>
+                        <span class="font-bold text-xl">卫星通信产业调研报告</span>
+                        <span id="user-tier-badge" class="user-status-bar ml-4" style="display: none;">
+                            <i class="fas fa-crown"></i>
+                            <span id="tier-text">专业版</span>
+                        </span>
+                    </div>
+                    <div class="hidden md:flex space-x-6 text-sm font-medium">
+                        <a href="#constellation" class="tab-inactive hover:text-blue-600 py-5 transition">星座层</a>
+                        <a href="#terminal" class="tab-inactive hover:text-blue-600 py-5 transition">终端层</a>
+                        <a href="#payload" class="tab-inactive hover:text-blue-600 py-5 transition">载荷层</a>
+                        <a href="#operator" class="tab-inactive hover:text-blue-600 py-5 transition">运营商</a>
+                        <a href="#commercial" class="tab-inactive hover:text-blue-600 py-5 transition">商业层</a>
+                        <a href="#policy" class="tab-inactive hover:text-blue-600 py-5 transition">政策层</a>
+                        <a href="#tech" class="tab-inactive hover:text-blue-600 py-5 transition">技术趋势</a>
+                        <a href="#news" class="tab-inactive hover:text-blue-600 py-5 transition">最新动态</a>
+                        <a href="#analysis" id="analysis-tab" class="tab-inactive hover:text-blue-600 py-5 transition" style="display: none;">深度分析</a>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="logout()" class="text-gray-500 hover:text-gray-700 text-sm">
+                            <i class="fas fa-sign-out-alt mr-1"></i>退出
+                        </button>
+                        <button onclick="window.print()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex items-center text-sm no-print">
+                            <i class="fas fa-file-pdf mr-2"></i>导出PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- 主内容区 -->
+        <main class="max-w-7xl mx-auto px-4 py-8 space-y-8" id="report-content">
+            <!-- 内容由JavaScript根据权限动态加载 -->
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="bg-gray-800 text-gray-400 py-6 mt-12 no-print">
+            <div class="max-w-7xl mx-auto px-4 text-center text-sm">
+                <p>卫星通信产业调研报告 | 专业版</p>
+                <p class="mt-1">本报告版权所有，仅供授权用户使用</p>
+            </div>
+        </footer>
+
+        <!-- 回到顶部按钮 -->
+        <button id="back-to-top" class="no-print hidden" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- 详情弹窗 -->
+    <div id="detail-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content relative">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-header" id="modal-header">
+                <h3 class="text-xl font-bold">详情</h3>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        // 密码配置（你可以随时修改这些密码）
+        const PASSWORDS = {
+            'DIAOYAN2025': { tier: '调研版', level: 1 },
+            'FENXI2025': { tier: '分析版', level: 2 },
+            'ADMIN2025': { tier: '管理员', level: 3 }
+        };
+
+        // 检查是否已登录
+        function checkLogin() {
+            const session = localStorage.getItem('satcom_session');
+            if (session) {
+                const data = JSON.parse(session);
+                if (data.expiry > Date.now()) {
+                    showContent(data.tier, data.level);
+                    return;
+                }
+            }
+            showPasswordWall();
+        }
+
+        // 显示密码墙
+        function showPasswordWall() {
+            document.getElementById('password-wall').classList.remove('hidden');
+            document.getElementById('main-content').style.display = 'none';
+        }
+
+        // 验证密码
+        function checkPassword() {
+            const input = document.getElementById('password-input').value.trim();
+            const errorMsg = document.getElementById('error-msg');
+            
+            if (PASSWORDS[input]) {
+                const data = PASSWORDS[input];
+                // 保存session（30天有效期）
+                localStorage.setItem('satcom_session', JSON.stringify({
+                    tier: data.tier,
+                    level: data.level,
+                    expiry: Date.now() + 30 * 24 * 60 * 60 * 1000
+                }));
+                showContent(data.tier, data.level);
+                errorMsg.style.display = 'none';
+            } else {
+                errorMsg.style.display = 'block';
+                document.getElementById('password-input').value = '';
+            }
+        }
+
+        // 回车键提交
+        document.getElementById('password-input')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkPassword();
+        });
+
+        // 显示内容
+        function showContent(tier, level) {
+            document.getElementById('password-wall').classList.add('hidden');
+            document.getElementById('main-content').style.display = 'block';
+            
+            // 显示用户等级
+            const badge = document.getElementById('user-tier-badge');
+            const tierText = document.getElementById('tier-text');
+            badge.style.display = 'inline-flex';
+            tierText.textContent = tier;
+            
+            // 分析版以上显示分析tab
+            if (level >= 2) {
+                document.getElementById('analysis-tab').style.display = 'block';
+            }
+            
+            // 加载报告内容
+            loadReportContent(level);
+        }
+
+        // 退出登录
+        function logout() {
+            localStorage.removeItem('satcom_session');
+            showPasswordWall();
+        }
+
+        // 加载报告内容（根据权限等级）
+        function loadReportContent(level) {
+            const contentDiv = document.getElementById('report-content');
+            
+            // 基础内容（所有等级都能看到）
+            let html = `
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-6">
+                    <h2 class="text-2xl font-bold mb-4">📊 执行摘要</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white/10 rounded-lg p-4">
+                            <div class="text-3xl font-bold">21+10</div>
+                            <div class="text-sm opacity-80">终端厂商</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-4">
+                            <div class="text-3xl font-bold">10+12</div>
+                            <div class="text-sm opacity-80">星座计划</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-4">
+                            <div class="text-3xl font-bold">10,000+</div>
+                            <div class="text-sm opacity-80">全球在轨卫星</div>
+                        </div>
+                        <div class="bg-white/10 rounded-lg p-4">
+                            <div class="text-3xl font-bold">8+10</div>
+                            <div class="text-sm opacity-80">国内外运营商</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // 调研版及以上：显示所有数据
+            if (level >= 1) {
+                html += `
+                    <section id="constellation"><h2 class="text-2xl font-bold mb-4">🌐 卫星星座</h2>
+                        <p class="text-gray-600 mb-4">低轨卫星星座是卫星通信产业的基础设施。本报告覆盖国内10个、国际12个主要星座计划。</p>
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                            <p class="text-sm text-yellow-800">📊 完整星座数据包含在付费版中，包括：星座规模、发射进度、星间链路技术、应用场景、运营方详情</p>
+                        </div>
+                        <div class="text-center py-12">
+                            <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">星座层详细数据已锁定</p>
+                            <p class="text-sm text-gray-400 mt-2">输入密码后查看完整内容</p>
+                        </div>
+                    </section>
+                    
+                    <section id="terminal"><h2 class="text-2xl font-bold mb-4">📱 终端设备厂商</h2>
+                        <div class="text-center py-12">
+                            <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">终端层详细数据已锁定</p>
+                        </div>
+                    </section>
+                    
+                    <section id="payload"><h2 class="text-2xl font-bold mb-4">🛰️ 卫星载荷</h2>
+                        <div class="text-center py-12">
+                            <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">载荷层详细数据已锁定</p>
+                        </div>
+                    </section>
+                    
+                    <section id="operator"><h2 class="text-2xl font-bold mb-4">🏢 卫星运营商</h2>
+                        <div class="text-center py-12">
+                            <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500">运营商详细数据已锁定</p>
+                        </div>
+                    </section>
+                `;
+            }
+            
+            // 分析版及以上：显示深度分析
+            if (level >= 2) {
+                html += `
+                    <section id="analysis"><h2 class="text-2xl font-bold mb-4">📈 深度分析</h2>
+                        <div class="bg-white rounded-lg shadow p-6">
+                            <h3 class="text-lg font-semibold mb-3">本周产业洞察</h3>
+                            <p class="text-gray-600">深度分析内容将在每日自动更新...</p>
+                        </div>
+                    </section>
+                `;
+            }
+            
+            // 公共内容
+            html += `
+                <section id="commercial"><h2 class="text-2xl font-bold mb-4">💰 商业模式</h2>
+                    <div class="text-center py-12">
+                        <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">商业模式详细分析已锁定</p>
+                    </div>
+                </section>
+                
+                <section id="policy"><h2 class="text-2xl font-bold mb-4">📜 政策法规</h2>
+                    <div class="text-center py-12">
+                        <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">政策层详细数据已锁定</p>
+                    </div>
+                </section>
+                
+                <section id="tech"><h2 class="text-2xl font-bold mb-4">🔬 技术趋势</h2>
+                    <div class="text-center py-12">
+                        <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">技术趋势详细数据已锁定</p>
+                    </div>
+                </section>
+                
+                <section id="news"><h2 class="text-2xl font-bold mb-4">📰 最新动态</h2>
+                    <div class="text-center py-12">
+                        <i class="fas fa-lock text-6xl text-gray-300 mb-4"></i>
+                        <p class="text-gray-500">最新动态详细数据已锁定</p>
+                    </div>
+                </section>
+            `;
+            
+            contentDiv.innerHTML = html;
+        }
+
+        // 弹窗控制
+        function openModal(title, content) {
+            document.getElementById('modal-header').innerHTML = `<h3 class="text-xl font-bold">${title}</h3>`;
+            document.getElementById('modal-body').innerHTML = content;
+            document.getElementById('detail-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(event) {
+            if (!event || event.target.id === 'detail-modal') {
+                document.getElementById('detail-modal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // 回到顶部
+        const backToTopBtn = document.getElementById('back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn?.classList.remove('hidden');
+            } else {
+                backToTopBtn?.classList.add('hidden');
+            }
+        });
+
+        // Tab切换
+        document.querySelectorAll('nav a').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('nav a').forEach(t => {
+                    t.classList.remove('tab-active');
+                    t.classList.add('tab-inactive');
+                });
+                this.classList.remove('tab-inactive');
+                this.classList.add('tab-active');
+            });
+        });
+
+        // 页面加载时检查登录状态
+        window.onload = checkLogin;
+    </script>
+</body>
+</html>
