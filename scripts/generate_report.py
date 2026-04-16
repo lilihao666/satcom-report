@@ -147,6 +147,7 @@ TEMPLATE = '''<!DOCTYPE html>
                     <a href="#constellation" class="tab-inactive hover:text-blue-600 py-5 transition">星座层</a>
                     <a href="#terminal" class="tab-inactive hover:text-blue-600 py-5 transition">终端层</a>
                     <a href="#payload" class="tab-inactive hover:text-blue-600 py-5 transition">载荷层</a>
+                    <a href="#operator" class="tab-inactive hover:text-blue-600 py-5 transition">运营商</a>
                     <a href="#commercial" class="tab-inactive hover:text-blue-600 py-5 transition">商业层</a>
                     <a href="#policy" class="tab-inactive hover:text-blue-600 py-5 transition">政策层</a>
                     <a href="#tech" class="tab-inactive hover:text-blue-600 py-5 transition">技术趋势</a>
@@ -790,6 +791,195 @@ def generate_content(data):
         
         payload_html.append('</section>')
         content.append("".join(payload_html))
+    
+    # 运营商层
+    if "operators" in data:
+        operator_html = ['<section id="operator"><h2 class="text-2xl font-bold mb-4">🏢 卫星运营商</h2>']
+        
+        # 国内运营商
+        if data["operators"].get("domestic"):
+            operator_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>国内运营商</h3>')
+            operator_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">')
+            
+            for op in data["operators"]["domestic"]:
+                # 计算进度
+                progress = (op.get("satellites_launched", 0) / op.get("satellites_planned", 1)) * 100
+                
+                # 类型颜色
+                type_color = "blue" if op.get("type") == "国家队" else "green"
+                
+                # 详情弹窗内容
+                detail_content = f'''
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="category-badge bg-{type_color}-100 text-{type_color}-700">{op["type"]}</span>
+                        <span class="text-xs text-gray-500">{op.get("founded", "")}年成立</span>
+                    </div>
+                    <div>
+                        <p class="text-gray-600"><strong>全称:</strong> {op.get("full_name", "")}</p>
+                        <p class="text-gray-600"><strong>总部:</strong> {op.get("headquarters", "")}</p>
+                        <p class="text-gray-600"><strong>星座:</strong> {op.get("constellation", "")}</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="font-semibold text-gray-700 mb-2">📊 关键数据</p>
+                        <div class="grid grid-cols-2 gap-2 text-sm">
+                            {''.join(f'<div><span class="text-gray-500">{k}:</span> <span class="font-medium">{v}</span></div>' for k, v in op.get("key_metrics", {}).items())}
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">🎯 服务范围:</p>
+                        <div class="flex flex-wrap gap-2">
+                            {''.join(f'<span class="bg-blue-50 text-blue-700 px-2 py-1 rounded text-sm">{s}</span>' for s in op.get("services", []))}
+                        </div>
+                    </div>
+                    {f'''
+                    <div>
+                        <p class="font-semibold mb-2">🤝 合作伙伴:</p>
+                        <div class="flex flex-wrap gap-2">
+                            {''.join(f'<span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-sm">{p}</span>' for p in op.get("partnerships", []))}
+                        </div>
+                    </div>
+                    ''' if op.get("partnerships") else ''}
+                    <div class="bg-blue-50 p-3 rounded-lg">
+                        <p class="text-sm text-blue-800"><strong>商业模式:</strong> {op.get("business_model", "")}</p>
+                    </div>
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-500 mb-2">部署进度: {progress:.1f}%</p>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-3 rounded-full" style="width: {min(progress, 100)}%"></div>
+                        </div>
+                    </div>
+                    {f'''
+                    <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-200">
+                        {''.join(f'<a href="{url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition"><i class="fas fa-external-link-alt mr-1"></i>{name}</a>' for name, url in op.get("detail_links", {}).items())}
+                    </div>
+                    ''' if op.get("detail_links") else ''}
+                </div>
+                '''
+                
+                operator_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{type_color}-500 clickable-card" onclick="openModal('{escape_js(op["name"])}', '{escape_js(detail_content)}')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">{op["name"]}</h3>
+                            <span class="category-badge bg-{type_color}-100 text-{type_color}-700 mt-1">{op["type"]}</span>
+                        </div>
+                        <span class="text-xs text-gray-500">{op.get("headquarters", "")}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">{op.get("constellation", "")}</p>
+                    <div class="mt-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>在轨: {op.get("satellites_launched", 0)}颗</span>
+                            <span>规划: {op.get("satellites_planned", 0)}颗</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-{type_color}-500 h-2 rounded-full" style="width: {min(progress, 100)}%"></div>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-gray-500">
+                        <span>融资: {op.get("financing", "")}</span>
+                        {f' | <span>估值: {op.get("valuation", "")}</span>' if op.get("valuation") else ''}
+                    </div>
+                    <div class="mt-2 pt-2 border-t border-gray-100 text-center">
+                        <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>点击查看详情</span>
+                    </div>
+                </div>
+                ''')
+            
+            operator_html.append('</div>')
+        
+        # 国际运营商
+        if data["operators"].get("international"):
+            operator_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>国际运营商</h3>')
+            operator_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4">')
+            
+            for op in data["operators"]["international"]:
+                progress = (op.get("satellites_launched", 0) / op.get("satellites_planned", 1)) * 100
+                
+                # 类型颜色
+                type_colors = {"商业航天": "green", "互联网巨头": "purple", "国家队": "blue"}
+                type_color = type_colors.get(op.get("type"), "gray")
+                
+                # 详情弹窗内容
+                detail_content = f'''
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="category-badge bg-{type_color}-100 text-{type_color}-700">{op["type"]}</span>
+                        <span class="text-xs text-gray-500">{op.get("founded", "")}</span>
+                    </div>
+                    <div>
+                        <p class="text-gray-600"><strong>全称:</strong> {op.get("full_name", "")}</p>
+                        <p class="text-gray-600"><strong>总部:</strong> {op.get("headquarters", "")}</p>
+                        <p class="text-gray-600"><strong>星座:</strong> {op.get("constellation", "")}</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <p class="font-semibold text-gray-700 mb-2">📊 关键数据</p>
+                        <div class="space-y-1 text-sm">
+                            {''.join(f'<p><span class="text-gray-500">{k}:</span> <span class="font-medium">{v}</span></p>' for k, v in op.get("key_metrics", {}).items())}
+                        </div>
+                    </div>
+                    <div>
+                        <p class="font-semibold mb-2">🎯 服务范围:</p>
+                        <div class="flex flex-wrap gap-2">
+                            {''.join(f'<span class="bg-green-50 text-green-700 px-2 py-1 rounded text-sm">{s}</span>' for s in op.get("services", []))}
+                        </div>
+                    </div>
+                    {f'''
+                    <div>
+                        <p class="font-semibold mb-2">🤝 合作伙伴:</p>
+                        <div class="flex flex-wrap gap-2">
+                            {''.join(f'<span class="bg-purple-50 text-purple-700 px-2 py-1 rounded text-sm">{p}</span>' for p in op.get("partnerships", []))}
+                        </div>
+                    </div>
+                    ''' if op.get("partnerships") else ''}
+                    <div class="bg-green-50 p-3 rounded-lg">
+                        <p class="text-sm text-green-800"><strong>商业模式:</strong> {op.get("business_model", "")}</p>
+                    </div>
+                    {f'<p class="text-sm text-gray-600"><strong>营收:</strong> {op.get("revenue", "")}</p>' if op.get("revenue") else ''}
+                    <div class="mt-4">
+                        <p class="text-sm text-gray-500 mb-2">部署进度: {progress:.1f}%</p>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" style="width: {min(progress, 100)}%"></div>
+                        </div>
+                    </div>
+                    {f'''
+                    <div class="flex flex-wrap gap-2 pt-3 border-t border-gray-200">
+                        {''.join(f'<a href="{url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition"><i class="fas fa-external-link-alt mr-1"></i>{name}</a>' for name, url in op.get("detail_links", {}).items())}
+                    </div>
+                    ''' if op.get("detail_links") else ''}
+                </div>
+                '''
+                
+                operator_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{type_color}-500 clickable-card" onclick="openModal('{escape_js(op["name"])}', '{escape_js(detail_content)}')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-lg">{op["name"]}</h3>
+                            <span class="category-badge bg-{type_color}-100 text-{type_color}-700 mt-1">{op["type"]}</span>
+                        </div>
+                        <span class="text-xs text-gray-500">{op.get("headquarters", "")}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">{op.get("constellation", "")}</p>
+                    <div class="mt-3">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span>在轨: {op.get("satellites_launched", 0):,}颗</span>
+                            <span>规划: {op.get("satellites_planned", 0):,}颗</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-{type_color}-500 h-2 rounded-full" style="width: {min(progress, 100)}%"></div>
+                        </div>
+                    </div>
+                    {f'<div class="mt-1 text-xs text-gray-500">{op.get("revenue", "")}</div>' if op.get("revenue") else ''}
+                    <div class="mt-2 pt-2 border-t border-gray-100 text-center">
+                        <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>点击查看详情</span>
+                    </div>
+                </div>
+                ''')
+            
+            operator_html.append('</div>')
+        
+        operator_html.append('</section>')
+        content.append("".join(operator_html))
     
     # 商业层、政策层、技术趋势、最新动态
     # ... (省略，与之前相同)
