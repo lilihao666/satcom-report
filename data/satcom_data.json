@@ -13,7 +13,7 @@
           "物联网",
           "导航增强"
         ],
-        "note": "国网星座与GW星座为同一项目",
+        "note": "",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -106,7 +106,7 @@
           "遥感",
           "通信融合"
         ],
-        "note": "与国电高科合作，非国科宇航旗下",
+        "note": "",
         "inter_satellite_link": {
           "enabled": false,
           "tech": "无",
@@ -129,7 +129,7 @@
           "遥感",
           "导航"
         ],
-        "note": "国科宇航自主规划星座，与椭圆时空为不同主体",
+        "note": "",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -739,7 +739,7 @@
         "city": "北京",
         "focus": "卫星互联网终端",
         "tech": "Ka/Ku频段相控阵",
-        "founded": "2022",
+        "founded": "2025",
         "funding": "天使轮",
         "products": [
           "相控阵终端",
