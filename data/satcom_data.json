@@ -408,7 +408,7 @@
         },
         "detail_links": {
           "搜索": "https://www.google.com/search?q=Omnispace+satellite+constellation",
-          "官网": "https://omnispace.com"
+          "官网": "https://www.google.com/search?q=Omnispace+satellite"
         },
         "category": "卫星互联网"
       },
@@ -645,7 +645,7 @@
           "物联网终端"
         ],
         "description": "专注卫星物联网通信，提供低功耗广域网解决方案",
-        "website": "https://www.pangusat.com",
+        "website": "https://www.baidu.com/s?wd=磐钴智能+卫星通信",
         "featured_products": [
           {
             "name": "PG-S1卫星模组",
@@ -679,7 +679,7 @@
           "终端模组"
         ],
         "description": "卫星通信基带芯片和终端解决方案提供商",
-        "website": "https://www.satcomtec.com",
+        "website": "https://www.baidu.com/s?wd=星联芯通+卫星通信",
         "featured_products": [
           {
             "name": "SCT100基带芯片",
@@ -713,7 +713,7 @@
           "船载终端"
         ],
         "description": "卫星通信终端和星座运营服务",
-        "website": "https://www.guokespace.com",
+        "website": "https://www.baidu.com/s?wd=国科宇航+卫星通信",
         "featured_products": [
           {
             "name": "GKT-100手持终端",
@@ -800,7 +800,7 @@
           "开发套件"
         ],
         "description": "5G NTN卫星通信终端和测试解决方案",
-        "website": "https://www.penghusat.com",
+        "website": "https://www.baidu.com/s?wd=鹏鹄物宇+卫星通信",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=鹏鹄物宇+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=鹏鹄物宇",
@@ -820,7 +820,7 @@
           "数据服务"
         ],
         "description": "卫星数据应用和行业解决方案",
-        "website": "https://www.htzhihui.com",
+        "website": "https://www.baidu.com/s?wd=环天智慧+卫星",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=环天智慧+卫星通信",
           "天眼查": "https://www.tianyancha.com/search?key=环天智慧",
@@ -1064,7 +1064,7 @@
         "founded": "1971",
         "customers": "家庭/企业/政府",
         "description": "全球最大卫星互联网服务提供商之一",
-        "website": "https://www.hughesnet.com",
+        "website": "https://www.google.com/search?q=Hughes+Network+satellite",
         "detail_links": {
           "Google搜索": "https://www.google.com/search?q=Hughes Network+satellite",
           "产品搜索": "https://www.google.com/search?q=Hughes Network+product",
@@ -2166,7 +2166,7 @@
         "founded": "2006",
         "funding": "上市公司",
         "capacity": "已锁定数十亿级订单",
-        "website": "http://www.sh-hyhx.com",
+        "website": "https://www.baidu.com/s?wd=上海瀚讯+卫星通信",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=上海瀚讯+卫星载荷",
           "天眼查": "https://www.tianyancha.com/search?key=上海瀚讯"
@@ -2229,7 +2229,7 @@
         "founded": "2020",
         "funding": "战略融资",
         "capacity": "2025订单超10亿元",
-        "website": "http://www.auroracomm.cn",
+        "website": "https://www.baidu.com/s?wd=极光星通+激光通信",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=极光星通+激光通信",
           "天眼查": "https://www.tianyancha.com/search?key=极光星通"
@@ -2292,7 +2292,7 @@
         "founded": "2016",
         "funding": "C轮",
         "capacity": "",
-        "website": "https://www.galaxypower.cn",
+        "website": "https://www.baidu.com/s?wd=银河航天+卫星",
         "detail_links": {
           "百度搜索": "https://www.baidu.com/s?wd=银河航天+相控阵",
           "官网": "https://www.galaxypower.cn"
