@@ -146,6 +146,7 @@ TEMPLATE = '''<!DOCTYPE html>
                 <div class="hidden md:flex space-x-6 text-sm font-medium">
                     <a href="#constellation" class="tab-inactive hover:text-blue-600 py-5 transition">星座层</a>
                     <a href="#terminal" class="tab-inactive hover:text-blue-600 py-5 transition">终端层</a>
+                    <a href="#payload" class="tab-inactive hover:text-blue-600 py-5 transition">载荷层</a>
                     <a href="#commercial" class="tab-inactive hover:text-blue-600 py-5 transition">商业层</a>
                     <a href="#policy" class="tab-inactive hover:text-blue-600 py-5 transition">政策层</a>
                     <a href="#tech" class="tab-inactive hover:text-blue-600 py-5 transition">技术趋势</a>
@@ -609,6 +610,122 @@ def generate_content(data):
         ''')
     terminal_html.append('</div></section>')
     content.append("".join(terminal_html))
+    
+    # 载荷层
+    if "payloads" in data:
+        payload_html = ['<section id="payload"><h2 class="text-2xl font-bold mb-4">🛰️ 卫星载荷</h2>']
+        
+        # 载荷技术路线
+        if data["payloads"].get("tech_roadmap"):
+            payload_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">技术路线</h3>')
+            payload_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">')
+            for roadmap in data["payloads"]["tech_roadmap"]:
+                status_colors = {"商业化部署": "green", "批量应用": "blue", "商业化初期": "yellow", "部署中": "purple"}
+                color = status_colors.get(roadmap["status"], "gray")
+                payload_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{color}-500">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold text-lg">{roadmap["stage"]}</h4>
+                        <span class="bg-{color}-100 text-{color}-800 text-xs px-2 py-1 rounded">{roadmap["status"]}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">{roadmap["tech"]}</p>
+                    <p class="text-xs text-gray-500 mt-1">时间线: {roadmap["timeline"]}</p>
+                    <div class="mt-2">
+                        <span class="text-xs text-gray-500">核心玩家:</span>
+                        <div class="flex flex-wrap gap-1 mt-1">
+                            {''.join(f'<span class="bg-gray-100 text-gray-700 text-xs px-2 py-0.5 rounded">{p}</span>' for p in roadmap.get("key_players", []))}
+                        </div>
+                    </div>
+                </div>
+                ''')
+            payload_html.append('</div>')
+        
+        # 国内载荷厂商
+        if data["payloads"].get("domestic"):
+            payload_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国内载荷厂商</h3>')
+            payload_html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">')
+            
+            # 按类别分组
+            category_colors = {
+                "激光通信终端": "purple",
+                "通信载荷": "blue", 
+                "相控阵天线": "green",
+                "T/R组件": "orange",
+                "T/R芯片": "red"
+            }
+            
+            for company in data["payloads"]["domestic"]:
+                category = company.get("category", "其他")
+                color = category_colors.get(category, "gray")
+                
+                # 构建详情弹窗内容
+                detail_content = f'''
+                    <div class="space-y-3">
+                        <div><span class="font-semibold">公司:</span> {company["name"]}</div>
+                        <div><span class="font-semibold">城市:</span> {company.get("city", "")}</div>
+                        <div><span class="font-semibold">类别:</span> <span class="text-{color}-600">{category}</span></div>
+                        <div><span class="font-semibold">技术:</span> {company["tech"]}</div>
+                        <div><span class="font-semibold">成立:</span> {company.get("founded", "")}</div>
+                        <div><span class="font-semibold">融资:</span> {company.get("funding", "")}</div>
+                        <div><span class="font-semibold">产能:</span> {company.get("capacity", "")}</div>
+                        <div><span class="font-semibold">产品:</span> {', '.join(company.get("products", []))}</div>
+                        <div><span class="font-semibold">简介:</span> {company["description"]}</div>
+                        <div class="mt-3 pt-3 border-t border-gray-200">
+                            <span class="font-semibold">相关链接:</span>
+                            <div class="flex flex-wrap gap-2 mt-1">
+                                {''.join(f'<a href="{url}" target="_blank" class="text-blue-600 text-sm hover:underline">{name}</a>' for name, url in company.get("detail_links", {}).items())}
+                            </div>
+                        </div>
+                    </div>
+                '''
+                detail_content_escaped = detail_content.replace("'", "\\'").replace('"', '\\"').replace('\n', ' ')
+                
+                website_html = f'<a href="{company["website"]}" target="_blank" class="text-blue-600 hover:underline"><i class="fas fa-globe mr-1"></i>官网</a>' if company.get("website") else ''
+                
+                payload_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 clickable-card" onclick="openModal('{company["name"]}', '{detail_content_escaped}')">
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-bold">{company["name"]}</h4>
+                        <span class="category-badge bg-{color}-100 text-{color}-700">{category}</span>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-2">{company.get("city", "")} · {company.get("founded", "")}</p>
+                    <p class="text-sm text-gray-600 mb-2">{company["focus"]}</p>
+                    <p class="text-xs text-gray-500 line-clamp-2">{company["description"][:60]}...</p>
+                    <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
+                        <span class="text-xs text-gray-400">{website_html}</span>
+                        <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>查看详情</span>
+                    </div>
+                </div>
+                ''')
+            payload_html.append('</div>')
+        
+        # 国际载荷厂商
+        if data["payloads"].get("international"):
+            payload_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国际载荷厂商</h3>')
+            payload_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4">')
+            for company in data["payloads"]["international"]:
+                website_html = f'<a href="{company["website"]}" target="_blank" class="text-blue-600 hover:underline"><i class="fas fa-globe mr-1"></i>官网</a>' if company.get("website") else ''
+                links_html = ' '.join(f'<a href="{url}" target="_blank" class="text-blue-600 text-xs hover:underline">{name}</a>' for name, url in company.get("detail_links", {}).items())
+                
+                payload_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold">{company["name"]}</h4>
+                        <span class="text-xs text-gray-500">{company.get("region", "")}</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">{company["focus"]}</p>
+                    <p class="text-xs text-gray-500 mt-1">技术: {company["tech"]}</p>
+                    <p class="text-xs text-gray-400 mt-2">{company["description"][:80]}...</p>
+                    <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between items-center">
+                        <span class="text-xs">{website_html}</span>
+                        <span class="text-xs">{links_html}</span>
+                    </div>
+                </div>
+                ''')
+            payload_html.append('</div>')
+        
+        payload_html.append('</section>')
+        content.append("".join(payload_html))
     
     # 商业层、政策层、技术趋势、最新动态
     # ... (省略，与之前相同)
