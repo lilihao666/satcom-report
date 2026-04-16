@@ -4,7 +4,7 @@
 
 ## 🔗 在线访问
 
-**报告主页**: https://satcom-report.netlify.app
+**报告主页**: https://lilihao666.github.io/satcom-report/
 
 ## 📊 报告内容
 
