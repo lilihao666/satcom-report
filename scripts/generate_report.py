@@ -452,7 +452,7 @@ def generate_content(data):
             if c.get('detail_links'):
                 links_items = []
                 for link_name, link_url in c['detail_links'].items():
-                    links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-red-50 text-red-600 rounded-lg text-sm hover:bg-red-100 transition"><i class="fas fa-search mr-1.5"></i>{link_name}</a>')
+                    links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-blue-50 text-blue-600 rounded-lg text-sm hover:bg-blue-100 transition"><i class="fas fa-search mr-1.5"></i>{link_name}</a>')
                 detail_links_html = f'''
                 <div>
                     <p class="font-semibold mb-2">🔍 了解更多:</p>
@@ -516,13 +516,74 @@ def generate_content(data):
         
         constellation_html.append('</div>')
     
-    # 国际星座（简化显示）
+    # 国际星座（带详情弹窗和链接）
     constellation_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>国际星座</h3>')
     constellation_html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4">')
     for c in data["constellations"]["international"]:
         progress = (c.get("launched", 0) / c.get("planned", 1)) * 100
+        
+        # 星间链路信息
+        isl = c.get("inter_satellite_link", {})
+        isl_html = ""
+        if isl:
+            isl_status = "✅ 支持" if isl.get("enabled") else "❌ 不支持"
+            isl_tech = isl.get("tech", "-")
+            isl_bw = isl.get("bandwidth", "-")
+            isl_note = isl.get("note", "")
+            isl_html = f'''
+            <div class="bg-blue-50 p-3 rounded-lg">
+                <p class="font-semibold text-blue-800 mb-2"><i class="fas fa-satellite mr-1"></i> 星间链路</p>
+                <p class="text-sm text-blue-700"><strong>状态:</strong> {isl_status}</p>
+                <p class="text-sm text-blue-700"><strong>技术:</strong> {isl_tech}</p>
+                {f'<p class="text-sm text-blue-700"><strong>带宽:</strong> {isl_bw}</p>' if isl.get("bandwidth") != "-" else ''}
+                {f'<p class="text-xs text-blue-600 mt-1"><i class="fas fa-info-circle mr-1"></i> {isl_note}</p>' if isl_note else ''}
+            </div>
+            '''
+        
+        # 链接
+        detail_links_html = ""
+        if c.get('detail_links'):
+            links_items = []
+            for link_name, link_url in c['detail_links'].items():
+                links_items.append(f'<a href="{link_url}" target="_blank" class="inline-flex items-center px-3 py-1.5 bg-green-50 text-green-600 rounded-lg text-sm hover:bg-green-100 transition"><i class="fas fa-external-link-alt mr-1.5"></i>{link_name}</a>')
+            detail_links_html = f'''
+            <div>
+                <p class="font-semibold mb-2">🔍 相关链接:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(links_items)}
+                </div>
+            </div>
+            '''
+        
+        detail_content = f'''
+        <div class="space-y-4">
+            <div class="flex justify-between items-center">
+                <span class="text-xs bg-green-100 text-green-800 px-2 py-0.5 rounded">{c["stage"]}</span>
+            </div>
+            <div>
+                <p class="text-gray-600"><strong>运营方:</strong> {c["operator"]}</p>
+                <p class="text-gray-600"><strong>规划数量:</strong> {c["planned"]:,} 颗</p>
+                <p class="text-gray-600"><strong>已发射:</strong> {c["launched"]:,} 颗</p>
+            </div>
+            {isl_html}
+            {detail_links_html}
+            <div>
+                <p class="font-semibold mb-2">应用场景:</p>
+                <div class="flex flex-wrap gap-2">
+                    {''.join(f'<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{uc}</span>' for uc in c.get("use_cases", []))}
+                </div>
+            </div>
+            <div class="mt-4">
+                <p class="text-sm text-gray-500 mb-2">部署进度: {progress:.1f}%</p>
+                <div class="w-full bg-gray-200 rounded-full h-3">
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 h-3 rounded-full" style="width: {min(progress, 100)}%"></div>
+                </div>
+            </div>
+        </div>
+        '''
+        
         constellation_html.append(f'''
-        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500">
+        <div class="bg-white rounded-lg shadow p-4 border-l-4 border-green-500 clickable-card" onclick="openModal('{escape_js(c["name"])}', '{escape_js(detail_content)}')">
             <div class="flex justify-between items-start">
                 <h3 class="font-bold">{c["name"]}</h3>
                 <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">{c["stage"]}</span>
@@ -531,6 +592,9 @@ def generate_content(data):
             <div class="mt-2 text-sm">
                 <span>{c["launched"]:,}颗 / {c["planned"]:,}颗</span>
                 <span class="text-gray-400 ml-2">({progress:.1f}%)</span>
+            </div>
+            <div class="mt-2 pt-2 border-t border-gray-100 text-center">
+                <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>点击查看详情</span>
             </div>
         </div>
         ''')
@@ -678,12 +742,12 @@ def generate_content(data):
                         </div>
                     </div>
                 '''
-                detail_content_escaped = detail_content.replace("'", "\\'").replace('"', '\\"').replace('\n', ' ')
+                detail_content_escaped = escape_js(detail_content)
                 
                 website_html = f'<a href="{company["website"]}" target="_blank" class="text-blue-600 hover:underline"><i class="fas fa-globe mr-1"></i>官网</a>' if company.get("website") else ''
                 
                 payload_html.append(f'''
-                <div class="bg-white rounded-lg shadow p-4 clickable-card" onclick="openModal('{company["name"]}', '{detail_content_escaped}')">
+                <div class="bg-white rounded-lg shadow p-4 clickable-card" onclick="openModal('{escape_js(company["name"])}', '{detail_content_escaped}')">
                     <div class="flex justify-between items-start mb-2">
                         <h4 class="font-bold">{company["name"]}</h4>
                         <span class="category-badge bg-{color}-100 text-{color}-700">{category}</span>
