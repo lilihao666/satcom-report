@@ -1347,42 +1347,48 @@
         "date": "2025-01",
         "issuer": "财政部/工信部",
         "content": "设立商业航天专项资金，支持卫星制造、火箭发射、地面设备等关键环节，单个项目最高补助5000万元",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.baidu.com/s?wd=2025年商业航天发展专项资金管理办法"
       },
       {
         "title": "卫星互联网频率使用许可简化审批",
         "date": "2025-06",
         "issuer": "工信部",
         "content": "简化低轨卫星星座频率使用许可审批流程，审批周期从12个月缩短至6个月",
-        "impact": "medium"
+        "impact": "medium",
+        "url": "https://www.baidu.com/s?wd=卫星互联网频率使用许可简化审批"
       },
       {
         "title": "《航天强国建设纲要（2026-2035）》",
         "date": "2026-03",
         "issuer": "国务院",
         "content": "明确卫星互联网作为国家新型基础设施，计划2030年前建成全球覆盖的低轨星座网络",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.baidu.com/s?wd=航天强国建设纲要2026-2035"
       },
       {
         "title": "《卫星网络国内协调管理办法》",
         "date": "2024",
         "issuer": "工信部",
         "content": "规范卫星网络频率和轨道资源管理",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.baidu.com/s?wd=卫星网络国内协调管理办法"
       },
       {
         "title": "《卫星互联网产业发展行动计划》",
         "date": "2023",
         "issuer": "发改委",
         "content": "推动卫星互联网与5G/6G融合发展",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.baidu.com/s?wd=卫星互联网产业发展行动计划"
       },
       {
         "title": "低轨卫星星座发射许可",
         "date": "2024",
         "issuer": "国防科工局",
         "content": "简化商业航天发射审批流程",
-        "impact": "medium"
+        "impact": "medium",
+        "url": "https://www.baidu.com/s?wd=低轨卫星星座发射许可"
       }
     ],
     "international": [
@@ -1391,42 +1397,48 @@
         "date": "2025-02",
         "issuer": "FCC",
         "content": "批准SpaceX部署7500颗第三代Starlink卫星，支持直接到手机服务",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.fcc.gov"
       },
       {
         "title": "EU Space Law正式生效",
         "date": "2025-09",
         "issuer": "欧盟",
         "content": "欧盟空间法生效，要求所有在欧盟运营的卫星 constellation 遵守空间交通管理规则，包括主动碎片移除义务",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://ec.europa.eu"
       },
       {
         "title": "ITU更新非对地静止卫星协调规则",
         "date": "2025-11",
         "issuer": "ITU",
         "content": "更新NGSO卫星协调规则，引入'先到达先服务'原则，要求星座运营方在7年内完成部署",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.itu.int"
       },
       {
         "title": "美国《2026年商业航天竞争力法案》",
         "date": "2026-01",
         "issuer": "美国国会",
         "content": "延长商业航天发射责任保险上限至2028年，为商业航天公司提供监管确定性",
-        "impact": "medium"
+        "impact": "medium",
+        "url": "https://www.google.com/search?q=2026+商业航天竞争力法案"
       },
       {
         "title": "FCC Part 25 卫星通信规则",
         "date": "2024",
         "issuer": "FCC",
         "content": "更新NGSO卫星系统频谱共享规则",
-        "impact": "high"
+        "impact": "high",
+        "url": "https://www.fcc.gov"
       },
       {
         "title": "ITU 卫星网络申报程序",
         "date": "2023",
         "issuer": "ITU",
         "content": "完善卫星频率/轨道资源协调程序",
-        "impact": "medium"
+        "impact": "medium",
+        "url": "https://www.itu.int"
       }
     ],
     "licensing": {
@@ -1462,7 +1474,8 @@
         "华为",
         "爱立信",
         "高通"
-      ]
+      ],
+      "url": "https://www.baidu.com/s?wd=5G+NTN+非地面网络"
     },
     {
       "trend": "D2D 手机直连卫星",
@@ -1473,7 +1486,8 @@
         "苹果",
         "华为",
         "AST SpaceMobile"
-      ]
+      ],
+      "url": "https://www.baidu.com/s?wd=手机直连卫星+D2D"
     },
     {
       "trend": "相控阵天线成本下降",
@@ -1484,7 +1498,8 @@
         "Starlink",
         "Kymeta",
         "CesiumAstro"
-      ]
+      ],
+      "url": "https://www.baidu.com/s?wd=相控阵天线+卫星通信"
     },
     {
       "trend": "激光星间链路",
@@ -1495,7 +1510,8 @@
         "SpaceX",
         "Mynaric",
         "TESAT"
-      ]
+      ],
+      "url": "https://www.baidu.com/s?wd=激光星间链路"
     },
     {
       "trend": "AI驱动的卫星运营",
@@ -1506,7 +1522,8 @@
         "Amazon",
         "Google",
         "OneWeb"
-      ]
+      ],
+      "url": "https://www.baidu.com/s?wd=AI卫星运营+人工智能"
     }
   ],
   "news": [

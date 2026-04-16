@@ -580,6 +580,9 @@ def generate_content(data):
                         {''.join(f'<span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded">{p}</span>' for p in company.get("products", [])[:3])}
                     </div>
                 </div>
+                <div class="mt-3 pt-2 border-t border-gray-100 text-center">
+                    <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>点击查看详情</span>
+                </div>
             </div>
             ''')
         
@@ -598,6 +601,9 @@ def generate_content(data):
             </div>
             <div class="mt-2 text-sm space-y-1">
                 <p><span class="text-gray-500">聚焦:</span> {company["focus"]}</p>
+            </div>
+            <div class="mt-3 pt-2 border-t border-gray-100 text-center">
+                <span class="text-xs text-blue-500"><i class="fas fa-hand-pointer mr-1"></i>点击查看详情</span>
             </div>
         </div>
         ''')
@@ -634,11 +640,13 @@ def generate_content(data):
     if "policy" in data:
         policy_html = ['<section id="policy"><h2 class="text-2xl font-bold mb-4">📜 政策法规</h2>']
         
+        # 国内政策
         policy_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国内政策</h3>')
         policy_html.append('<div class="space-y-3 mb-6">')
         for policy in data["policy"].get("china", []):
             impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
             color = impact_colors.get(policy.get("impact", "low"), "gray")
+            url = policy.get("url", "#")
             policy_html.append(f'''
             <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{color}-500">
                 <div class="flex justify-between items-start">
@@ -646,9 +654,39 @@ def generate_content(data):
                     <span class="text-xs text-gray-500">{policy["date"]} · {policy["issuer"]}</span>
                 </div>
                 <p class="text-gray-600 text-sm mt-2">{policy["content"]}</p>
+                <div class="mt-2 text-right">
+                    <a href="{url}" target="_blank" class="text-xs text-blue-600 hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i>查看详情
+                    </a>
+                </div>
             </div>
             ''')
         policy_html.append('</div>')
+        
+        # 国际政策
+        if data["policy"].get("international"):
+            policy_html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国际政策</h3>')
+            policy_html.append('<div class="space-y-3 mb-6">')
+            for policy in data["policy"].get("international", []):
+                impact_colors = {"high": "red", "medium": "yellow", "low": "green"}
+                color = impact_colors.get(policy.get("impact", "low"), "gray")
+                url = policy.get("url", "#")
+                policy_html.append(f'''
+                <div class="bg-white rounded-lg shadow p-4 border-l-4 border-{color}-500">
+                    <div class="flex justify-between items-start">
+                        <h4 class="font-bold">{policy["title"]}</h4>
+                        <span class="text-xs text-gray-500">{policy["date"]} · {policy["issuer"]}</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-2">{policy["content"]}</p>
+                    <div class="mt-2 text-right">
+                        <a href="{url}" target="_blank" class="text-xs text-blue-600 hover:underline">
+                            <i class="fas fa-external-link-alt mr-1"></i>查看详情
+                        </a>
+                    </div>
+                </div>
+                ''')
+            policy_html.append('</div>')
+        
         policy_html.append('</section>')
         content.append("".join(policy_html))
     
@@ -664,14 +702,23 @@ def generate_content(data):
             "早期应用": "orange"
         }
         color = status_colors.get(trend["status"], "gray")
+        url = trend.get("url", "#")
         tech_html.append(f'''
         <div class="bg-white rounded-lg shadow p-4">
             <div class="flex justify-between items-start">
-                <div>
-                    <h3 class="font-bold text-lg">{trend["trend"]}</h3>
+                <div class="flex-1">
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-bold text-lg">{trend["trend"]}</h3>
+                        <span class="bg-{color}-100 text-{color}-800 text-xs px-3 py-1 rounded-full">{trend["status"]}</span>
+                    </div>
                     <p class="text-gray-600 text-sm mt-1">{trend["description"]}</p>
+                    <div class="mt-2 flex justify-between items-center">
+                        <span class="text-xs text-gray-500">主要推动者: {', '.join(trend.get("leaders", []))}</span>
+                        <a href="{url}" target="_blank" class="text-xs text-blue-600 hover:underline">
+                            <i class="fas fa-external-link-alt mr-1"></i>了解更多
+                        </a>
+                    </div>
                 </div>
-                <span class="bg-{color}-100 text-{color}-800 text-xs px-3 py-1 rounded-full">{trend["status"]}</span>
             </div>
         </div>
         ''')
