@@ -482,7 +482,7 @@ def generate_content(data):
                         {''.join(f'<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">{uc}</span>' for uc in c.get("use_cases", []))}
                     </div>
                 </div>
-                {f'<div class="bg-orange-50 p-3 rounded-lg"><p class="text-sm text-orange-700"><i class="fas fa-info-circle mr-1"></i> {note}</p></div>' if note else ''}
+                {f'<div class="bg-gray-50 p-3 rounded-lg"><p class="text-sm text-gray-700"><i class="fas fa-info-circle mr-1"></i> {note}</p></div>' if note else ''}
                 <div class="mt-4">
                     <p class="text-sm text-gray-500 mb-2">部署进度: {progress:.1f}%</p>
                     <div class="w-full bg-gray-200 rounded-full h-3">

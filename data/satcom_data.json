@@ -736,11 +736,11 @@
       },
       {
         "name": "天行探索科技",
-        "city": "深圳",
+        "city": "北京",
         "focus": "卫星互联网终端",
         "tech": "Ka/Ku频段相控阵",
-        "founded": "2020",
-        "funding": "Pre-A",
+        "founded": "2022",
+        "funding": "天使轮",
         "products": [
           "相控阵终端",
           "平板天线",
@@ -765,7 +765,8 @@
           "天眼查": "https://www.tianyancha.com/search?key=天行探索科技",
           "产品搜索": "https://www.baidu.com/s?wd=天行探索科技+产品"
         },
-        "category": "卫星互联网终端"
+        "category": "卫星互联网终端",
+        "full_name": "北京天行探索科技有限公司"
       },
       {
         "name": "华美钛",
