@@ -1003,6 +1003,40 @@
         "category": "卫星物联网终端"
       },
       {
+        "name": "宇迹航天",
+        "city": "北京",
+        "focus": "卫星互联网终端",
+        "tech": "相控阵天线/平板终端",
+        "founded": "2021",
+        "funding": "A轮",
+        "products": ["平板卫星天线", "车载动中通", "船载终端"],
+        "description": "专注低轨卫星互联网终端研发，提供消费级和工业级相控阵天线产品",
+        "website": "",
+        "detail_links": {
+          "百度搜索": "https://www.baidu.com/s?wd=宇迹航天+卫星通信",
+          "天眼查": "https://www.tianyancha.com/search?key=宇迹航天",
+          "产品搜索": "https://www.baidu.com/s?wd=宇迹航天+产品"
+        },
+        "category": "卫星互联网终端"
+      },
+      {
+        "name": "中星万联",
+        "city": "成都",
+        "focus": "卫星物联网终端",
+        "tech": "NTN/LoRa",
+        "founded": "2020",
+        "funding": "Pre-A轮",
+        "products": ["卫星物联网模组", "低功耗终端", "行业应用方案"],
+        "description": "卫星物联网通信解决方案提供商，专注低功耗广域网应用",
+        "website": "",
+        "detail_links": {
+          "百度搜索": "https://www.baidu.com/s?wd=中星万联+卫星通信",
+          "天眼查": "https://www.tianyancha.com/search?key=中星万联",
+          "产品搜索": "https://www.baidu.com/s?wd=中星万联+产品"
+        },
+        "category": "卫星物联网终端"
+      },
+      {
         "name": "航天金美",
         "city": "重庆",
         "focus": "卫星通信设备",
