@@ -119,18 +119,18 @@
         "category": "卫星物联网"
       },
       {
-        "name": "国星宇航/太空计算星座",
+        "name": "国星宇航/星算计划",
         "operator": "国星宇航",
         "planned": 2800,
-        "launched": 0,
-        "stage": "规划中",
+        "launched": 12,
+        "stage": "部署中",
         "use_cases": [
           "太空计算",
           "AI推理",
           "数据中继",
           "遥感应用"
         ],
-        "note": "全球首个太空计算星座，计划部署2800颗AI卫星",
+        "note": "全球首个太空计算星座。2025年5月14日发射首批12颗卫星（星算计划01组），单星算力744TOPS，星座总算力5POPS。计划2035年完成2800颗组网",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -458,29 +458,6 @@
           "官网": "https://www.viasat.com"
         },
         "category": "卫星互联网"
-      },
-      {
-        "name": "AROGOS星座",
-        "operator": "德国宇航中心DLR/Commercial",
-        "planned": 12,
-        "launched": 0,
-        "stage": "规划中",
-        "use_cases": [
-          "雷达观测",
-          "地球监测",
-          "灾害预警"
-        ],
-        "note": "全球首个商业SAR雷达卫星星座，计划2026年发射首星",
-        "inter_satellite_link": {
-          "enabled": false,
-          "tech": "无",
-          "note": "SAR雷达卫星，无星间链路"
-        },
-        "detail_links": {
-          "搜索": "https://www.google.com/search?q=AROGOS星座+satellite+constellation",
-          "官网": "https://www.dlr.de"
-        },
-        "category": "卫星物联网"
       },
       {
         "name": "AROGOS星座",
