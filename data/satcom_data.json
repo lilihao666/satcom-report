@@ -119,17 +119,18 @@
         "category": "卫星物联网"
       },
       {
-        "name": "国科宇航星座",
-        "operator": "国科宇航",
-        "planned": 36,
+        "name": "国星宇航/太空计算星座",
+        "operator": "国星宇航",
+        "planned": 2800,
         "launched": 0,
         "stage": "规划中",
         "use_cases": [
-          "通信",
-          "遥感",
-          "导航"
+          "太空计算",
+          "AI推理",
+          "数据中继",
+          "遥感应用"
         ],
-        "note": "",
+        "note": "全球首个太空计算星座，计划部署2800颗AI卫星",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -137,10 +138,10 @@
           "note": "规划中"
         },
         "detail_links": {
-          "搜索": "https://www.baidu.com/s?wd=国科宇航星座",
-          "发射动态": "https://www.baidu.com/s?wd=国科宇航星座+发射"
+          "搜索": "https://www.baidu.com/s?wd=国星宇航+太空计算星座",
+          "发射动态": "https://www.baidu.com/s?wd=国星宇航+卫星+发射"
         },
-        "category": "卫星物联网"
+        "category": "卫星互联网"
       },
       {
         "name": "钧天航宇星座",
@@ -793,36 +794,36 @@
         "category": "卫星物联网终端"
       },
       {
-        "name": "国科宇航",
+        "name": "国星宇航",
         "city": "成都",
-        "focus": "卫星通信终端",
-        "tech": "专有协议/NTN",
-        "founded": "2019",
-        "funding": "A轮",
+        "focus": "太空计算卫星/AI卫星",
+        "tech": "星载AI/星间激光通信",
+        "founded": "2018",
+        "funding": "B轮",
         "products": [
-          "手持终端",
-          "车载终端",
-          "船载终端"
+          "AI卫星平台",
+          "星载计算载荷",
+          "卫星地面站"
         ],
-        "description": "卫星通信终端和星座运营服务",
-        "website": "https://www.baidu.com/s?wd=国科宇航+卫星通信",
+        "description": "全球领先的AI卫星公司，规划2800颗太空计算星座，专注于星载AI推理、星间激光通信和太空大数据服务",
+        "website": "https://www.bjxsgroup.com",
         "featured_products": [
           {
-            "name": "GKT-100手持终端",
-            "description": "天通一号卫星电话，支持语音和数据",
-            "image": "https://via.placeholder.com/150?text=GKT-100"
+            "name": "ADASAT AI卫星",
+            "description": "星载AI推理卫星，支持在轨实时数据处理",
+            "image": "https://via.placeholder.com/150?text=ADASAT"
           },
           {
-            "name": "GKT-V200车载终端",
-            "description": "车载卫星通信终端，动中通设计",
-            "image": "https://via.placeholder.com/150?text=GKT-V200"
+            "name": "星盾系列遥感卫星",
+            "description": "高分辨率遥感卫星，支持多光谱成像",
+            "image": "https://via.placeholder.com/150?text=星盾"
           }
         ],
         "detail_links": {
-          "百度搜索": "https://www.baidu.com/s?wd=国科宇航+卫星通信",
-          "天眼查": "https://www.tianyancha.com/search?key=国科宇航",
-          "产品搜索": "https://www.baidu.com/s?wd=国科宇航+产品",
-          "官网": "https://www.guokespace.com"
+          "百度搜索": "https://www.baidu.com/s?wd=国星宇航",
+          "天眼查": "https://www.tianyancha.com/search?key=国星宇航",
+          "产品搜索": "https://www.baidu.com/s?wd=国星宇航+AI卫星",
+          "官网": "https://www.bjxsgroup.com"
         },
         "category": "卫星互联网终端"
       },
@@ -1389,7 +1390,7 @@
         "players": [
           "磐钴智能",
           "星联芯通",
-          "国科宇航"
+          "国星宇航"
         ]
       },
       {
