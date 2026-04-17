@@ -459,6 +459,23 @@ def generate_terminal_card(company, is_international=False):
     products = company.get('products', [])
     products_html = '<div class="flex flex-wrap gap-2">' + ''.join([f'<span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm">{p}</span>' for p in products[:3]]) + '</div>'
     
+    # 产品图片展示
+    featured_products = company.get('featured_products', [])
+    featured_html = ''
+    if featured_products:
+        fp_items = []
+        for fp in featured_products[:4]:  # 最多显示4个产品
+            img = fp.get('image', '')
+            if img and not img.startswith('https://via.placeholder'):
+                if img.startswith('http'):
+                    fp_items.append(f'<div class="text-center"><img src="{img}" class="w-full h-20 object-cover rounded mb-1" loading="lazy"><p class="text-xs font-medium">{fp["name"]}</p></div>')
+                else:
+                    fp_items.append(f'<div class="text-center"><img src="{img}" class="w-full h-20 object-cover rounded mb-1" loading="lazy"><p class="text-xs font-medium">{fp["name"]}</p></div>')
+            else:
+                fp_items.append(f'<div class="bg-gray-50 p-2 rounded text-center"><p class="font-medium text-sm">{fp["name"]}</p><p class="text-xs text-gray-500">{fp.get("description", "")[:25]}...</p></div>')
+        if fp_items:
+            featured_html = '<div><p class="font-semibold mb-2">🎁 典型产品:</p><div class="grid grid-cols-2 gap-2">' + ''.join(fp_items) + '</div></div>'
+    
     # 详情弹窗内容
     modal_content = f'''<div class="space-y-4">
         <div class="flex justify-between items-center">
@@ -491,6 +508,7 @@ def generate_terminal_card(company, is_international=False):
             <p class="font-semibold mb-2">主要产品:</p>
             {products_html}
         </div>
+        {featured_html}
         <div>
             <p class="font-semibold mb-2">🔍 详细调研:</p>
             {links_html}
