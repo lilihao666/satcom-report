@@ -102,20 +102,44 @@
             </div>
         </div>
 
-        <!-- 步骤3 -->
-        <div class="step mb-4">
-            <div class="step-number">3</div>
-            <div>
-                <p class="font-medium">获取访问密码</p>
-                <p class="text-sm text-gray-500">审核通过后2小时内发送</p>
+        <!-- 自动获取密码 -->
+        <div class="border-2 border-green-200 rounded-xl p-4 mb-6 bg-green-50">
+            <div class="flex items-center gap-2 mb-3">
+                <i class="fas fa-magic text-green-600 text-xl"></i>
+                <span class="font-bold text-green-800">自动获取密码</span>
             </div>
+            <p class="text-sm text-gray-600 mb-3">付款完成后，点击下方按钮，系统将自动为您分配访问密码</p>
+            <button id="getPasswordBtn" onclick="getPassword()" class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-medium py-3 rounded-xl hover:from-green-600 hover:to-green-700 transition shadow-lg">
+                <i class="fas fa-key mr-2"></i>我已付款，获取密码
+            </button>
+            <div id="passwordResult" class="hidden mt-4 bg-white rounded-lg p-4 border border-green-200">
+                <p class="text-sm text-gray-500 mb-1">您的专属访问密码：</p>
+                <div class="flex items-center gap-2">
+                    <code id="assignedPassword" class="flex-1 bg-gray-100 px-3 py-2 rounded text-lg font-mono font-bold text-green-700 text-center"></code>
+                    <button onclick="copyPassword()" class="bg-gray-100 hover:bg-gray-200 px-3 py-2 rounded text-gray-600">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+                <a href="index.html" class="block mt-3 text-center bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition">
+                    <i class="fas fa-unlock mr-1"></i>立即访问报告
+                </a>
+            </div>
+            <p id="passwordError" class="hidden text-sm text-red-600 mt-2"><i class="fas fa-exclamation-circle mr-1"></i>密码已分配完毕，请联系管理员</p>
         </div>
 
-        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
-            <p class="text-sm text-blue-800">
-                <i class="fas fa-clock mr-1"></i>
-                <strong>服务承诺：</strong>付款后2小时内发送专属访问密码，有效期30天
-            </p>
+        <!-- 手动联系 -->
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+            <p class="text-sm text-gray-500 mb-2">遇到问题？联系管理员</p>
+            <div class="flex items-center gap-3">
+                <i class="fab fa-weixin text-green-500 text-2xl"></i>
+                <div class="flex-1">
+                    <p class="font-medium">管理员微信</p>
+                    <p class="text-sm text-gray-600" id="wechatId">your-wechat-id</p>
+                </div>
+                <button onclick="copyWechat()" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">
+                    <i class="fas fa-copy mr-1"></i>复制
+                </button>
+            </div>
         </div>
 
         <!-- 返回报告 -->
@@ -124,12 +148,65 @@
         </a>
     </div>
 
+    <script src="passwords.js"></script>
     <script>
         function copyWechat() {
-            navigator.clipboard.writeText('your-wechat-id').then(() => {
+            const wechatId = document.getElementById('wechatId').textContent;
+            navigator.clipboard.writeText(wechatId).then(() => {
                 alert('微信号已复制到剪贴板');
             });
         }
+        
+        // 从100个密码中随机分配一个未使用的
+        function getPassword() {
+            // 获取已使用的密码
+            const usedPasswords = JSON.parse(localStorage.getItem('used_passwords') || '[]');
+            
+            // 获取所有可用密码（排除已使用和管理员密码）
+            const allPasswords = Object.keys(PASSWORDS);
+            const available = allPasswords.filter(pwd => {
+                const info = PASSWORDS[pwd];
+                return info.type !== 'admin' && info.type !== 'trial' && !usedPasswords.includes(pwd);
+            });
+            
+            if (available.length === 0) {
+                document.getElementById('passwordError').classList.remove('hidden');
+                return;
+            }
+            
+            // 随机选择一个
+            const selected = available[Math.floor(Math.random() * available.length)];
+            
+            // 标记为已使用
+            usedPasswords.push(selected);
+            localStorage.setItem('used_passwords', JSON.stringify(usedPasswords));
+            
+            // 存储当前用户的密码
+            localStorage.setItem('my_password', selected);
+            localStorage.setItem('password_activated', Date.now().toString());
+            
+            // 显示结果
+            document.getElementById('assignedPassword').textContent = selected;
+            document.getElementById('passwordResult').classList.remove('hidden');
+            document.getElementById('getPasswordBtn').classList.add('hidden');
+        }
+        
+        function copyPassword() {
+            const pwd = document.getElementById('assignedPassword').textContent;
+            navigator.clipboard.writeText(pwd).then(() => {
+                alert('密码已复制到剪贴板');
+            });
+        }
+        
+        // 检查是否已有密码
+        window.onload = function() {
+            const myPassword = localStorage.getItem('my_password');
+            if (myPassword && PASSWORDS[myPassword]) {
+                document.getElementById('assignedPassword').textContent = myPassword;
+                document.getElementById('passwordResult').classList.remove('hidden');
+                document.getElementById('getPasswordBtn').classList.add('hidden');
+            }
+        };
     </script>
 </body>
 </html>
