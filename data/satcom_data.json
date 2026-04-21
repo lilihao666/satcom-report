@@ -3,7 +3,7 @@
   "constellations": {
     "domestic": [
       {
-        "name": "国网/GW星座",
+        "name": "GW星座",
         "operator": "中国星网",
         "planned": 12992,
         "launched": 168,
@@ -70,7 +70,7 @@
           "发射动态": "https://www.baidu.com/s?wd=天启星座+发射"
         },
         "category": "卫星物联网",
-        "note": "我国首个低轨物联网通信星座。一期由37颗卫星组成，2025年5月19日完成全球组网。2026年1月16日发射06组4颗增强星（37-40星），在轨总数达41颗。星座具有全球覆盖、小型化、低功耗、低成本等特点，已广泛应用于林业、农业、应急、水利、电力、石油、海洋等行业的数字化场景，正向汽车、手持机、穿戴设备等消费级电子产品直连卫星市场迈进。"
+        "note": ""
       },
       {
         "name": "吉利未来星座",
@@ -131,7 +131,7 @@
           "数据中继",
           "遥感应用"
         ],
-        "note": "全球首个太空计算星座。截至2026年4月，已累计发射27颗卫星（其中AI卫星21颗），数量稳居中国民营商业航天企业首位。2025年5月14日发射首批12颗计算卫星（星算计划01组），单星算力744TOPS，星座总算力5POPS。2026年\"星算计划\"全面提速，目标2030年完成2800颗组网。公司已向港交所递交IPO申请，估值突破100亿元。",
+        "note": "",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -438,29 +438,6 @@
         "category": "卫星物联网"
       },
       {
-        "name": "Inmarsat",
-        "operator": "Viasat",
-        "planned": 5,
-        "launched": 5,
-        "stage": "运营中",
-        "use_cases": [
-          "海事航空",
-          "政府通信",
-          "企业宽带"
-        ],
-        "note": "地球静止轨道，已被Viasat收购",
-        "inter_satellite_link": {
-          "enabled": false,
-          "tech": "无",
-          "note": "GEO卫星，无需星间链路"
-        },
-        "detail_links": {
-          "搜索": "https://www.google.com/search?q=Inmarsat+satellite+constellation",
-          "官网": "https://www.viasat.com"
-        },
-        "category": "卫星互联网"
-      },
-      {
         "name": "AROGOS星座",
         "operator": "德国宇航中心DLR/Commercial",
         "planned": 12,
@@ -640,65 +617,27 @@
     ],
     "geo_international": [
       {
-        "name": "Intelsat",
-        "operator": "Intelsat",
-        "planned": 50,
-        "launched": 50,
+        "name": "Inmarsat",
+        "operator": "Viasat",
+        "planned": 5,
+        "launched": 5,
         "stage": "运营中",
         "use_cases": [
-          "全球通信",
-          "广播",
-          "企业网络"
+          "海事航空",
+          "政府通信",
+          "企业宽带"
         ],
-        "orbit": "GEO",
-        "note": "全球最大商业卫星运营商之一",
+        "note": "地球静止轨道，已被Viasat收购",
         "inter_satellite_link": {
           "enabled": false,
           "tech": "无",
-          "note": "GEO卫星"
+          "note": "GEO卫星，无需星间链路"
         },
-        "category": "卫星互联网"
-      },
-      {
-        "name": "SES",
-        "operator": "SES",
-        "planned": 70,
-        "launched": 70,
-        "stage": "运营中",
-        "use_cases": [
-          "全球通信",
-          "广播",
-          "政府服务"
-        ],
-        "orbit": "GEO/MEO",
-        "note": "拥有GEO和MEO混合星座",
-        "inter_satellite_link": {
-          "enabled": true,
-          "tech": "激光星间链路(O3b mPOWER)",
-          "bandwidth": "未知",
-          "note": "仅MEO部分"
+        "detail_links": {
+          "搜索": "https://www.google.com/search?q=Inmarsat+satellite+constellation",
+          "官网": "https://www.viasat.com"
         },
-        "category": "卫星互联网"
-      },
-      {
-        "name": "Eutelsat",
-        "operator": "Eutelsat",
-        "planned": 36,
-        "launched": 36,
-        "stage": "运营中",
-        "use_cases": [
-          "欧洲通信",
-          "广播",
-          "数据服务"
-        ],
-        "orbit": "GEO",
-        "note": "欧洲主要卫星运营商",
-        "inter_satellite_link": {
-          "enabled": false,
-          "tech": "无",
-          "note": "GEO卫星"
-        },
-        "category": "卫星互联网"
+        "category": "高轨卫星"
       }
     ]
   },
@@ -1469,102 +1408,100 @@
   "policy": {
     "china": [
       {
-        "title": "《2025年商业航天发展专项资金管理办法》",
-        "date": "2025-01",
-        "issuer": "财政部/工信部",
-        "content": "设立商业航天专项资金，支持卫星制造、火箭发射、地面设备等关键环节，单个项目最高补助5000万元",
+        "date": "2025-04",
+        "title": "《终端设备直连卫星服务管理规定》",
+        "department": "网信办等七部门",
+        "summary": "2025年6月1日起施行。规范终端设备直连卫星服务健康发展，支持技术研究、卫星通信与地面移动通信融合发展，鼓励在防灾减灾、野外作业、搜寻救援等领域应用。",
         "impact": "high",
-        "url": "https://www.baidu.com/s?wd=2025年商业航天发展专项资金管理办法"
+        "url": "https://www.cac.gov.cn/"
       },
       {
-        "title": "卫星互联网频率使用许可简化审批",
-        "date": "2025-06",
-        "issuer": "工信部",
-        "content": "简化低轨卫星星座频率使用许可审批流程，审批周期从12个月缩短至6个月",
-        "impact": "medium",
-        "url": "https://www.baidu.com/s?wd=卫星互联网频率使用许可简化审批"
+        "date": "2025-08",
+        "title": "《关于优化业务准入促进卫星通信产业发展的指导意见》",
+        "department": "工信部",
+        "summary": "19条举措围绕市场开放、应用场景、产业生态五维度。支持低轨卫星互联网商用试验，推广手机'不换卡不换号'卫星直连服务，开放卫星物联网市场准入。目标2030年卫星通信用户超千万。",
+        "impact": "high",
+        "url": "https://www.miit.gov.cn/"
       },
       {
-        "title": "《航天强国建设纲要（2026-2035）》",
+        "date": "2025-09",
+        "title": "三大运营商全面获得卫星移动通信业务资质",
+        "department": "工信部",
+        "summary": "中国移动、中国联通继中国电信后正式获得卫星移动通信业务经营资质，标志着三大运营商全面入局，推动卫星通信服务加速融入大众消费市场。",
+        "impact": "high"
+      },
+      {
+        "date": "2025-10",
+        "title": "十五五规划建议：加快建设航天强国",
+        "department": "中共中央",
+        "summary": "二十届四中全会审议通过十五五规划建议，将加快建设航天强国纳入现代化产业体系，推动量子科技、6G等前沿领域成为新增长点。",
+        "impact": "high"
+      },
+      {
+        "date": "2025-11",
+        "title": "《推进商业航天高质量安全发展行动计划（2025—2027年）》",
+        "department": "国家航天局",
+        "summary": "到2027年商业航天产业生态高效协同，产业规模显著壮大，基本实现商业航天高质量发展。",
+        "impact": "medium"
+      },
+      {
+        "date": "2025-08",
+        "title": "广东省《推动商业航天高质量发展若干政策措施》",
+        "department": "广东省政府",
+        "summary": "七大领域21条措施，打造商业航天应用首场景，支持海外地面站网布局（最高1000万元年度补助），核心产品纳入首台套奖励（最高900万元）。",
+        "impact": "medium"
+      },
+      {
         "date": "2026-03",
-        "issuer": "国务院",
-        "content": "明确卫星互联网作为国家新型基础设施，计划2030年前建成全球覆盖的低轨星座网络",
-        "impact": "high",
-        "url": "https://www.baidu.com/s?wd=航天强国建设纲要2026-2035"
+        "title": "政府工作报告：加快发展卫星互联网",
+        "department": "国务院",
+        "summary": "2026年政府工作报告首次单独提出加快发展卫星互联网，将其升级为国家战略级赛道，纳入十五五规划新型基础设施建设。",
+        "impact": "high"
       },
       {
-        "title": "《卫星网络国内协调管理办法》",
-        "date": "2024",
-        "issuer": "工信部",
-        "content": "规范卫星网络频率和轨道资源管理",
-        "impact": "high",
-        "url": "https://www.baidu.com/s?wd=卫星网络国内协调管理办法"
-      },
-      {
-        "title": "《卫星互联网产业发展行动计划》",
-        "date": "2023",
-        "issuer": "发改委",
-        "content": "推动卫星互联网与5G/6G融合发展",
-        "impact": "high",
-        "url": "https://www.baidu.com/s?wd=卫星互联网产业发展行动计划"
-      },
-      {
-        "title": "低轨卫星星座发射许可",
-        "date": "2024",
-        "issuer": "国防科工局",
-        "content": "简化商业航天发射审批流程",
-        "impact": "medium",
-        "url": "https://www.baidu.com/s?wd=低轨卫星星座发射许可"
+        "date": "2026-03",
+        "title": "十五五规划纲要：卫星互联网列为新型基建'三张网'",
+        "department": "国务院",
+        "summary": "十五五规划明确将卫星互联网与算力网、信息通信网并列为新型基建三张网，国家发改委将在卫星互联网领域建设千亿级甚至万亿级重大项目。",
+        "impact": "high"
       }
     ],
     "international": [
       {
-        "title": "FCC批准Starlink第三代卫星部署",
         "date": "2025-02",
-        "issuer": "FCC",
-        "content": "批准SpaceX部署7500颗第三代Starlink卫星，支持直接到手机服务",
-        "impact": "high",
-        "url": "https://www.fcc.gov"
+        "title": "FCC批准Starlink第三代卫星部署",
+        "country": "美国",
+        "summary": "FCC批准SpaceX部署第三代V3 mini卫星，提升带宽容量和覆盖范围。",
+        "impact": "medium"
       },
       {
-        "title": "EU Space Law正式生效",
+        "date": "2025-06",
+        "title": "日本发布卫星NB-IoT无线电设备标准",
+        "country": "日本",
+        "summary": "兼容3GPP标准，支持通过Inmarsat卫星进行中继通信，推动卫星物联网全球化。",
+        "impact": "medium"
+      },
+      {
         "date": "2025-09",
-        "issuer": "欧盟",
-        "content": "欧盟空间法生效，要求所有在欧盟运营的卫星 constellation 遵守空间交通管理规则，包括主动碎片移除义务",
-        "impact": "high",
-        "url": "https://ec.europa.eu"
+        "title": "EU Space Law正式生效",
+        "country": "欧盟",
+        "summary": "欧盟空间法正式生效，建立统一的卫星活动监管框架，涵盖空间交通管理、轨道碎片清理和频谱协调。",
+        "impact": "high"
       },
       {
-        "title": "ITU更新非对地静止卫星协调规则",
         "date": "2025-11",
-        "issuer": "ITU",
-        "content": "更新NGSO卫星协调规则，引入'先到达先服务'原则，要求星座运营方在7年内完成部署",
+        "title": "ITU更新非对地静止卫星协调规则",
+        "country": "国际",
+        "summary": "更新NGSO卫星系统的协调规则，简化大型星座申报流程，强化频谱共享机制。",
+        "impact": "high"
+      },
+      {
+        "date": "2026-04",
+        "title": "FCC批准SpaceX额外部署7500颗二代星链",
+        "country": "美国",
+        "summary": "FCC批准SpaceX额外部署7500颗二代Starlink卫星，星座总规模接近2万颗。",
         "impact": "high",
-        "url": "https://www.itu.int"
-      },
-      {
-        "title": "美国《2026年商业航天竞争力法案》",
-        "date": "2026-01",
-        "issuer": "美国国会",
-        "content": "延长商业航天发射责任保险上限至2028年，为商业航天公司提供监管确定性",
-        "impact": "medium",
-        "url": "https://www.google.com/search?q=2026+商业航天竞争力法案"
-      },
-      {
-        "title": "FCC Part 25 卫星通信规则",
-        "date": "2024",
-        "issuer": "FCC",
-        "content": "更新NGSO卫星系统频谱共享规则",
-        "impact": "high",
-        "url": "https://www.fcc.gov"
-      },
-      {
-        "title": "ITU 卫星网络申报程序",
-        "date": "2023",
-        "issuer": "ITU",
-        "content": "完善卫星频率/轨道资源协调程序",
-        "impact": "medium",
-        "url": "https://www.itu.int"
+        "url": "https://www.fcc.gov/"
       }
     ],
     "licensing": {

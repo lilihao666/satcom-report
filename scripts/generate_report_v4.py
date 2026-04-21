@@ -314,14 +314,38 @@ def generate_constellations(data):
             modal_data[modal_id] = modal_content
         html.append('</div>')
     
-    # 国际星座
-    html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700">国际星座</h3>')
-    html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">')
-    for const in data['constellations']['international']:
-        card_html, modal_id, modal_content = generate_constellation_card(const)
-        html.append(card_html)
-        modal_data[modal_id] = modal_content
-    html.append('</div>')
+    # 国际星座 - 按分类展示
+    # 卫星互联网
+    intl_internet = [c for c in data['constellations']['international'] if c.get('category') == '卫星互联网']
+    if intl_internet:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-internet mr-2">卫星互联网</span>国际星座</h3>')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
+        for const in intl_internet:
+            card_html, modal_id, modal_content = generate_constellation_card(const)
+            html.append(card_html)
+            modal_data[modal_id] = modal_content
+        html.append('</div>')
+    
+    # 卫星物联网
+    intl_iot = [c for c in data['constellations']['international'] if c.get('category') == '卫星物联网']
+    if intl_iot:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-iot mr-2">卫星物联网</span>国际星座</h3>')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
+        for const in intl_iot:
+            card_html, modal_id, modal_content = generate_constellation_card(const)
+            html.append(card_html)
+            modal_data[modal_id] = modal_content
+        html.append('</div>')
+    
+    # 国际高轨卫星
+    if 'geo_international' in data['constellations'] and data['constellations']['geo_international']:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-mixed mr-2">高轨卫星</span>国际星座</h3>')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
+        for const in data['constellations']['geo_international']:
+            card_html, modal_id, modal_content = generate_constellation_card(const)
+            html.append(card_html)
+            modal_data[modal_id] = modal_content
+        html.append('</div>')
     
     html.append('</section>')
     return '\n'.join(html), modal_data
@@ -499,37 +523,112 @@ def generate_terminal_card(company, is_international=False):
     return card, modal_id, modal_content
 
 def generate_payloads(data):
-    """生成载荷层部分"""
-    return '''<section id="payload"><h2 class="text-2xl font-bold mb-4">🔧 卫星载荷层</h2>
-    <div class="bg-white rounded-lg shadow p-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="border-l-4 border-blue-500 pl-4">
-                <h3 class="font-bold text-lg mb-2">通信载荷</h3>
-                <ul class="text-sm text-gray-600 space-y-1">
-                    <li>• 相控阵天线</li>
-                    <li>• 抛物面天线</li>
-                    <li>• 平板天线</li>
-                    <li>• 激光通信终端</li>
-                </ul>
+    """生成载荷层部分 - 使用实际数据"""
+    payloads = data.get('payloads', {})
+    html = ['<section id="payload"><h2 class="text-2xl font-bold mb-4">🔧 卫星载荷层</h2>']
+    
+    # 国内载荷厂商
+    domestic_payloads = payloads.get('domestic', [])
+    if domestic_payloads:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-internet mr-2">国内载荷厂商</span></h3>')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
+        for p in domestic_payloads:
+            name = p.get('name', '未知')
+            tech = p.get('tech', '')
+            products = p.get('products', [])
+            desc = p.get('description', '')
+            
+            products_html = ''
+            if products:
+                products_html = '<div class="flex flex-wrap gap-1 mt-2">' + ''.join([f'<span class="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs">{pr}</span>' for pr in products]) + '</div>'
+            
+            html.append(f'''<div class="bg-white rounded-lg shadow p-4 border-l-4 border-blue-500">
+                <h4 class="font-bold text-lg">{name}</h4>
+                <p class="text-sm text-gray-500">{tech}</p>
+                <p class="text-sm text-gray-600 mt-2">{desc}</p>
+                {products_html}
+            </div>''')
+        html.append('</div>')
+    
+    # 国际载荷厂商
+    intl_payloads = payloads.get('international', [])
+    if intl_payloads:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-internet mr-2">国际载荷厂商</span></h3>')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">')
+        for p in intl_payloads:
+            name = p.get('name', '未知')
+            tech = p.get('tech', '')
+            products = p.get('products', [])
+            desc = p.get('description', '')
+            
+            products_html = ''
+            if products:
+                products_html = '<div class="flex flex-wrap gap-1 mt-2">' + ''.join([f'<span class="bg-purple-50 text-purple-700 px-2 py-0.5 rounded text-xs">{pr}</span>' for pr in products]) + '</div>'
+            
+            html.append(f'''<div class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-500">
+                <h4 class="font-bold text-lg">{name}</h4>
+                <p class="text-sm text-gray-500">{tech}</p>
+                <p class="text-sm text-gray-600 mt-2">{desc}</p>
+                {products_html}
+            </div>''')
+        html.append('</div>')
+    
+    # 载荷技术路线
+    tech_roadmap = payloads.get('tech_roadmap', [])
+    if tech_roadmap:
+        html.append('<h3 class="text-lg font-semibold mb-3 text-gray-700 flex items-center"><span class="category-badge cat-mixed mr-2">技术路线</span></h3>')
+        html.append('<div class="bg-white rounded-lg shadow p-4">')
+        html.append('<div class="grid grid-cols-1 md:grid-cols-2 gap-4">')
+        for tr in tech_roadmap:
+            stage = tr.get('stage', '')
+            tech = tr.get('tech', '')
+            status = tr.get('status', '')
+            timeline = tr.get('timeline', '')
+            key_players = tr.get('key_players', [])
+            players_html = ''.join([f'<span class="bg-gray-100 text-gray-700 px-2 py-0.5 rounded text-xs mr-1">{kp}</span>' for kp in key_players])
+            html.append(f'''<div class="border-l-4 border-green-500 pl-4">
+                <h4 class="font-semibold text-green-700">{stage}</h4>
+                <p class="text-sm text-gray-600 mt-1"><strong>技术:</strong> {tech}</p>
+                <p class="text-sm text-gray-600"><strong>状态:</strong> {status} | <strong>时间:</strong> {timeline}</p>
+                <div class="mt-2">{players_html}</div>
+            </div>''')
+        html.append('</div>')
+        html.append('</div>')
+    
+    # 兜底：如果没有数据，显示静态内容
+    if not domestic_payloads and not intl_payloads:
+        html.append('''<div class="bg-white rounded-lg shadow p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="border-l-4 border-blue-500 pl-4">
+                    <h3 class="font-bold text-lg mb-2">通信载荷</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• 相控阵天线</li>
+                        <li>• 抛物面天线</li>
+                        <li>• 平板天线</li>
+                        <li>• 激光通信终端</li>
+                    </ul>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                    <h3 class="font-bold text-lg mb-2">导航载荷</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• 原子钟</li>
+                        <li>• 导航信号生成</li>
+                        <li>• 星间链路设备</li>
+                    </ul>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                    <h3 class="font-bold text-lg mb-2">遥感载荷</h3>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• 光学相机</li>
+                        <li>• SAR雷达</li>
+                        <li>• 红外探测器</li>
+                    </ul>
+                </div>
             </div>
-            <div class="border-l-4 border-green-500 pl-4">
-                <h3 class="font-bold text-lg mb-2">导航载荷</h3>
-                <ul class="text-sm text-gray-600 space-y-1">
-                    <li>• 原子钟</li>
-                    <li>• 导航信号生成</li>
-                    <li>• 星间链路设备</li>
-                </ul>
-            </div>
-            <div class="border-l-4 border-purple-500 pl-4">
-                <h3 class="font-bold text-lg mb-2">遥感载荷</h3>
-                <ul class="text-sm text-gray-600 space-y-1">
-                    <li>• 光学相机</li>
-                    <li>• SAR雷达</li>
-                    <li>• 红外探测器</li>
-                </ul>
-            </div>
-        </div>
-    </div></section>'''
+        </div>''')
+    
+    html.append('</section>')
+    return '\n'.join(html)
 
 def generate_operators(data):
     """生成运营商部分"""
@@ -617,8 +716,8 @@ def generate_policy(data):
                 <h4 class="font-semibold">{policy['title']}</h4>
                 <span class="text-xs text-gray-500">{policy.get('date', '未知')}</span>
             </div>
-            <p class="text-xs text-gray-500 mt-1">{policy.get('issuer', '未知')}</p>
-            <p class="text-sm text-gray-600 mt-2">{policy['content']}</p>
+            <p class="text-xs text-gray-500 mt-1">{policy.get('department', '未知')}</p>
+            <p class="text-sm text-gray-600 mt-2">{policy['summary']}</p>
             <div class="mt-2">{link_html}</div>
         </div>''')
     html.append('</div></div>')
@@ -633,8 +732,8 @@ def generate_policy(data):
                 <h4 class="font-semibold">{policy['title']}</h4>
                 <span class="text-xs text-gray-500">{policy.get('date', '未知')}</span>
             </div>
-            <p class="text-xs text-gray-500 mt-1">{policy.get('issuer', '未知')}</p>
-            <p class="text-sm text-gray-600 mt-2">{policy['content']}</p>
+            <p class="text-xs text-gray-500 mt-1">{policy.get('country', '未知')}</p>
+            <p class="text-sm text-gray-600 mt-2">{policy['summary']}</p>
             <div class="mt-2">{link_html}</div>
         </div>''')
     html.append('</div></div>')
