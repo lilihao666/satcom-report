@@ -208,8 +208,6 @@ TEMPLATE = '''<!DOCTYPE html>
     </div>
 
     <!-- 详情数据存储 -->
-    {{modal_data}}
-
     <script>
         // 详情弹窗数据
         const modalData = {{modal_data_json}};
