@@ -6,7 +6,7 @@
         "name": "国网/GW星座",
         "operator": "中国星网",
         "planned": 12992,
-        "launched": 144,
+        "launched": 168,
         "stage": "部署中",
         "use_cases": [
           "宽带互联网",
@@ -30,7 +30,7 @@
         "name": "千帆星座",
         "operator": "垣信卫星",
         "planned": 15000,
-        "launched": 108,
+        "launched": 126,
         "stage": "部署中",
         "use_cases": [
           "宽带",
@@ -122,7 +122,7 @@
         "name": "国星宇航/星算计划",
         "operator": "国星宇航",
         "planned": 2800,
-        "launched": 12,
+        "launched": 27,
         "stage": "部署中",
         "use_cases": [
           "太空计算",
@@ -130,7 +130,7 @@
           "数据中继",
           "遥感应用"
         ],
-        "note": "全球首个太空计算星座。2025年5月14日发射首批12颗卫星（星算计划01组），单星算力744TOPS，星座总算力5POPS。计划2035年完成2800颗组网",
+        "note": "全球首个太空计算星座。截至2026年4月，已累计发射27颗卫星（其中AI卫星21颗），数量稳居中国民营商业航天企业首位。2025年5月14日发射首批12颗计算卫星（星算计划01组），单星算力744TOPS，星座总算力5POPS。2026年\"星算计划\"全面提速，目标2030年完成2800颗组网。公司已向港交所递交IPO申请，估值突破100亿元。",
         "inter_satellite_link": {
           "enabled": true,
           "tech": "激光星间链路",
@@ -555,7 +555,7 @@
         "name": "Myriota",
         "operator": "Myriota",
         "planned": 50,
-        "launched": 12,
+        "launched": 27,
         "stage": "部署中",
         "use_cases": [
           "物联网",
@@ -987,7 +987,11 @@
         "tech": "相控阵天线/平板终端",
         "founded": "2021",
         "funding": "A轮",
-        "products": ["平板卫星天线", "车载动中通", "船载终端"],
+        "products": [
+          "平板卫星天线",
+          "车载动中通",
+          "船载终端"
+        ],
         "description": "专注低轨卫星互联网终端研发，提供消费级和工业级相控阵天线产品",
         "website": "",
         "detail_links": {
@@ -1004,7 +1008,11 @@
         "tech": "NTN/LoRa",
         "founded": "2020",
         "funding": "Pre-A轮",
-        "products": ["卫星物联网模组", "低功耗终端", "行业应用方案"],
+        "products": [
+          "卫星物联网模组",
+          "低功耗终端",
+          "行业应用方案"
+        ],
         "description": "卫星物联网通信解决方案提供商，专注低功耗广域网应用",
         "website": "",
         "detail_links": {

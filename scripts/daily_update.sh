@@ -1,27 +1,52 @@
 #!/bin/bash
-# 卫星通信调研报告每日自动更新
-# 配置：0 8 * * * /root/.openclaw/workspace/satcom-research-github/scripts/daily_update.sh
+# 本地每日更新脚本
+# 每天早上8点运行
+
+set -e
 
 cd /root/.openclaw/workspace/satcom-research-github
 
-LOG_FILE="logs/update_$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="logs/daily_update_$(date +%Y%m%d).log"
 mkdir -p logs
 
-echo "=== 卫星通信报告自动更新 $(date) ===" | tee -a "$LOG_FILE"
+echo "========================================" >> "$LOG_FILE"
+echo "Daily Update: $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+echo "========================================" >> "$LOG_FILE"
 
-# 更新数据日期
-sed -i "s/\"last_updated\": \"[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\}\"/\"last_updated\": \"$(date +%Y-%m-%d)\"/" data/satcom_data.json
+# 1. 拉取最新代码
+echo "[1/5] Pulling latest code..." >> "$LOG_FILE"
+git pull origin main >> "$LOG_FILE" 2>&1 || true
 
-# 重新生成报告
-echo "[1/2] 生成免费版报告..." | tee -a "$LOG_FILE"
-python3 scripts/generate_report_v4.py 2>&1 | tee -a "$LOG_FILE"
+# 2. 运行新闻抓取
+echo "[2/5] Fetching latest news..." >> "$LOG_FILE"
+python3 scripts/news_fetcher.py >> "$LOG_FILE" 2>&1
 
-echo "[2/2] 生成付费版报告..." | tee -a "$LOG_FILE"
-python3 scripts/generate_premium.py 2>&1 | tee -a "$LOG_FILE"
+# 3. 生成免费版报告
+echo "[3/5] Generating free report..." >> "$LOG_FILE"
+python3 scripts/generate_report_v4.py generate >> "$LOG_FILE" 2>&1
 
-echo "✅ 更新完成: $(date)" | tee -a "$LOG_FILE"
+# 4. 生成付费版报告
+echo "[4/5] Generating premium report..." >> "$LOG_FILE"
+python3 scripts/generate_premium.py generate >> "$LOG_FILE" 2>&1
 
-# Git提交
+# 5. 更新日期戳
+echo "[5/5] Updating timestamp..." >> "$LOG_FILE"
+DATE=$(date +%Y-%m-%d)
+python3 -c "
+import json
+with open('data/satcom_data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+data['last_updated'] = '$DATE'
+with open('data/satcom_data.json', 'w', encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=2)
+print('Updated last_updated to', '$DATE')
+" >> "$LOG_FILE" 2>&1
+
+# 6. 提交并推送
+echo "[6/6] Committing and pushing..." >> "$LOG_FILE"
 git add -A
-git commit -m "📊 自动更新 $(date +%Y-%m-%d)" || true
-git push origin main 2>&1 | tee -a "$LOG_FILE"
+git diff --cached --quiet || git commit -m "Auto update: $DATE - refresh news and reports"
+git push origin main >> "$LOG_FILE" 2>&1
+
+echo "Update completed at $(date '+%Y-%m-%d %H:%M:%S')" >> "$LOG_FILE"
+echo "" >> "$LOG_FILE"
