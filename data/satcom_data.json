@@ -1653,461 +1653,84 @@
   ],
   "news": [
     {
-      "title": "SpaceX星舰第七次试飞成功，部署模拟卫星",
-      "date": "2026-01-16",
-      "source": "SpaceX官方",
-      "summary": "星舰完成第七次轨道试飞，成功部署10颗模拟卫星载荷，验证了星舰作为卫星部署平台的可行性。标志着可重复使用重型火箭商业化迈出关键一步。",
-      "tags": [
-        "SpaceX",
-        "星舰",
-        "火箭发射",
-        "卫星部署"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "火箭发射",
-          "星座部署"
-        ]
-      },
-      "url": "https://www.spacex.com"
+      "date": "2026-04-21",
+      "title": "国星宇航冲刺港股商业航天第一股，太空算力布局加速",
+      "summary": "成都国星宇航更新招股书推进港交所上市，2024年收入5.53亿元。2025年5月发射全球首个太空计算星座（12颗），单星算力744TOPS。2026年星算计划全面提速，拟发射更强算力卫星型号，目标2030年完成2800颗组网。",
+      "source": "泰伯网/21世纪经济报道",
+      "link": "https://www.futurephecda.com/news?tags=%E5%9B%BD%E6%98%9F%E5%AE%87%E8%88%AA",
+      "category": "商业动态"
     },
     {
-      "title": "华为发布全球首款支持NTN卫星通信的5G-A模组",
-      "date": "2026-02-20",
-      "source": "华为官方",
-      "summary": "华为发布5G-A NTN卫星通信模组MH5000，支持双向卫星消息和语音通话，将应用于车载、物联网等场景。与三大运营商完成兼容性测试。",
-      "tags": [
-        "华为",
-        "5G NTN",
-        "卫星通信模组",
-        "手机直连"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "终端设备",
-          "芯片模组"
-        ]
-      },
-      "url": "https://www.huawei.com"
+      "date": "2026-04-21",
+      "title": "2026卫星终端：万亿市场与供应链卡脖子的生死博弈",
+      "summary": "卫星互联网地面终端作为连接用户与卫星网络的最后一公里，正面临万亿级市场机遇与供应链挑战。十五五规划明确构建空天地海一体化网络，政策重心从技术研发转向星座组网与终端规模化普及，为行业提供五年确定性增长周期。",
+      "source": "网易",
+      "link": "https://www.163.com/dy/article/KQ3F8MKQ0518WMF4.html",
+      "category": "终端动态"
     },
     {
-      "title": "吉利未来出行星座成功验证卫星手机直连技术",
-      "date": "2026-02-15",
-      "source": "时空道宇",
-      "summary": "时空道宇完成国内首次低轨卫星与普通手机直连通信试验，实现语音通话和短信收发。标志着中国手机直连卫星技术进入新阶段。",
-      "tags": [
-        "时空道宇",
-        "手机直连",
-        "D2D",
-        "吉利星座"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "手机直连",
-          "星座运营"
-        ]
-      },
-      "url": "https://www.geespace.com"
+      "date": "2026-04-21",
+      "title": "FCC批准SpaceX额外部署7500颗第二代星链卫星",
+      "summary": "2026年1月9日，美国联邦通信委员会批准SpaceX额外部署7500颗第二代星链卫星，二代星链获批总数达15000颗。FCC取消卫星信号重叠和网络容量上限限制，最高网速可达1Gbps，并增强美国以外地区卫星直连手机服务。",
+      "source": "与非网",
+      "link": "https://www.eefocus.com/article/1945128.html",
+      "category": "国际动态"
     },
     {
-      "title": "亚马逊Kuiper星座获得FCC批量发射许可",
-      "date": "2026-03-01",
-      "source": "FCC",
-      "summary": "FCC批准亚马逊Kuiper星座未来3年内发射超过3000颗卫星的申请。亚马逊计划2026年发射首批量产卫星，与SpaceX展开直接竞争。",
-      "tags": [
-        "Kuiper",
-        "亚马逊",
-        "FCC",
-        "星座部署"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "政策监管",
-          "星座运营"
-        ]
-      },
-      "url": "https://www.fcc.gov"
+      "date": "2026-04-21",
+      "title": "越南正式向SpaceX星链颁发全境卫星通信运营许可",
+      "summary": "2026年2月14日，越南正式向SpaceX星链颁发全境固定+移动卫星通信运营许可，允许建设4座网关站、部署最高60万台终端，五年试点至2031年。这标志着星链在东南亚完成菲律宾—马来西亚—印尼—东帝汶—越南的连片覆盖。",
+      "source": "今日头条",
+      "link": "https://www.toutiao.com/w/1857789998171139/",
+      "category": "国际动态"
     },
     {
-      "title": "国内首个卫星互联网海上应用示范点在舟山投运",
-      "date": "2026-03-10",
-      "source": "浙江日报",
-      "summary": "千帆星座联合舟山港建成海上卫星互联网示范区，为渔船、货轮提供高速宽带服务。实测下载速率超100Mbps，时延低于50ms。",
-      "tags": [
-        "千帆星座",
-        "海上通信",
-        "应用示范",
-        "卫星互联网"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "行业应用",
-          "海洋通信"
-        ]
-      },
-      "url": "http://www.zjnews.cn"
+      "date": "2026-04-21",
+      "title": "中信证券：全球商业航天竞争提速，国内可回收火箭或将迎来突破",
+      "summary": "中信证券研报指出，SpaceX已秘密提交IPO申请寻求2万亿美元估值上市。国内方面，力箭二号作为我国首款CBC构型运载火箭于3月30日首飞成功，后续将成为大规模星座组网主力运载火箭。太空算力正成为商业航天与AI深度融合的战略新赛道。",
+      "source": "中信证券",
+      "link": "https://cj.sina.cn/articles/view/5835524730/15bd30a7a0200257p6",
+      "category": "行业趋势"
     },
     {
-      "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
-      "date": "2026-03-25",
-      "source": "AST SpaceMobile",
-      "summary": "AST SpaceMobile成功部署5颗蓝鸟卫星，完成初步星座组网。计划2026年Q2开始在美国提供首批商业卫星电话服务。",
-      "tags": [
-        "AST SpaceMobile",
-        "蓝鸟卫星",
-        "手机直连",
-        "商业服务"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "手机直连",
-          "商业服务"
-        ]
-      },
-      "url": "https://www.ast-science.com"
+      "date": "2026-04-21",
+      "title": "工信部等九部门印发《推动物联网产业创新发展行动方案（2026—2028年）》",
+      "summary": "2026年3月31日，工信部等九部门联合印发行动方案，明确推进卫星物联网、海上/水下/地下空间物联网等网络技术试验验证。目标到2028年物联网终端连接数达百亿级，核心产业规模突破3.5万亿元。",
+      "source": "工信部/中国电子报",
+      "link": "https://www.cinn.cn/2026/04-07/W1OPRnvr.html",
+      "category": "政策法规"
     },
     {
-      "title": "航天科技集团发布低轨卫星星座AI运营平台",
-      "date": "2026-04-01",
-      "source": "中国航天报",
-      "summary": "航天科技集团发布国内首个低轨星座AI智能运营平台，实现卫星轨道自动优化、频谱智能分配。将应用于鸿雁星座和后续低轨项目。",
-      "tags": [
-        "航天科技",
-        "AI运营",
-        "鸿雁星座",
-        "智能卫星"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "技术突破",
-          "AI应用"
-        ]
-      },
-      "url": "http://www.spacechina.com"
+      "date": "2026-04-21",
+      "title": "亚马逊宣布收购Globalstar，加速布局低轨通信业务",
+      "summary": "2026年4月14日，亚马逊宣布将以每股90美元收购卫星运营商Globalstar，交易总价值约115.7亿美元。Globalstar运营24颗在轨卫星，拥有苹果支持下的54颗卫星扩展计划。收购有助于亚马逊快速补充D2D窄带直连业务并拓展苹果客户。",
+      "source": "中信证券/证券时报",
+      "link": "https://cj.sina.cn/articles/view/5835524730/15bd30a7a0200257p6",
+      "category": "商业动态"
     },
     {
-      "title": "欧盟IRIS²星座计划获得27国最终批准",
-      "date": "2026-01-30",
-      "source": "欧盟委员会",
-      "summary": "欧盟27国正式批准IRIS²卫星星座计划，总投资106亿欧元，计划部署290颗卫星。目标2030年前实现欧洲主权卫星宽带网络。",
-      "tags": [
-        "IRIS²",
-        "欧盟",
-        "主权星座",
-        "政策"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "政策监管",
-          "国际竞争"
-        ]
-      },
-      "url": "https://ec.europa.eu"
+      "date": "2026-04-21",
+      "title": "SpaceX 2026年已发射超1000颗星链卫星，在轨总数突破10200颗",
+      "summary": "截至2026年4月14日，SpaceX本年度已发射37批共1002颗星链卫星入轨，星链网络卫星总数超过10200颗。星链已接入160个国家、超1000万活跃用户。SpaceX计划2026上半年开始发射第三代星链卫星，单星下行容量超1000Gbps。",
+      "source": "未来天玑/CNMO",
+      "link": "https://www.futurephecda.com/news/72388",
+      "category": "国际动态"
     },
     {
-      "title": "星网集团完成首批低轨卫星批产线验收",
-      "date": "2026-04-05",
-      "source": "中国星网",
-      "summary": "中国星网位于天津的卫星智能制造基地通过验收，年产能达300颗。采用工业4.0标准，单星制造周期压缩至15天。",
-      "tags": [
-        "中国星网",
-        "GW星座",
-        "智能制造",
-        "批产"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "卫星制造",
-          "产能建设"
-        ]
-      },
-      "url": "http://www.chinasatnet.com"
+      "date": "2026-04-21",
+      "title": "GW星座48小时两连发，累计部署卫星达168颗",
+      "summary": "2026年4月7日千帆星座发射后，4月9日太原卫星发射中心长征六号改运载火箭成功发射卫星互联网低轨第21组卫星。48小时内南北两大发射场接连完成两次低轨星座高密度组网任务，创我国低轨卫星互联网建设史上连续组网发射新纪录。",
+      "source": "东方财富/证券时报",
+      "link": "https://emcreative.eastmoney.com/app_fortune/article/index.html?artCode=20260415102333300864050",
+      "category": "星座动态"
     },
     {
-      "title": "日本SoftBank与Intelsat合作推出航空卫星互联网服务",
-      "date": "2026-02-28",
-      "source": "SoftBank",
-      "summary": "SoftBank与Intelsat合作在日本推出航空卫星宽带服务，覆盖国内及国际航线。采用LEO/GEO混合组网，峰值速率200Mbps。",
-      "tags": [
-        "SoftBank",
-        "Intelsat",
-        "航空互联网",
-        "卫星宽带"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "行业应用",
-          "航空通信"
-        ]
-      },
-      "url": "https://www.softbank.jp"
-    },
-    {
-      "title": "SpaceX星舰第七次试飞成功，部署模拟卫星",
-      "date": "2026-01-16",
-      "source": "SpaceX官方",
-      "summary": "星舰完成第七次轨道试飞，成功部署10颗模拟卫星载荷，验证了星舰作为卫星部署平台的可行性。标志着可重复使用重型火箭商业化迈出关键一步。",
-      "tags": [
-        "SpaceX",
-        "星舰",
-        "火箭发射",
-        "卫星部署"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "火箭发射",
-          "星座部署"
-        ]
-      },
-      "url": "https://www.spacex.com"
-    },
-    {
-      "title": "华为发布全球首款支持NTN卫星通信的5G-A模组",
-      "date": "2026-02-20",
-      "source": "华为官方",
-      "summary": "华为发布5G-A NTN卫星通信模组MH5000，支持双向卫星消息和语音通话，将应用于车载、物联网等场景。与三大运营商完成兼容性测试。",
-      "tags": [
-        "华为",
-        "5G NTN",
-        "卫星通信模组",
-        "手机直连"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "终端设备",
-          "芯片模组"
-        ]
-      },
-      "url": "https://www.huawei.com"
-    },
-    {
-      "title": "吉利未来出行星座成功验证卫星手机直连技术",
-      "date": "2026-02-15",
-      "source": "时空道宇",
-      "summary": "时空道宇完成国内首次低轨卫星与普通手机直连通信试验，实现语音通话和短信收发。标志着中国手机直连卫星技术进入新阶段。",
-      "tags": [
-        "时空道宇",
-        "手机直连",
-        "D2D",
-        "吉利星座"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "手机直连",
-          "星座运营"
-        ]
-      },
-      "url": "https://www.geespace.com"
-    },
-    {
-      "title": "亚马逊Kuiper星座获得FCC批量发射许可",
-      "date": "2026-03-01",
-      "source": "FCC",
-      "summary": "FCC批准亚马逊Kuiper星座未来3年内发射超过3000颗卫星的申请。亚马逊计划2026年发射首批量产卫星，与SpaceX展开直接竞争。",
-      "tags": [
-        "Kuiper",
-        "亚马逊",
-        "FCC",
-        "星座部署"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "政策监管",
-          "星座运营"
-        ]
-      },
-      "url": "https://www.fcc.gov"
-    },
-    {
-      "title": "国内首个卫星互联网海上应用示范点在舟山投运",
-      "date": "2026-03-10",
-      "source": "浙江日报",
-      "summary": "千帆星座联合舟山港建成海上卫星互联网示范区，为渔船、货轮提供高速宽带服务。实测下载速率超100Mbps，时延低于50ms。",
-      "tags": [
-        "千帆星座",
-        "海上通信",
-        "应用示范",
-        "卫星互联网"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "行业应用",
-          "海洋通信"
-        ]
-      },
-      "url": "http://www.zjnews.cn"
-    },
-    {
-      "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
-      "date": "2026-03-25",
-      "source": "AST SpaceMobile",
-      "summary": "AST SpaceMobile成功部署5颗蓝鸟卫星，完成初步星座组网。计划2026年Q2开始在美国提供首批商业卫星电话服务。",
-      "tags": [
-        "AST SpaceMobile",
-        "蓝鸟卫星",
-        "手机直连",
-        "商业服务"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "手机直连",
-          "商业服务"
-        ]
-      },
-      "url": "https://www.ast-science.com"
-    },
-    {
-      "title": "航天科技集团发布低轨卫星星座AI运营平台",
-      "date": "2026-04-01",
-      "source": "中国航天报",
-      "summary": "航天科技集团发布国内首个低轨星座AI智能运营平台，实现卫星轨道自动优化、频谱智能分配。将应用于鸿雁星座和后续低轨项目。",
-      "tags": [
-        "航天科技",
-        "AI运营",
-        "鸿雁星座",
-        "智能卫星"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "技术突破",
-          "AI应用"
-        ]
-      },
-      "url": "http://www.spacechina.com"
-    },
-    {
-      "title": "欧盟IRIS²星座计划获得27国最终批准",
-      "date": "2026-01-30",
-      "source": "欧盟委员会",
-      "summary": "欧盟27国正式批准IRIS²卫星星座计划，总投资106亿欧元，计划部署290颗卫星。目标2030年前实现欧洲主权卫星宽带网络。",
-      "tags": [
-        "IRIS²",
-        "欧盟",
-        "主权星座",
-        "政策"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "政策监管",
-          "国际竞争"
-        ]
-      },
-      "url": "https://ec.europa.eu"
-    },
-    {
-      "title": "星网集团完成首批低轨卫星批产线验收",
-      "date": "2026-04-05",
-      "source": "中国星网",
-      "summary": "中国星网位于天津的卫星智能制造基地通过验收，年产能达300颗。采用工业4.0标准，单星制造周期压缩至15天。",
-      "tags": [
-        "中国星网",
-        "GW星座",
-        "智能制造",
-        "批产"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "卫星制造",
-          "产能建设"
-        ]
-      },
-      "url": "http://www.chinasatnet.com"
-    },
-    {
-      "title": "日本SoftBank与Intelsat合作推出航空卫星互联网服务",
-      "date": "2026-02-28",
-      "source": "SoftBank",
-      "summary": "SoftBank与Intelsat合作在日本推出航空卫星宽带服务，覆盖国内及国际航线。采用LEO/GEO混合组网，峰值速率200Mbps。",
-      "tags": [
-        "SoftBank",
-        "Intelsat",
-        "航空互联网",
-        "卫星宽带"
-      ],
-      "impact_analysis": {
-        "level": "medium",
-        "sectors": [
-          "行业应用",
-          "航空通信"
-        ]
-      },
-      "url": "https://www.softbank.jp"
-    },
-    {
-      "title": "上海垣信启动50-60亿元融资，估值超400亿",
-      "date": "2025-10-14",
-      "source": "界面新闻/新浪财经",
-      "summary": "中国版'星链'千帆星座运营方上海垣信开启新一轮融资，投前估值超400亿人民币。计划2026年发射648颗卫星，2027年完成1296颗，2030年后达15000颗。",
-      "tags": [
-        "融资",
-        "千帆星座",
-        "垣信卫星"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "星座运营",
-          "卫星制造"
-        ]
-      },
-      "url": "https://www.jiemian.com"
-    },
-    {
-      "title": "卫星激光通信赛道两个月融资超5亿",
-      "date": "2026-03-11",
-      "source": "C114通信网",
-      "summary": "光邮星空、氦星光联、极光星通三家企业密集官宣融资，其中两笔金额突破亿元。极光星通完成近3亿元A4轮融资，预计2026年交付超百台套。",
-      "tags": [
-        "融资",
-        "激光通信",
-        "星间链路"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "卫星通信",
-          "光通信"
-        ]
-      },
-      "url": "https://www.c114.com.cn"
-    },
-    {
-      "title": "银河航天启动A股上市进程",
-      "date": "2026-03-31",
-      "source": "财新网",
-      "summary": "银河航天完成新一轮融资并启动A股上市。公司年产中型卫星能力100-150颗，已在泰国建立中国卫星互联网首个海外地面基站。",
-      "tags": [
-        "IPO",
-        "银河航天",
-        "卫星制造"
-      ],
-      "impact_analysis": {
-        "level": "high",
-        "sectors": [
-          "卫星制造",
-          "资本市场"
-        ]
-      },
-      "url": "https://www.caixin.com"
+      "date": "2026-04-21",
+      "title": "千帆星座第七批组网卫星成功发射，在轨总数达126颗",
+      "summary": "2026年4月7日21时32分，长征八号运载火箭在海南商业航天发射场以一箭十八星方式，将千帆星座第七批组网卫星送入预定轨道。此次发射打破7个月空窗期，标志着千帆星座2026年首次组网发射圆满成功。垣信卫星预计2026年内实现全球初步覆盖。",
+      "source": "中国航天局/新华社",
+      "link": "https://www.cnsa.gov.cn/n6758823/n6758838/c10738122/content.html",
+      "category": "星座动态"
     },
     {
       "title": "时空道宇计划2026年底冲刺IPO",
@@ -2129,61 +1752,202 @@
       "url": "https://www.caijing.com.cn"
     },
     {
-      "title": "中国向ITU提交20.3万颗卫星频轨申请",
-      "date": "2026-01-12",
-      "source": "国际电信联盟",
-      "summary": "2025年底中国正式向ITU提交总计约20.3万颗低轨卫星的频率与轨道资源申请，覆盖14个独立卫星星座，创下国内最大规模集中申报纪录。",
+      "title": "星网集团完成首批低轨卫星批产线验收",
+      "date": "2026-04-05",
+      "source": "中国星网",
+      "summary": "中国星网位于天津的卫星智能制造基地通过验收，年产能达300颗。采用工业4.0标准，单星制造周期压缩至15天。",
       "tags": [
-        "频轨资源",
-        "ITU",
-        "政策"
+        "中国星网",
+        "GW星座",
+        "智能制造",
+        "批产"
       ],
       "impact_analysis": {
         "level": "high",
         "sectors": [
-          "卫星互联网",
-          "政策监管"
+          "卫星制造",
+          "产能建设"
         ]
       },
-      "url": "https://www.itu.int"
+      "url": "http://www.chinasatnet.com"
     },
     {
-      "title": "蓝箭航天IPO申请获受理，冲刺商业火箭第一股",
-      "date": "2026-01-03",
-      "source": "北京日报",
-      "summary": "蓝箭航天科创板IPO申请获受理，拟募资75亿元用于可重复使用火箭项目。2025年12月朱雀三号完成中国首次轨道助推器回收尝试。",
+      "title": "星网集团完成首批低轨卫星批产线验收",
+      "date": "2026-04-05",
+      "source": "中国星网",
+      "summary": "中国星网位于天津的卫星智能制造基地通过验收，年产能达300颗。采用工业4.0标准，单星制造周期压缩至15天。",
       "tags": [
-        "IPO",
-        "蓝箭航天",
-        "可重复使用火箭"
+        "中国星网",
+        "GW星座",
+        "智能制造",
+        "批产"
+      ],
+      "impact_analysis": {
+        "level": "high",
+        "sectors": [
+          "卫星制造",
+          "产能建设"
+        ]
+      },
+      "url": "http://www.chinasatnet.com"
+    },
+    {
+      "title": "航天科技集团发布低轨卫星星座AI运营平台",
+      "date": "2026-04-01",
+      "source": "中国航天报",
+      "summary": "航天科技集团发布国内首个低轨星座AI智能运营平台，实现卫星轨道自动优化、频谱智能分配。将应用于鸿雁星座和后续低轨项目。",
+      "tags": [
+        "航天科技",
+        "AI运营",
+        "鸿雁星座",
+        "智能卫星"
       ],
       "impact_analysis": {
         "level": "medium",
         "sectors": [
-          "火箭发射",
+          "技术突破",
+          "AI应用"
+        ]
+      },
+      "url": "http://www.spacechina.com"
+    },
+    {
+      "title": "航天科技集团发布低轨卫星星座AI运营平台",
+      "date": "2026-04-01",
+      "source": "中国航天报",
+      "summary": "航天科技集团发布国内首个低轨星座AI智能运营平台，实现卫星轨道自动优化、频谱智能分配。将应用于鸿雁星座和后续低轨项目。",
+      "tags": [
+        "航天科技",
+        "AI运营",
+        "鸿雁星座",
+        "智能卫星"
+      ],
+      "impact_analysis": {
+        "level": "medium",
+        "sectors": [
+          "技术突破",
+          "AI应用"
+        ]
+      },
+      "url": "http://www.spacechina.com"
+    },
+    {
+      "title": "银河航天启动A股上市进程",
+      "date": "2026-03-31",
+      "source": "财新网",
+      "summary": "银河航天完成新一轮融资并启动A股上市。公司年产中型卫星能力100-150颗，已在泰国建立中国卫星互联网首个海外地面基站。",
+      "tags": [
+        "IPO",
+        "银河航天",
+        "卫星制造"
+      ],
+      "impact_analysis": {
+        "level": "high",
+        "sectors": [
+          "卫星制造",
           "资本市场"
         ]
       },
-      "url": "https://www.bjd.com.cn"
+      "url": "https://www.caixin.com"
     },
     {
-      "title": "国内首次在轨星间400Gbps超高速激光通信试验成功",
-      "date": "2025-12",
-      "source": "极光星通",
-      "summary": "极光星通牵头完成国内首次在轨星间400Gbps超高速激光通信数据传输试验，为未来空间高宽带组网应用提供有力技术支撑。",
+      "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
+      "date": "2026-03-25",
+      "source": "AST SpaceMobile",
+      "summary": "AST SpaceMobile成功部署5颗蓝鸟卫星，完成初步星座组网。计划2026年Q2开始在美国提供首批商业卫星电话服务。",
       "tags": [
-        "技术突破",
+        "AST SpaceMobile",
+        "蓝鸟卫星",
+        "手机直连",
+        "商业服务"
+      ],
+      "impact_analysis": {
+        "level": "high",
+        "sectors": [
+          "手机直连",
+          "商业服务"
+        ]
+      },
+      "url": "https://www.ast-science.com"
+    },
+    {
+      "title": "AST SpaceMobile完成首批5颗蓝鸟卫星部署",
+      "date": "2026-03-25",
+      "source": "AST SpaceMobile",
+      "summary": "AST SpaceMobile成功部署5颗蓝鸟卫星，完成初步星座组网。计划2026年Q2开始在美国提供首批商业卫星电话服务。",
+      "tags": [
+        "AST SpaceMobile",
+        "蓝鸟卫星",
+        "手机直连",
+        "商业服务"
+      ],
+      "impact_analysis": {
+        "level": "high",
+        "sectors": [
+          "手机直连",
+          "商业服务"
+        ]
+      },
+      "url": "https://www.ast-science.com"
+    },
+    {
+      "title": "卫星激光通信赛道两个月融资超5亿",
+      "date": "2026-03-11",
+      "source": "C114通信网",
+      "summary": "光邮星空、氦星光联、极光星通三家企业密集官宣融资，其中两笔金额突破亿元。极光星通完成近3亿元A4轮融资，预计2026年交付超百台套。",
+      "tags": [
+        "融资",
         "激光通信",
         "星间链路"
       ],
       "impact_analysis": {
-        "level": "medium",
+        "level": "high",
         "sectors": [
           "卫星通信",
-          "技术"
+          "光通信"
         ]
       },
-      "url": "http://www.jlxt.com"
+      "url": "https://www.c114.com.cn"
+    },
+    {
+      "title": "国内首个卫星互联网海上应用示范点在舟山投运",
+      "date": "2026-03-10",
+      "source": "浙江日报",
+      "summary": "千帆星座联合舟山港建成海上卫星互联网示范区，为渔船、货轮提供高速宽带服务。实测下载速率超100Mbps，时延低于50ms。",
+      "tags": [
+        "千帆星座",
+        "海上通信",
+        "应用示范",
+        "卫星互联网"
+      ],
+      "impact_analysis": {
+        "level": "medium",
+        "sectors": [
+          "行业应用",
+          "海洋通信"
+        ]
+      },
+      "url": "http://www.zjnews.cn"
+    },
+    {
+      "title": "国内首个卫星互联网海上应用示范点在舟山投运",
+      "date": "2026-03-10",
+      "source": "浙江日报",
+      "summary": "千帆星座联合舟山港建成海上卫星互联网示范区，为渔船、货轮提供高速宽带服务。实测下载速率超100Mbps，时延低于50ms。",
+      "tags": [
+        "千帆星座",
+        "海上通信",
+        "应用示范",
+        "卫星互联网"
+      ],
+      "impact_analysis": {
+        "level": "medium",
+        "sectors": [
+          "行业应用",
+          "海洋通信"
+        ]
+      },
+      "url": "http://www.zjnews.cn"
     },
     {
       "title": "政府工作报告首提卫星互联网为新兴支柱产业",
@@ -2205,40 +1969,64 @@
       "url": "http://www.stcn.com"
     },
     {
-      "title": "千帆星座在轨卫星达108颗，GW星座达136颗",
-      "date": "2025-12-31",
-      "source": "C114年终盘点",
-      "summary": "截至2025年底，两大星座在轨卫星均突破百颗。千帆星座完成6组发射部署108颗；GW星座累计发射17组部署136颗，进入'高密度发射、规模化部署'关键期。",
+      "title": "亚马逊Kuiper星座获得FCC批量发射许可",
+      "date": "2026-03-01",
+      "source": "FCC",
+      "summary": "FCC批准亚马逊Kuiper星座未来3年内发射超过3000颗卫星的申请。亚马逊计划2026年发射首批量产卫星，与SpaceX展开直接竞争。",
       "tags": [
-        "星座部署",
-        "千帆星座",
-        "GW星座"
+        "Kuiper",
+        "亚马逊",
+        "FCC",
+        "星座部署"
       ],
       "impact_analysis": {
         "level": "medium",
         "sectors": [
+          "政策监管",
           "星座运营"
         ]
       },
-      "url": "https://www.baidu.com/s?wd=千帆星座在轨卫星达108颗，GW星座达136颗"
+      "url": "https://www.fcc.gov"
     },
     {
-      "title": "天启星座一期27颗卫星组网完成正式运营",
-      "date": "2025-05",
-      "source": "国电高科",
-      "summary": "我国首个低轨窄带卫星物联网星座天启星座一期组网完成，正式开启行业与消费级规模化应用新局面，为能源、农业、应急救援等行业提供服务。",
+      "title": "亚马逊Kuiper星座获得FCC批量发射许可",
+      "date": "2026-03-01",
+      "source": "FCC",
+      "summary": "FCC批准亚马逊Kuiper星座未来3年内发射超过3000颗卫星的申请。亚马逊计划2026年发射首批量产卫星，与SpaceX展开直接竞争。",
       "tags": [
-        "星座部署",
-        "天启星座",
-        "物联网"
+        "Kuiper",
+        "亚马逊",
+        "FCC",
+        "星座部署"
       ],
       "impact_analysis": {
         "level": "medium",
         "sectors": [
-          "卫星物联网"
+          "政策监管",
+          "星座运营"
         ]
       },
-      "url": "http://www.chinasatcom.com"
+      "url": "https://www.fcc.gov"
+    },
+    {
+      "title": "日本SoftBank与Intelsat合作推出航空卫星互联网服务",
+      "date": "2026-02-28",
+      "source": "SoftBank",
+      "summary": "SoftBank与Intelsat合作在日本推出航空卫星宽带服务，覆盖国内及国际航线。采用LEO/GEO混合组网，峰值速率200Mbps。",
+      "tags": [
+        "SoftBank",
+        "Intelsat",
+        "航空互联网",
+        "卫星宽带"
+      ],
+      "impact_analysis": {
+        "level": "medium",
+        "sectors": [
+          "行业应用",
+          "航空通信"
+        ]
+      },
+      "url": "https://www.softbank.jp"
     }
   ],
   "payloads": {
