@@ -166,7 +166,7 @@
             const allPasswords = Object.keys(PASSWORDS);
             const available = allPasswords.filter(pwd => {
                 const info = PASSWORDS[pwd];
-                return info.type !== 'admin' && info.type !== 'trial' && !usedPasswords.includes(pwd);
+                return info.tier !== '管理员' && info.tier !== '试用版' && !usedPasswords.includes(pwd);
             });
             
             if (available.length === 0) {
@@ -184,6 +184,13 @@
             // 存储当前用户的密码
             localStorage.setItem('my_password', selected);
             localStorage.setItem('password_activated', Date.now().toString());
+            
+            // 同时保存session，让用户可以直接访问index.html
+            localStorage.setItem('satcom_session', JSON.stringify({
+                tier: '调研版',
+                level: 1,
+                expiry: Date.now() + 30 * 24 * 60 * 60 * 1000
+            }));
             
             // 显示结果
             document.getElementById('assignedPassword').textContent = selected;
