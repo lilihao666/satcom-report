@@ -279,21 +279,11 @@
                     </div>
                 </div>
                 
-                <!-- 立即购买按钮 -->
-                <a href="payment.html" style="display: block; background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; text-align: center; padding: 12px; border-radius: 12px; font-weight: 600; text-decoration: none; margin: 16px 0; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <i class="fas fa-shopping-cart mr-2"></i>立即购买
-                </a>
-                
                 <p style="color: #9ca3af; font-size: 12px; margin-top: 12px;">
-                    已有密码？直接输入上方解锁<br>
-                    遇到问题？联系微信：your-wechat-id
+                    联系微信：your-wechat-id<br>
+                    付款后获取专属密码
                 </p>
             </div>
-            
-            <!-- 退出登录按钮（已登录状态显示） -->
-            <button id="logout-btn" onclick="logout()" style="display: none; margin-top: 16px; background: transparent; border: 1px solid #e5e7eb; color: #6b7280; padding: 8px 16px; border-radius: 8px; font-size: 12px; cursor: pointer;">
-                <i class="fas fa-sign-out-alt mr-1"></i>退出登录
-            </button>
         </div>
     </div>
 
@@ -1869,12 +1859,11 @@
         </div>
     </div>
 
-    <script src="passwords.js"></script>
     <script>
-        // 密码配置（内联备份，外部文件优先）
-        const PASSWORDS = typeof PASSWORD_CONFIG !== 'undefined' ? PASSWORD_CONFIG : {
-            'DIAOYAN2025': { tier: '调研版', level: 1, expiry: null },
-            'ADMIN2025': { tier: '管理员', level: 3, expiry: null }
+        // 密码配置（仅保留调研版）
+        const PASSWORDS = {
+            'DIAOYAN2025': { tier: '调研版', level: 1 },
+            'ADMIN2025': { tier: '管理员', level: 3 }
         };
 
         // 模态框数据
@@ -1940,8 +1929,6 @@
         // 退出登录
         function logout() {
             localStorage.removeItem('satcom_session');
-            localStorage.removeItem('my_password');
-            localStorage.removeItem('password_activated');
             showPasswordWall();
         }
 
